@@ -107,8 +107,7 @@ extension SearchFileNameResultViewController: NSTableViewDataSource {
 // MARK: SearchFileBrainDelegate
 extension SearchFileNameResultViewController: SearchFileBrainDelegate {
     
-    func foundDuplicateFile(duplicateFiles: [SearchResult]) {
-        
+    func foundDuplicateFile(brain: SearchFileBrain, duplicateFiles: [SearchResult]) {
         for theSearchResult in duplicateFiles {
             if !checkURLExist(theSearchResult) {
                 tempSearchResult.append(theSearchResult)
@@ -116,7 +115,7 @@ extension SearchFileNameResultViewController: SearchFileBrainDelegate {
         }
     }
     
-    func searchFinish() {
+    func searchFinish(brain: SearchFileBrain) {
         
         if reloadTimer != nil {
             reloadTimer?.invalidate()
@@ -127,8 +126,9 @@ extension SearchFileNameResultViewController: SearchFileBrainDelegate {
         searchStatusIndicator.hidden = true
         searchStatusLabel.stringValue = "搜尋結果"
     }
+
     
-    func searchError(errorMessage: String) {
+    func searchError(brain: SearchFileBrain, errorMessage: String) {
         searchStatusIndicator.hidden = true
         searchStatusLabel.stringValue = "搜尋失敗"
     }
