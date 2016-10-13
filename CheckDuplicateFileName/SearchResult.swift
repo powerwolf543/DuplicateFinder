@@ -8,6 +8,12 @@
 
 import Foundation
 
+/**
+ **SearchResult**
+ 
+ 
+ 這個 Class 是存放搜尋資料的Model
+ */
 class SearchResult {
     
     let fileURL: NSURL
