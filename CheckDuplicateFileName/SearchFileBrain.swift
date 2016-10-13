@@ -55,6 +55,7 @@ class SearchFileBrain {
     let directoryPath: String
     var delegate: SearchFileBrainDelegate?
     private var searchResultStorage = [SearchResult]()
+    private var cancelSearchFlag = false // 停止收尋為 True
     
     /**
      負責初始化 SearchFileBrain 這個 Class
@@ -73,6 +74,11 @@ class SearchFileBrain {
         }
     }
     
+    /** 停止搜尋 */
+    func stopSearch() {
+        cancelSearchFlag = true
+    }
+    
     // MARK: Private Methods
     
     // 開始對資料夾進行檢索比對
@@ -86,6 +92,9 @@ class SearchFileBrain {
             
             if let enumerator = enumerator {
                 for fileURL in enumerator {
+                    
+                    if cancelSearchFlag {return}
+                    
                     var isDir : ObjCBool = false
                     if fileManager.fileExistsAtPath(fileURL.path!, isDirectory: &isDir) {
                         if !isDir {

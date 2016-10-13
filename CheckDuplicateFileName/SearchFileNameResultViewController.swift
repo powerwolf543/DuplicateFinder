@@ -16,10 +16,10 @@ class SearchFileNameResultViewController: NSViewController,NSTableViewDelegate {
     @IBOutlet private weak var searchStatusIndicator: NSProgressIndicator!
     @IBOutlet private weak var searchResultTableView: NSTableView!
     
-    private var searchResultDataSource = [SearchResult]()
-    private var tempSearchResult = [SearchResult]()
+    private var searchResultDataSource = [SearchResult]() // 存放已經排序的結果
+    private var tempSearchResult = [SearchResult]() // 存放尚未排序的結果
     private var searchFileBrain: SearchFileBrain?
-    private var reloadTimer: NSTimer?
+    private var reloadTimer: NSTimer? // 負責更新畫面的 Timer
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +36,13 @@ class SearchFileNameResultViewController: NSViewController,NSTableViewDelegate {
             
             reloadTimer = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: #selector(SearchFileNameResultViewController.sortAndReload), userInfo: nil, repeats: true)
         }
+    }
+    
+    override func viewWillDisappear() {
+        super.viewWillDisappear()
+        
+        searchFileBrain?.stopSearch()
+        reloadTimer?.invalidate()
     }
     
     // MARK: UI
