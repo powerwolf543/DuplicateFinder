@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class SearchFileNameResultViewController: NSViewController,NSTableViewDelegate {
+class SearchFileNameResultViewController: NSViewController {
     
     var directoryPath: String?
     
@@ -53,7 +53,6 @@ class SearchFileNameResultViewController: NSViewController,NSTableViewDelegate {
         searchResultTableView.setDataSource(self)
         searchResultTableView.setDelegate(self)
         
-        
         let theMenu = NSMenu(title: "Contextual Menu")
         theMenu.insertItemWithTitle("Show in Finder", action: #selector(SearchFileNameResultViewController.showInFinder(_:)), keyEquivalent: "ddd", atIndex: 0)
         searchResultTableView.menu = theMenu
@@ -68,7 +67,7 @@ class SearchFileNameResultViewController: NSViewController,NSTableViewDelegate {
     }
     
     @objc private func sortAndReload() {
-        searchResultDataSource = tempSearchResult.sort { $0.fileName > $1.fileName }
+        searchResultDataSource = tempSearchResult.sort { $0.fileName < $1.fileName }
         searchResultTableView.reloadData()
     }
     
@@ -84,7 +83,7 @@ class SearchFileNameResultViewController: NSViewController,NSTableViewDelegate {
 }
 
 // MARK: NSTableViewDataSource
-extension SearchFileNameResultViewController: NSTableViewDataSource {
+extension SearchFileNameResultViewController: NSTableViewDataSource,NSTableViewDelegate {
     
     func numberOfRowsInTableView(tableView: NSTableView) -> Int {
         return searchResultDataSource.count
