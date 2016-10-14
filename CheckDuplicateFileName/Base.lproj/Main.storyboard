@@ -85,7 +85,7 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="CheckSameFileName" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="CheckDuplicateFileName" customModuleProvider="target"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75.5" y="10"/>
@@ -111,13 +111,13 @@
         <!--Select Directory View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="SelectDirectoryViewController" customModule="CheckSameFileName" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XfG-lQ-9wD" customClass="SelectDirectoryViewController" customModule="CheckDuplicateFileName" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="510" height="109"/>
+                        <rect key="frame" x="0.0" y="0.0" width="510" height="376"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qkg-Oc-27v">
-                                <rect key="frame" x="156" y="72" width="199" height="17"/>
+                                <rect key="frame" x="156" y="339" width="199" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="檢查資料夾中是否有重複檔案名稱" id="OR9-6h-fw3">
                                     <font key="font" size="13" name=".PingFangTC-Regular"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -125,7 +125,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3gY-kT-Tt4">
-                                <rect key="frame" x="403" y="24" width="83" height="32"/>
+                                <rect key="frame" x="403" y="291" width="83" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="71" id="msE-Gi-9JL"/>
                                 </constraints>
@@ -138,32 +138,130 @@
                                 </connections>
                             </button>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eaf-9B-V8a">
-                                <rect key="frame" x="30" y="30" width="369" height="22"/>
+                                <rect key="frame" x="30" y="297" width="369" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="選擇資料夾" bezelStyle="round" id="Bu1-Sn-fLv">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R8W-Pv-HVB">
+                                <rect key="frame" x="30" y="52" width="450" height="198"/>
+                                <clipView key="contentView" id="p9y-EP-N1r">
+                                    <rect key="frame" x="1" y="0.0" width="448" height="197"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="WOw-zm-MId" viewBased="YES" id="lIb-3a-OlV">
+                                            <rect key="frame" x="0.0" y="0.0" width="448" height="174"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <size key="intercellSpacing" width="3" height="2"/>
+                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                            <tableColumns>
+                                                <tableColumn identifier="filePathCell_SID" width="445" minWidth="40" maxWidth="1000" id="yRy-AY-17w">
+                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="檔案路徑">
+                                                        <font key="font" metaFont="smallSystem"/>
+                                                        <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                                    </tableHeaderCell>
+                                                    <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="O4x-1l-RI4">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                    <prototypeCellViews>
+                                                        <tableCellView id="D7I-KD-v6N">
+                                                            <rect key="frame" x="1" y="1" width="445" height="17"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <subviews>
+                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="ahl-nD-Fky">
+                                                                    <rect key="frame" x="1" y="0.0" width="443" height="17"/>
+                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="bHb-8b-HEV">
+                                                                        <font key="font" metaFont="system"/>
+                                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                    </textFieldCell>
+                                                                </textField>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="ahl-nD-Fky" firstAttribute="centerY" secondItem="D7I-KD-v6N" secondAttribute="centerY" id="IQ1-jP-lZ8"/>
+                                                                <constraint firstItem="ahl-nD-Fky" firstAttribute="leading" secondItem="D7I-KD-v6N" secondAttribute="leading" constant="3" id="Pu6-Er-TGg"/>
+                                                                <constraint firstAttribute="trailing" secondItem="ahl-nD-Fky" secondAttribute="trailing" constant="3" id="edf-hj-p8x"/>
+                                                            </constraints>
+                                                            <connections>
+                                                                <outlet property="textField" destination="ahl-nD-Fky" id="C3g-5Y-p4w"/>
+                                                            </connections>
+                                                        </tableCellView>
+                                                    </prototypeCellViews>
+                                                </tableColumn>
+                                            </tableColumns>
+                                        </tableView>
+                                    </subviews>
+                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="W2K-Zr-UkJ">
+                                    <rect key="frame" x="1" y="119" width="223" height="15"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="x5P-be-2rJ">
+                                    <rect key="frame" x="224" y="17" width="15" height="102"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <tableHeaderView key="headerView" id="WOw-zm-MId">
+                                    <rect key="frame" x="0.0" y="0.0" width="448" height="23"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableHeaderView>
+                            </scrollView>
+                            <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iXW-OL-0TZ">
+                                <rect key="frame" x="31" y="29" width="41" height="19"/>
+                                <segmentedCell key="cell" controlSize="mini" borderStyle="border" alignment="left" style="smallSquare" trackingMode="momentary" id="6ON-BF-g1r">
+                                    <font key="font" metaFont="miniSystem"/>
+                                    <segments>
+                                        <segment image="NSAddTemplate"/>
+                                        <segment image="NSRemoveTemplate" enabled="NO" tag="1"/>
+                                    </segments>
+                                </segmentedCell>
+                                <connections>
+                                    <action selector="addFolderSegmentPressed:" target="XfG-lQ-9wD" id="AbL-c7-qga"/>
+                                </connections>
+                            </segmentedControl>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Glk-hL-4dd">
+                                <rect key="frame" x="28" y="260" width="160" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="將下列項目從搜尋中排除：" id="r10-vg-FcY">
+                                    <font key="font" size="13" name=".PingFangTC-Regular"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="Glk-hL-4dd" firstAttribute="top" secondItem="eaf-9B-V8a" secondAttribute="bottom" constant="20" id="1cv-jG-KrW"/>
                             <constraint firstItem="3gY-kT-Tt4" firstAttribute="centerY" secondItem="eaf-9B-V8a" secondAttribute="centerY" id="1ug-va-Bmb"/>
                             <constraint firstItem="eaf-9B-V8a" firstAttribute="top" secondItem="qkg-Oc-27v" secondAttribute="bottom" constant="20" id="Hbe-sT-WPq"/>
+                            <constraint firstItem="iXW-OL-0TZ" firstAttribute="top" secondItem="R8W-Pv-HVB" secondAttribute="bottom" constant="5" id="JAd-4k-jcu"/>
+                            <constraint firstItem="Glk-hL-4dd" firstAttribute="leading" secondItem="eaf-9B-V8a" secondAttribute="leading" id="MkI-7R-9Fb"/>
+                            <constraint firstAttribute="bottom" secondItem="iXW-OL-0TZ" secondAttribute="bottom" constant="30" id="PKB-2Q-jMx"/>
+                            <constraint firstItem="R8W-Pv-HVB" firstAttribute="trailing" secondItem="3gY-kT-Tt4" secondAttribute="trailing" id="Pic-tf-6bN"/>
                             <constraint firstItem="3gY-kT-Tt4" firstAttribute="leading" secondItem="eaf-9B-V8a" secondAttribute="trailing" constant="10" id="RDH-o4-RqX"/>
+                            <constraint firstItem="R8W-Pv-HVB" firstAttribute="top" secondItem="Glk-hL-4dd" secondAttribute="bottom" constant="10" id="RyQ-CI-Wbn"/>
                             <constraint firstItem="qkg-Oc-27v" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="Z70-VE-1ha"/>
+                            <constraint firstItem="iXW-OL-0TZ" firstAttribute="leading" secondItem="lIb-3a-OlV" secondAttribute="leading" id="d1x-uy-YlK"/>
                             <constraint firstItem="eaf-9B-V8a" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="30" id="pOo-ru-MmQ"/>
+                            <constraint firstItem="R8W-Pv-HVB" firstAttribute="leading" secondItem="eaf-9B-V8a" secondAttribute="leading" id="ruY-Sy-Lhr"/>
                             <constraint firstItem="qkg-Oc-27v" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="sFt-jx-qWe"/>
-                            <constraint firstAttribute="bottom" secondItem="eaf-9B-V8a" secondAttribute="bottom" constant="30" id="u0E-EX-wKA"/>
                             <constraint firstAttribute="trailing" secondItem="3gY-kT-Tt4" secondAttribute="trailing" constant="30" id="wmH-KU-gkG"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addFolderSegmentControl" destination="iXW-OL-0TZ" id="Z7i-Wv-A4i"/>
+                        <outlet property="excludeFolderTableView" destination="lIb-3a-OlV" id="UMX-Hn-MBL"/>
                         <outlet property="filePathTextField" destination="eaf-9B-V8a" id="Z0L-lv-ddk"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="73" y="675"/>
+            <point key="canvasLocation" x="73" y="808"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="77x-W1-YK5">
@@ -186,7 +284,7 @@
         <!--Search File Name Result View Controller-->
         <scene sceneID="89e-Ut-xAm">
             <objects>
-                <viewController id="rZF-QJ-B0D" customClass="SearchFileNameResultViewController" customModule="CheckSameFileName" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="rZF-QJ-B0D" customClass="SearchFileNameResultViewController" customModule="CheckDuplicateFileName" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="6Fw-Cu-BO1">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -330,4 +428,8 @@
             <point key="canvasLocation" x="807" y="680"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="NSAddTemplate" width="11" height="11"/>
+        <image name="NSRemoveTemplate" width="11" height="11"/>
+    </resources>
 </document>

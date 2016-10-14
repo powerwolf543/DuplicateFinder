@@ -11,6 +11,18 @@ import Cocoa
 class SelectDirectoryViewController: NSViewController,NSWindowDelegate {
     
     @IBOutlet private weak var filePathTextField: NSTextField!
+    @IBOutlet weak var excludeFolderTableView: NSTableView!
+    @IBOutlet weak var addFolderSegmentControl: NSSegmentedControl!
+    
+    private var excludeFolderDataSource = [String]() {
+        didSet {
+            if excludeFolderDataSource.count <= 0 {
+                addFolderSegmentControl.setEnabled(false, forSegment: 1)
+            }
+        }
+    }
+    
+    private var selectedRow: Int?
     private var fileNames = Set<String>()
     private var searchResultWindowController:NSWindowController?
     
@@ -23,12 +35,6 @@ class SelectDirectoryViewController: NSViewController,NSWindowDelegate {
         view.window?.delegate = self
     }
     
-    override var representedObject: AnyObject? {
-        didSet {
-            // Update the view, if already loaded.
-        }
-    }
-    
     // MARK: UI
     
     private func prepareUI() {
@@ -37,11 +43,33 @@ class SelectDirectoryViewController: NSViewController,NSWindowDelegate {
         gesture.numberOfClicksRequired = 1
         gesture.target = self
         gesture.action = #selector(SelectDirectoryViewController.filePathTextFieldClicked(_:))
-        
         filePathTextField.addGestureRecognizer(gesture)
+        
+        excludeFolderTableView.setDataSource(self)
+        excludeFolderTableView.setDelegate(self)
     }
     
     // MARK: Event
+    
+    @IBAction func addFolderSegmentPressed(sender: NSSegmentedControl) {
+        // 0 為新增 1 為刪除
+        switch sender.selectedSegment {
+        case 0:
+            let folderPath = getFolderPathFromFinder()
+            if let folderPath = folderPath {
+                dataSourceAdd(folderPath)
+            }
+            break
+        case 1:
+            if let selectedRow = selectedRow {
+                dataSourceDeleteAt(selectedRow)
+            }
+            break
+        default:
+            print("No this Option")
+            break
+        }
+    }
     
     @IBAction private func submitBtnPressed(sender: NSButton) {
         
@@ -52,12 +80,39 @@ class SelectDirectoryViewController: NSViewController,NSWindowDelegate {
             searchResultWindowController = mainStoryboard.instantiateControllerWithIdentifier("SearchFileNameResultWindowSID") as? NSWindowController
             let searchFileNameResultVC = searchResultWindowController?.contentViewController as! SearchFileNameResultViewController
             searchFileNameResultVC.directoryPath = filePathTextField.stringValue
+            searchFileNameResultVC.excludeFolders = excludeFolderDataSource
             searchResultWindowController?.showWindow(self)
         }
     }
     
     @objc private func filePathTextFieldClicked(sender: AnyObject) {
         
+        let folderPath = getFolderPathFromFinder()
+        
+        if let folderPath = folderPath {
+            filePathTextField.stringValue = folderPath
+        }
+    }
+    
+    func windowWillClose(notification: NSNotification) {
+        //        searchResultWindowController?.close()
+        NSApp.terminate(self)
+    }
+    
+    // MARK: File
+    
+    private func dataSourceAdd(folderPath: String) {
+        excludeFolderDataSource.append(folderPath)
+        excludeFolderTableView.reloadData()
+    }
+    
+    private func dataSourceDeleteAt(row: Int) {
+        excludeFolderDataSource.removeAtIndex(row)
+        excludeFolderTableView.reloadData()
+        selectedRow = nil
+    }
+    
+    private func getFolderPathFromFinder() -> String? {
         // 開啟檔案瀏覽器
         let openPanel = NSOpenPanel()
         
@@ -71,15 +126,49 @@ class SelectDirectoryViewController: NSViewController,NSWindowDelegate {
         if clickedResult == NSModalResponseOK {
             let url = openPanel.URLs.first
             if let aURL = url {
-                filePathTextField.stringValue = aURL.absoluteString
+                return aURL.absoluteString
             }
+            return nil
         }
-    }
-    
-    func windowWillClose(notification: NSNotification) {
-        //        searchResultWindowController?.close()
-        NSApp.terminate(self)
+        return nil
     }
     
 }
 
+// MARK: NSTableViewDataSource NSTableViewDelegate
+extension SelectDirectoryViewController: NSTableViewDataSource,NSTableViewDelegate {
+    
+    internal func numberOfRowsInTableView(tableView: NSTableView) -> Int {
+        return excludeFolderDataSource.count
+    }
+    
+    internal func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        
+        let identifier = tableColumn?.identifier
+        
+        if let identifier = identifier {
+            
+            let cell = tableView.makeViewWithIdentifier(identifier, owner: nil) as! NSTableCellView
+            
+            if identifier == "filePathCell_SID" {
+                cell.textField?.stringValue = excludeFolderDataSource[row]
+            }
+            return cell
+        }
+        return nil
+    }
+    
+    internal func selectionShouldChangeInTableView(tableView: NSTableView) -> Bool {
+        
+        if tableView.clickedRow == -1 {
+            addFolderSegmentControl.setEnabled(false, forSegment: 1)
+            selectedRow = nil
+        }else{
+            addFolderSegmentControl.setEnabled(true, forSegment: 1)
+            selectedRow = tableView.clickedRow
+        }
+        
+        return true
+    }
+    
+}

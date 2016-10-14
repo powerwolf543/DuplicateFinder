@@ -6,13 +6,19 @@ CheckDuplicateFileName
 CheckDuplicateFileName 是一份 Swift 的 MacOS APP ，
 主要功能為檢查選擇資料夾中是否有檔案重複的狀況。
 
+
+搜尋完的結果可以點選右鍵顯示在 Finder
+
+
+1.1.0 增加了排除不想要搜尋的資料夾
+
 Require
 -----------
 - xcode 7.3.1
 
 Version
 -----------
-- 1.0
+- 1.1.0
 
 
 License

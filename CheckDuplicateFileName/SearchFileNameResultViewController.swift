@@ -8,18 +8,19 @@
 
 import Cocoa
 
-class SearchFileNameResultViewController: NSViewController,NSTableViewDelegate {
+class SearchFileNameResultViewController: NSViewController {
     
     var directoryPath: String?
+    var excludeFolders: [String]?
     
     @IBOutlet private weak var searchStatusLabel: NSTextField!
     @IBOutlet private weak var searchStatusIndicator: NSProgressIndicator!
     @IBOutlet private weak var searchResultTableView: NSTableView!
     
-    private var searchResultDataSource = [SearchResult]()
-    private var tempSearchResult = [SearchResult]()
+    private var searchResultDataSource = [SearchResult]() // 存放已經排序的結果
+    private var tempSearchResult = [SearchResult]() // 存放尚未排序的結果
     private var searchFileBrain: SearchFileBrain?
-    private var reloadTimer: NSTimer?
+    private var reloadTimer: NSTimer? // 負責更新畫面的 Timer
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,13 +30,20 @@ class SearchFileNameResultViewController: NSViewController,NSTableViewDelegate {
     override func viewWillAppear() {
         super.viewWillAppear()
         
-        if let directoryPath = directoryPath {
-            searchFileBrain = SearchFileBrain(directoryPath: directoryPath)
+        if let directoryPath = directoryPath, excludeFolders = excludeFolders {
+            searchFileBrain = SearchFileBrain(directoryPath: directoryPath,excludeFolders: excludeFolders)
             searchFileBrain?.delegate = self
             searchFileBrain?.startSearch()
             
             reloadTimer = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: #selector(SearchFileNameResultViewController.sortAndReload), userInfo: nil, repeats: true)
         }
+    }
+    
+    override func viewWillDisappear() {
+        super.viewWillDisappear()
+        
+        searchFileBrain?.stopSearch()
+        reloadTimer?.invalidate()
     }
     
     // MARK: UI
@@ -45,7 +53,6 @@ class SearchFileNameResultViewController: NSViewController,NSTableViewDelegate {
         searchStatusLabel.stringValue = "搜尋中..."
         searchResultTableView.setDataSource(self)
         searchResultTableView.setDelegate(self)
-        
         
         let theMenu = NSMenu(title: "Contextual Menu")
         theMenu.insertItemWithTitle("Show in Finder", action: #selector(SearchFileNameResultViewController.showInFinder(_:)), keyEquivalent: "ddd", atIndex: 0)
@@ -61,7 +68,7 @@ class SearchFileNameResultViewController: NSViewController,NSTableViewDelegate {
     }
     
     @objc private func sortAndReload() {
-        searchResultDataSource = tempSearchResult.sort { $0.fileName > $1.fileName }
+        searchResultDataSource = tempSearchResult.sort { $0.fileName < $1.fileName }
         searchResultTableView.reloadData()
     }
     
@@ -76,14 +83,14 @@ class SearchFileNameResultViewController: NSViewController,NSTableViewDelegate {
     
 }
 
-// MARK: NSTableViewDataSource
-extension SearchFileNameResultViewController: NSTableViewDataSource {
+// MARK: NSTableViewDataSource NSTableViewDelegate
+extension SearchFileNameResultViewController: NSTableViewDataSource,NSTableViewDelegate {
     
-    func numberOfRowsInTableView(tableView: NSTableView) -> Int {
+    internal func numberOfRowsInTableView(tableView: NSTableView) -> Int {
         return searchResultDataSource.count
     }
     
-    func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
+    internal func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
         
         let identifier = tableColumn?.identifier
         
@@ -107,8 +114,7 @@ extension SearchFileNameResultViewController: NSTableViewDataSource {
 // MARK: SearchFileBrainDelegate
 extension SearchFileNameResultViewController: SearchFileBrainDelegate {
     
-    func foundDuplicateFile(duplicateFiles: [SearchResult]) {
-        
+    internal func foundDuplicateFile(brain: SearchFileBrain, duplicateFiles: [SearchResult]) {
         for theSearchResult in duplicateFiles {
             if !checkURLExist(theSearchResult) {
                 tempSearchResult.append(theSearchResult)
@@ -116,7 +122,7 @@ extension SearchFileNameResultViewController: SearchFileBrainDelegate {
         }
     }
     
-    func searchFinish() {
+    internal func searchFinish(brain: SearchFileBrain) {
         
         if reloadTimer != nil {
             reloadTimer?.invalidate()
@@ -127,8 +133,9 @@ extension SearchFileNameResultViewController: SearchFileBrainDelegate {
         searchStatusIndicator.hidden = true
         searchStatusLabel.stringValue = "搜尋結果"
     }
+
     
-    func searchError(errorMessage: String) {
+    internal func searchError(brain: SearchFileBrain, errorMessage: String) {
         searchStatusIndicator.hidden = true
         searchStatusLabel.stringValue = "搜尋失敗"
     }
