@@ -14,7 +14,14 @@ class SelectDirectoryViewController: NSViewController,NSWindowDelegate {
     @IBOutlet weak var excludeFolderTableView: NSTableView!
     @IBOutlet weak var addFolderSegmentControl: NSSegmentedControl!
     
-    private var excludeFolderDataSource = [String]()
+    private var excludeFolderDataSource = [String]() {
+        didSet {
+            if excludeFolderDataSource.count <= 0 {
+                addFolderSegmentControl.setEnabled(false, forSegment: 1)
+            }
+        }
+    }
+    private var selectedRow: Int?
     private var fileNames = Set<String>()
     private var searchResultWindowController:NSWindowController?
     
@@ -25,12 +32,6 @@ class SelectDirectoryViewController: NSViewController,NSWindowDelegate {
     
     override func viewWillAppear() {
         view.window?.delegate = self
-    }
-    
-    override var representedObject: AnyObject? {
-        didSet {
-            // Update the view, if already loaded.
-        }
     }
     
     // MARK: UI
@@ -50,6 +51,7 @@ class SelectDirectoryViewController: NSViewController,NSWindowDelegate {
     // MARK: Event
     
     @IBAction func addFolderSegmentPressed(sender: NSSegmentedControl) {
+        // 0 為新增 1 為刪除
         switch sender.selectedSegment {
         case 0:
             let folderPath = getFolderPathFromFinder()
@@ -57,7 +59,11 @@ class SelectDirectoryViewController: NSViewController,NSWindowDelegate {
                 dataSourceAdd(folderPath)
             }
             break
-        case 1: break
+        case 1:
+            if let selectedRow = selectedRow {
+                dataSourceDeleteAt(selectedRow)
+            }
+            break
         default:
             print("No this Option")
             break
@@ -98,6 +104,12 @@ class SelectDirectoryViewController: NSViewController,NSWindowDelegate {
         excludeFolderTableView.reloadData()
     }
     
+    private func dataSourceDeleteAt(row: Int) {
+        excludeFolderDataSource.removeAtIndex(row)
+        excludeFolderTableView.reloadData()
+        selectedRow = nil
+    }
+    
     private func getFolderPathFromFinder() -> String? {
         // 開啟檔案瀏覽器
         let openPanel = NSOpenPanel()
@@ -121,7 +133,7 @@ class SelectDirectoryViewController: NSViewController,NSWindowDelegate {
     
 }
 
-// MARK: NSTableViewDataSource
+// MARK: NSTableViewDataSource NSTableViewDelegate
 extension SelectDirectoryViewController: NSTableViewDataSource,NSTableViewDelegate {
     
     func numberOfRowsInTableView(tableView: NSTableView) -> Int {
@@ -142,6 +154,19 @@ extension SelectDirectoryViewController: NSTableViewDataSource,NSTableViewDelega
             return cell
         }
         return nil
+    }
+    
+    func selectionShouldChangeInTableView(tableView: NSTableView) -> Bool {
+        
+        if tableView.clickedRow == -1 {
+            addFolderSegmentControl.setEnabled(false, forSegment: 1)
+            selectedRow = nil
+        }else{
+            addFolderSegmentControl.setEnabled(true, forSegment: 1)
+            selectedRow = tableView.clickedRow
+        }
+        
+        return true
     }
     
 }

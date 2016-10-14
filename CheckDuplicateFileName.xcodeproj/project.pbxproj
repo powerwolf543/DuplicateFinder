@@ -58,10 +58,10 @@
 		25BF97131DA4944700EABEB6 /* CheckSameFileName */ = {
 			isa = PBXGroup;
 			children = (
-				25243B091DA785D400DE4029 /* SearchFileBrain.swift */,
-				25243B0A1DA785D400DE4029 /* SearchFileNameResultViewController.swift */,
-				25243B0B1DA785D400DE4029 /* SearchResult.swift */,
 				25243B0C1DA785D400DE4029 /* SelectDirectoryViewController.swift */,
+				25243B0A1DA785D400DE4029 /* SearchFileNameResultViewController.swift */,
+				25243B091DA785D400DE4029 /* SearchFileBrain.swift */,
+				25243B0B1DA785D400DE4029 /* SearchResult.swift */,
 				25243B071DA785D400DE4029 /* Assets.xcassets */,
 				25243B081DA785D400DE4029 /* Info.plist */,
 				25243B141DA785DD00DE4029 /* Main.storyboard */,

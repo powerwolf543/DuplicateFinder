@@ -82,7 +82,7 @@ class SearchFileNameResultViewController: NSViewController {
     
 }
 
-// MARK: NSTableViewDataSource
+// MARK: NSTableViewDataSource NSTableViewDelegate
 extension SearchFileNameResultViewController: NSTableViewDataSource,NSTableViewDelegate {
     
     func numberOfRowsInTableView(tableView: NSTableView) -> Int {
