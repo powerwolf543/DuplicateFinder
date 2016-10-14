@@ -21,6 +21,7 @@ class SelectDirectoryViewController: NSViewController,NSWindowDelegate {
             }
         }
     }
+    
     private var selectedRow: Int?
     private var fileNames = Set<String>()
     private var searchResultWindowController:NSWindowController?
@@ -79,6 +80,7 @@ class SelectDirectoryViewController: NSViewController,NSWindowDelegate {
             searchResultWindowController = mainStoryboard.instantiateControllerWithIdentifier("SearchFileNameResultWindowSID") as? NSWindowController
             let searchFileNameResultVC = searchResultWindowController?.contentViewController as! SearchFileNameResultViewController
             searchFileNameResultVC.directoryPath = filePathTextField.stringValue
+            searchFileNameResultVC.excludeFolders = excludeFolderDataSource
             searchResultWindowController?.showWindow(self)
         }
     }

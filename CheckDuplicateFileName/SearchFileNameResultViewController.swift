@@ -11,6 +11,7 @@ import Cocoa
 class SearchFileNameResultViewController: NSViewController {
     
     var directoryPath: String?
+    var excludeFolders: [String]?
     
     @IBOutlet private weak var searchStatusLabel: NSTextField!
     @IBOutlet private weak var searchStatusIndicator: NSProgressIndicator!
@@ -29,8 +30,8 @@ class SearchFileNameResultViewController: NSViewController {
     override func viewWillAppear() {
         super.viewWillAppear()
         
-        if let directoryPath = directoryPath {
-            searchFileBrain = SearchFileBrain(directoryPath: directoryPath)
+        if let directoryPath = directoryPath, excludeFolders = excludeFolders {
+            searchFileBrain = SearchFileBrain(directoryPath: directoryPath,excludeFolders: excludeFolders)
             searchFileBrain?.delegate = self
             searchFileBrain?.startSearch()
             

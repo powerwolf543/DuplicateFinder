@@ -53,6 +53,7 @@ class SearchFileBrain {
     
     /** 想要搜尋的路徑 */
     let directoryPath: String
+    var excludeFolders: [String]
     var delegate: SearchFileBrainDelegate?
     private var searchResultStorage = [SearchResult]()
     private var cancelSearchFlag = false // 停止收尋為 True
@@ -63,8 +64,9 @@ class SearchFileBrain {
      - parameter directoryPath: 想要搜尋的路徑
      - returns: SearchFileBrain's Instance
      */
-    init(directoryPath: String) {
+    init(directoryPath: String,excludeFolders: [String]) {
         self.directoryPath = directoryPath
+        self.excludeFolders = excludeFolders
     }
     
     /** 開始搜尋你所要求路徑的資料夾 */
@@ -93,12 +95,15 @@ class SearchFileBrain {
             if let enumerator = enumerator {
                 for fileURL in enumerator {
                     
-                    if cancelSearchFlag {return}
+                    if cancelSearchFlag { return }
                     
                     var isDir : ObjCBool = false
                     if fileManager.fileExistsAtPath(fileURL.path!, isDirectory: &isDir) {
                         if !isDir {
                             let aFileURL = fileURL as! NSURL
+                            
+                            if checkNeedExcludeOf(aFileURL.absoluteString) { continue }
+                            
                             let theSearchResult = SearchResult(fileURL: aFileURL)
                             
                             if theSearchResult.fileName == ".DS_Store" {
@@ -133,6 +138,18 @@ class SearchFileBrain {
         
         let fileName = fileURL.lastPathComponent
         return searchResultStorage.filter { $0.fileName == fileName! }
+    }
+    
+    // 檢查路徑是否有在排除名單中
+    private func checkNeedExcludeOf(path: String) -> Bool {
+        
+        if excludeFolders.count == 0 {
+            return false
+        }
+        
+        let filterResult = excludeFolders.filter { path.containsString($0) }
+        
+        return filterResult.count != 0
     }
     
 }
