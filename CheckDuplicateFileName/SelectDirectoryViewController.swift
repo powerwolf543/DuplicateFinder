@@ -136,11 +136,11 @@ class SelectDirectoryViewController: NSViewController,NSWindowDelegate {
 // MARK: NSTableViewDataSource NSTableViewDelegate
 extension SelectDirectoryViewController: NSTableViewDataSource,NSTableViewDelegate {
     
-    func numberOfRowsInTableView(tableView: NSTableView) -> Int {
+    internal func numberOfRowsInTableView(tableView: NSTableView) -> Int {
         return excludeFolderDataSource.count
     }
     
-    func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
+    internal func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
         
         let identifier = tableColumn?.identifier
         
@@ -156,7 +156,7 @@ extension SelectDirectoryViewController: NSTableViewDataSource,NSTableViewDelega
         return nil
     }
     
-    func selectionShouldChangeInTableView(tableView: NSTableView) -> Bool {
+    internal func selectionShouldChangeInTableView(tableView: NSTableView) -> Bool {
         
         if tableView.clickedRow == -1 {
             addFolderSegmentControl.setEnabled(false, forSegment: 1)

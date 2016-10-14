@@ -85,11 +85,11 @@ class SearchFileNameResultViewController: NSViewController {
 // MARK: NSTableViewDataSource NSTableViewDelegate
 extension SearchFileNameResultViewController: NSTableViewDataSource,NSTableViewDelegate {
     
-    func numberOfRowsInTableView(tableView: NSTableView) -> Int {
+    internal func numberOfRowsInTableView(tableView: NSTableView) -> Int {
         return searchResultDataSource.count
     }
     
-    func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
+    internal func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
         
         let identifier = tableColumn?.identifier
         
@@ -113,7 +113,7 @@ extension SearchFileNameResultViewController: NSTableViewDataSource,NSTableViewD
 // MARK: SearchFileBrainDelegate
 extension SearchFileNameResultViewController: SearchFileBrainDelegate {
     
-    func foundDuplicateFile(brain: SearchFileBrain, duplicateFiles: [SearchResult]) {
+    internal func foundDuplicateFile(brain: SearchFileBrain, duplicateFiles: [SearchResult]) {
         for theSearchResult in duplicateFiles {
             if !checkURLExist(theSearchResult) {
                 tempSearchResult.append(theSearchResult)
@@ -121,7 +121,7 @@ extension SearchFileNameResultViewController: SearchFileBrainDelegate {
         }
     }
     
-    func searchFinish(brain: SearchFileBrain) {
+    internal func searchFinish(brain: SearchFileBrain) {
         
         if reloadTimer != nil {
             reloadTimer?.invalidate()
@@ -134,7 +134,7 @@ extension SearchFileNameResultViewController: SearchFileBrainDelegate {
     }
 
     
-    func searchError(brain: SearchFileBrain, errorMessage: String) {
+    internal func searchError(brain: SearchFileBrain, errorMessage: String) {
         searchStatusIndicator.hidden = true
         searchStatusLabel.stringValue = "搜尋失敗"
     }
