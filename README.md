@@ -15,6 +15,7 @@ CheckDuplicateFileName 是一份 Swift 的 MacOS APP ，
 Require
 -----------
 - xcode 7.3.1
+- Swift 2.2
 
 Version
 -----------
