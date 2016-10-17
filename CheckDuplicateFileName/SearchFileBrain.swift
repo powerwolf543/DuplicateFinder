@@ -47,16 +47,20 @@ protocol SearchFileBrainDelegate {
  
  - 使用 startSearch() 進行檔案搜尋
  - Conform SearchFileBrainDelegate 來監控當案收尋的狀況
- 
  */
 class SearchFileBrain {
     
     /** 想要搜尋的路徑 */
     let directoryPath: String
-    var excludeFolders: [String]
+    /** 只要存放在這個陣列的路徑，搜尋的時候都會排除。 */
+    var excludeFolders: [String]?
+    /** 只要存放在這個陣列的完整檔名(需包含副檔名)，搜尋的時候都會排除。 */
+    var excludeFileNames: [String]?
     var delegate: SearchFileBrainDelegate?
+    /** 將搜尋過的結果放在這個陣列中。 */
     private var searchResultStorage = [SearchResult]()
-    private var cancelSearchFlag = false // 停止收尋為 True
+    /** 判斷是否要停止搜尋的 Flag，若要停止則設為 True。 */
+    private var cancelSearchFlag = false
     
     /**
      負責初始化 SearchFileBrain 這個 Class
@@ -64,10 +68,13 @@ class SearchFileBrain {
      - parameter directoryPath: 想要搜尋的路徑
      - returns: SearchFileBrain's Instance
      */
-    init(directoryPath: String,excludeFolders: [String]) {
+    init(directoryPath: String, excludeFolders: [String]?, excludeFileNames: [String]?) {
         self.directoryPath = directoryPath
         self.excludeFolders = excludeFolders
+        self.excludeFileNames = excludeFileNames
     }
+    
+    // MARK: Action
     
     /** 開始搜尋你所要求路徑的資料夾 */
     func startSearch() {
@@ -81,7 +88,7 @@ class SearchFileBrain {
         cancelSearchFlag = true
     }
     
-    // MARK: Private Methods
+    // MARK: File Search
     
     // 開始對資料夾進行檢索比對
     private func enumeratorDirectory() {
@@ -103,6 +110,7 @@ class SearchFileBrain {
                             let aFileURL = fileURL as! NSURL
                             
                             if checkNeedExcludeOf(aFileURL.absoluteString) { continue }
+                            if checkNeedExcludeOfFile(aFileURL.lastPathComponent) { continue }
                             
                             let theSearchResult = SearchResult(fileURL: aFileURL)
                             
@@ -133,6 +141,8 @@ class SearchFileBrain {
         }
     }
     
+    // MARK: File Parser
+    
     // 比對有哪些檔案重複
     private func duplicateFilesInStorage(fileURL: NSURL) -> [SearchResult] {
         
@@ -143,11 +153,31 @@ class SearchFileBrain {
     // 檢查路徑是否有在排除名單中
     private func checkNeedExcludeOf(path: String) -> Bool {
         
+        guard let excludeFolders = excludeFolders else {
+            return false
+        }
+        
         if excludeFolders.count == 0 {
             return false
         }
         
         let filterResult = excludeFolders.filter { path.containsString($0) }
+        
+        return filterResult.count != 0
+    }
+    
+    // 檢查是否有需要排除的檔名
+    private func checkNeedExcludeOfFile(name: String?) -> Bool {
+        
+        guard let excludeFileNames = excludeFileNames,theName = name else {
+            return false
+        }
+        
+        if excludeFileNames.count == 0 {
+            return false
+        }
+        
+        let filterResult = excludeFileNames.filter { theName == $0 }
         
         return filterResult.count != 0
     }

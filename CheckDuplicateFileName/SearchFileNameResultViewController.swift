@@ -12,6 +12,7 @@ class SearchFileNameResultViewController: NSViewController {
     
     var directoryPath: String?
     var excludeFolders: [String]?
+    var excludeFileNames: [String]?
     
     @IBOutlet private weak var searchStatusLabel: NSTextField!
     @IBOutlet private weak var searchStatusIndicator: NSProgressIndicator!
@@ -30,12 +31,18 @@ class SearchFileNameResultViewController: NSViewController {
     override func viewWillAppear() {
         super.viewWillAppear()
         
-        if let directoryPath = directoryPath, excludeFolders = excludeFolders {
-            searchFileBrain = SearchFileBrain(directoryPath: directoryPath,excludeFolders: excludeFolders)
+        if let directoryPath = directoryPath {
+            searchFileBrain = SearchFileBrain(directoryPath: directoryPath,
+                                              excludeFolders: excludeFolders,
+                                              excludeFileNames: excludeFileNames)
             searchFileBrain?.delegate = self
             searchFileBrain?.startSearch()
             
-            reloadTimer = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: #selector(SearchFileNameResultViewController.sortAndReload), userInfo: nil, repeats: true)
+            reloadTimer = NSTimer.scheduledTimerWithTimeInterval(1.5,
+                                                                 target: self,
+                                                                 selector: #selector(SearchFileNameResultViewController.sortAndReload),
+                                                                 userInfo: nil,
+                                                                 repeats: true)
         }
     }
     
@@ -55,7 +62,10 @@ class SearchFileNameResultViewController: NSViewController {
         searchResultTableView.setDelegate(self)
         
         let theMenu = NSMenu(title: "Contextual Menu")
-        theMenu.insertItemWithTitle("Show in Finder", action: #selector(SearchFileNameResultViewController.showInFinder(_:)), keyEquivalent: "ddd", atIndex: 0)
+        theMenu.insertItemWithTitle("Show in Finder",
+                                    action: #selector(SearchFileNameResultViewController.showInFinder(_:)),
+                                    keyEquivalent: "ddd",
+                                    atIndex: 0)
         searchResultTableView.menu = theMenu
     }
     
