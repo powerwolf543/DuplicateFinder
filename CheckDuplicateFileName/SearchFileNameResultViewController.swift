@@ -23,6 +23,8 @@ class SearchFileNameResultViewController: NSViewController {
     private var searchFileBrain: SearchFileBrain?
     private var reloadTimer: NSTimer? // 負責更新畫面的 Timer
     
+    // MARK: ViewController Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareUI()
@@ -156,7 +158,7 @@ extension SearchFileNameResultViewController: SearchFileBrainDelegate {
         searchStatusIndicator.hidden = true
         searchStatusLabel.stringValue = "搜尋完成"
     }
-
+    
     
     internal func searchError(brain: SearchFileBrain, errorMessage: String) {
         searchStatusIndicator.hidden = true

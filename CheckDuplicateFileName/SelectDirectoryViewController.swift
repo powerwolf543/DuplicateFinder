@@ -41,6 +41,8 @@ class SelectDirectoryViewController: NSViewController,NSWindowDelegate {
     private var excludeFileNameTableViewSelectedRow: Int?
     private var searchResultWindowController:NSWindowController?
     
+    // MARK: ViewController Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareUI()
@@ -77,14 +79,23 @@ class SelectDirectoryViewController: NSViewController,NSWindowDelegate {
             if sender == addFolderSegmentControl {
                 let folderPath = getFolderPathFromFinder()
                 if let folderPath = folderPath {
-                    dataSourceAdd(FolderPath: folderPath)
+                    dataSourceAdd(Data: folderPath, Sender: sender)
                 }
             }else if sender == addExcludeFileNameSegmentControl {
-                
+                if excludeFileNameTextField.stringValue != "" {
+                    dataSourceAdd(Data: excludeFileNameTextField.stringValue, Sender: sender)
+                    excludeFileNameTextField.stringValue = ""
+                }
             }
             break
         case 1:
-            dataSourceDeleteAt(Row: excludeFolderTableViewSelectedRow,Sender: sender)
+            var row: Int?
+            if sender == addFolderSegmentControl {
+                row = excludeFolderTableViewSelectedRow
+            }else if sender == addExcludeFileNameSegmentControl {
+                row = excludeFileNameTableViewSelectedRow
+            }
+            dataSourceDeleteAt(Row: row,Sender: sender)
             break
         default:
             print("No this Option")
@@ -102,6 +113,7 @@ class SelectDirectoryViewController: NSViewController,NSWindowDelegate {
             let searchFileNameResultVC = searchResultWindowController?.contentViewController as! SearchFileNameResultViewController
             searchFileNameResultVC.directoryPath = filePathTextField.stringValue
             searchFileNameResultVC.excludeFolders = excludeFolderDataSource
+            searchFileNameResultVC.excludeFileNames = excludeFileNameDataSource
             searchResultWindowController?.showWindow(self)
         }
     }
@@ -122,9 +134,14 @@ class SelectDirectoryViewController: NSViewController,NSWindowDelegate {
     
     // MARK: File
     
-    private func dataSourceAdd(FolderPath folderPath: String) {
-        excludeFolderDataSource.append(folderPath)
-        excludeFolderTableView.reloadData()
+    private func dataSourceAdd(Data data: String,Sender sender: NSSegmentedControl) {
+        if sender == addFolderSegmentControl {
+            excludeFolderDataSource.append(data)
+            excludeFolderTableView.reloadData()
+        }else if sender == addExcludeFileNameSegmentControl {
+            excludeFileNameDataSource.append(data)
+            excludeFileNameTableView.reloadData()
+        }
     }
     
     private func dataSourceDeleteAt(Row row: Int?,Sender sender: NSSegmentedControl) {
