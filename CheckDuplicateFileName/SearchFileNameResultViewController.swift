@@ -74,7 +74,20 @@ class SearchFileNameResultViewController: NSViewController {
     @objc private func showInFinder(sender: AnyObject) {
         let selectedRow = searchResultTableView.clickedRow
         let selectedSearchResult = searchResultDataSource[selectedRow]
-        NSWorkspace.sharedWorkspace().activateFileViewerSelectingURLs([selectedSearchResult.fileURL])
+        
+        var error:NSError?
+        let isExist = selectedSearchResult.fileURL.checkResourceIsReachableAndReturnError(&error)
+        
+        if isExist {
+            NSWorkspace.sharedWorkspace().activateFileViewerSelectingURLs([selectedSearchResult.fileURL])
+        }else{
+            let myPopup: NSAlert = NSAlert()
+            myPopup.messageText = "警告"
+            myPopup.informativeText = "該路徑不存在"
+            myPopup.alertStyle = NSAlertStyle.WarningAlertStyle
+            myPopup.addButtonWithTitle("OK")
+            myPopup.runModal()
+        }
     }
     
     @objc private func sortAndReload() {
@@ -141,7 +154,7 @@ extension SearchFileNameResultViewController: SearchFileBrainDelegate {
         
         sortAndReload()
         searchStatusIndicator.hidden = true
-        searchStatusLabel.stringValue = "搜尋結果"
+        searchStatusLabel.stringValue = "搜尋完成"
     }
 
     
