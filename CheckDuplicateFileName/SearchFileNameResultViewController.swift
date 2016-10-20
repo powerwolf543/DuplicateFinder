@@ -10,17 +10,26 @@ import Cocoa
 
 class SearchFileNameResultViewController: NSViewController {
     
+    /** 要搜尋的路徑 */
     var directoryPath: String?
+    /** 想要排除在搜尋之外的資料夾 */
     var excludeFolders: [String]?
+    /** 想要排除在搜尋之外的檔案名稱 */
+    var excludeFileNames: [String]?
     
     @IBOutlet private weak var searchStatusLabel: NSTextField!
     @IBOutlet private weak var searchStatusIndicator: NSProgressIndicator!
     @IBOutlet private weak var searchResultTableView: NSTableView!
-    
-    private var searchResultDataSource = [SearchResult]() // 存放已經排序的結果
-    private var tempSearchResult = [SearchResult]() // 存放尚未排序的結果
+
+    /** 存放已經排序的結果 */
+    private var searchResultDataSource = [SearchResult]()
+    /** 存放尚未排序的結果 */
+    private var tempSearchResult = [SearchResult]()
     private var searchFileBrain: SearchFileBrain?
-    private var reloadTimer: NSTimer? // 負責更新畫面的 Timer
+    /** 負責更新畫面的 Timer */
+    private var reloadTimer: NSTimer?
+    
+    // MARK: ViewController Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,12 +39,18 @@ class SearchFileNameResultViewController: NSViewController {
     override func viewWillAppear() {
         super.viewWillAppear()
         
-        if let directoryPath = directoryPath, excludeFolders = excludeFolders {
-            searchFileBrain = SearchFileBrain(directoryPath: directoryPath,excludeFolders: excludeFolders)
+        if let directoryPath = directoryPath {
+            searchFileBrain = SearchFileBrain(directoryPath: directoryPath,
+                                              excludeFolders: excludeFolders,
+                                              excludeFileNames: excludeFileNames)
             searchFileBrain?.delegate = self
             searchFileBrain?.startSearch()
             
-            reloadTimer = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: #selector(SearchFileNameResultViewController.sortAndReload), userInfo: nil, repeats: true)
+            reloadTimer = NSTimer.scheduledTimerWithTimeInterval(1.5,
+                                                                 target: self,
+                                                                 selector: #selector(SearchFileNameResultViewController.sortAndReload),
+                                                                 userInfo: nil,
+                                                                 repeats: true)
         }
     }
     
@@ -55,7 +70,10 @@ class SearchFileNameResultViewController: NSViewController {
         searchResultTableView.setDelegate(self)
         
         let theMenu = NSMenu(title: "Contextual Menu")
-        theMenu.insertItemWithTitle("Show in Finder", action: #selector(SearchFileNameResultViewController.showInFinder(_:)), keyEquivalent: "ddd", atIndex: 0)
+        theMenu.insertItemWithTitle("Show in Finder",
+                                    action: #selector(SearchFileNameResultViewController.showInFinder(_:)),
+                                    keyEquivalent: "ddd",
+                                    atIndex: 0)
         searchResultTableView.menu = theMenu
     }
     
@@ -64,7 +82,20 @@ class SearchFileNameResultViewController: NSViewController {
     @objc private func showInFinder(sender: AnyObject) {
         let selectedRow = searchResultTableView.clickedRow
         let selectedSearchResult = searchResultDataSource[selectedRow]
-        NSWorkspace.sharedWorkspace().activateFileViewerSelectingURLs([selectedSearchResult.fileURL])
+        
+        var error:NSError?
+        let isExist = selectedSearchResult.fileURL.checkResourceIsReachableAndReturnError(&error)
+        
+        if isExist {
+            NSWorkspace.sharedWorkspace().activateFileViewerSelectingURLs([selectedSearchResult.fileURL])
+        }else{
+            let myPopup: NSAlert = NSAlert()
+            myPopup.messageText = "警告"
+            myPopup.informativeText = "該路徑不存在"
+            myPopup.alertStyle = NSAlertStyle.WarningAlertStyle
+            myPopup.addButtonWithTitle("OK")
+            myPopup.runModal()
+        }
     }
     
     @objc private func sortAndReload() {
@@ -131,9 +162,9 @@ extension SearchFileNameResultViewController: SearchFileBrainDelegate {
         
         sortAndReload()
         searchStatusIndicator.hidden = true
-        searchStatusLabel.stringValue = "搜尋結果"
+        searchStatusLabel.stringValue = "搜尋完成"
     }
-
+    
     
     internal func searchError(brain: SearchFileBrain, errorMessage: String) {
         searchStatusIndicator.hidden = true

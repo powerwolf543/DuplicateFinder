@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2511A4C71DB8A53B00075CC3 /* LogoInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2511A4C61DB8A53B00075CC3 /* LogoInfoViewController.swift */; };
+		2511A4CB1DB8B0D800075CC3 /* SearchPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2511A4CA1DB8B0D800075CC3 /* SearchPreferences.swift */; };
 		25243B0D1DA785D400DE4029 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25243B061DA785D400DE4029 /* AppDelegate.swift */; };
 		25243B0E1DA785D400DE4029 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25243B071DA785D400DE4029 /* Assets.xcassets */; };
 		25243B101DA785D400DE4029 /* SearchFileBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25243B091DA785D400DE4029 /* SearchFileBrain.swift */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2511A4C61DB8A53B00075CC3 /* LogoInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogoInfoViewController.swift; path = CheckDuplicateFileName/LogoInfoViewController.swift; sourceTree = SOURCE_ROOT; };
+		2511A4CA1DB8B0D800075CC3 /* SearchPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchPreferences.swift; path = CheckDuplicateFileName/SearchPreferences.swift; sourceTree = SOURCE_ROOT; };
 		25243B061DA785D400DE4029 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = CheckDuplicateFileName/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		25243B071DA785D400DE4029 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = CheckDuplicateFileName/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		25243B081DA785D400DE4029 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = CheckDuplicateFileName/Info.plist; sourceTree = SOURCE_ROOT; };
@@ -58,14 +62,16 @@
 		25BF97131DA4944700EABEB6 /* CheckSameFileName */ = {
 			isa = PBXGroup;
 			children = (
+				2511A4C61DB8A53B00075CC3 /* LogoInfoViewController.swift */,
 				25243B0C1DA785D400DE4029 /* SelectDirectoryViewController.swift */,
 				25243B0A1DA785D400DE4029 /* SearchFileNameResultViewController.swift */,
 				25243B091DA785D400DE4029 /* SearchFileBrain.swift */,
 				25243B0B1DA785D400DE4029 /* SearchResult.swift */,
+				2511A4CA1DB8B0D800075CC3 /* SearchPreferences.swift */,
+				25243B061DA785D400DE4029 /* AppDelegate.swift */,
 				25243B071DA785D400DE4029 /* Assets.xcassets */,
 				25243B081DA785D400DE4029 /* Info.plist */,
 				25243B141DA785DD00DE4029 /* Main.storyboard */,
-				25243B061DA785D400DE4029 /* AppDelegate.swift */,
 			);
 			path = CheckSameFileName;
 			sourceTree = "<group>";
@@ -142,7 +148,9 @@
 			files = (
 				25243B131DA785D400DE4029 /* SelectDirectoryViewController.swift in Sources */,
 				25243B111DA785D400DE4029 /* SearchFileNameResultViewController.swift in Sources */,
+				2511A4CB1DB8B0D800075CC3 /* SearchPreferences.swift in Sources */,
 				25243B101DA785D400DE4029 /* SearchFileBrain.swift in Sources */,
+				2511A4C71DB8A53B00075CC3 /* LogoInfoViewController.swift in Sources */,
 				25243B121DA785D400DE4029 /* SearchResult.swift in Sources */,
 				25243B0D1DA785D400DE4029 /* AppDelegate.swift in Sources */,
 			);
