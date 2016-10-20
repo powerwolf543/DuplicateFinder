@@ -23,6 +23,7 @@ class SelectDirectoryViewController: NSViewController,NSWindowDelegate {
             if excludeFolderDataSource.count <= 0 {
                 addFolderSegmentControl.setEnabled(false, forSegment: 1)
             }
+            SearchPreferences.sharedInstance().excludeFolders = excludeFolderDataSource
         }
     }
     
@@ -32,6 +33,7 @@ class SelectDirectoryViewController: NSViewController,NSWindowDelegate {
             if excludeFileNameDataSource.count <= 0 {
                 addExcludeFileNameSegmentControl.setEnabled(false, forSegment: 1)
             }
+            SearchPreferences.sharedInstance().excludeFileNames = excludeFileNameDataSource
         }
     }
     
@@ -67,6 +69,19 @@ class SelectDirectoryViewController: NSViewController,NSWindowDelegate {
         
         excludeFileNameTableView.setDataSource(self)
         excludeFileNameTableView.setDelegate(self)
+        
+        let searchPreferences = SearchPreferences.sharedInstance()
+        if searchPreferences.isStorageEnable {
+            if let directoryPath = searchPreferences.directoryPath {
+                filePathTextField.stringValue = directoryPath
+            }
+            if let excludeFolders = searchPreferences.excludeFolders {
+                excludeFolderDataSource = excludeFolders
+            }
+            if let excludeFileNames = searchPreferences.excludeFileNames {
+                excludeFileNameDataSource = excludeFileNames
+            }
+        }
     }
     
     // MARK: Event
@@ -123,6 +138,7 @@ class SelectDirectoryViewController: NSViewController,NSWindowDelegate {
         let folderPath = getFolderPathFromFinder()
         
         if let folderPath = folderPath {
+            SearchPreferences.sharedInstance().directoryPath = folderPath
             filePathTextField.stringValue = folderPath
         }
     }

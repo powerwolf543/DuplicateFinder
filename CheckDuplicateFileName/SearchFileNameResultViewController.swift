@@ -10,18 +10,24 @@ import Cocoa
 
 class SearchFileNameResultViewController: NSViewController {
     
+    /** 要搜尋的路徑 */
     var directoryPath: String?
+    /** 想要排除在搜尋之外的資料夾 */
     var excludeFolders: [String]?
+    /** 想要排除在搜尋之外的檔案名稱 */
     var excludeFileNames: [String]?
     
     @IBOutlet private weak var searchStatusLabel: NSTextField!
     @IBOutlet private weak var searchStatusIndicator: NSProgressIndicator!
     @IBOutlet private weak var searchResultTableView: NSTableView!
-    
-    private var searchResultDataSource = [SearchResult]() // 存放已經排序的結果
-    private var tempSearchResult = [SearchResult]() // 存放尚未排序的結果
+
+    /** 存放已經排序的結果 */
+    private var searchResultDataSource = [SearchResult]()
+    /** 存放尚未排序的結果 */
+    private var tempSearchResult = [SearchResult]()
     private var searchFileBrain: SearchFileBrain?
-    private var reloadTimer: NSTimer? // 負責更新畫面的 Timer
+    /** 負責更新畫面的 Timer */
+    private var reloadTimer: NSTimer?
     
     // MARK: ViewController Life Cycle
     
