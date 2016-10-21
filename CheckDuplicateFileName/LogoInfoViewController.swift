@@ -12,21 +12,21 @@ class LogoInfoViewController: NSViewController {
     
     @IBOutlet private weak var saveSearchSettingsSegmentedControl: NSSegmentedControl!
     
-    // MARK: ViewController Life Cycle
+    // MARK: - ViewController Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareUI()
     }
     
-    // MARK: UI
+    // MARK: - UI
     
     private func prepareUI() {
         let isEnable = SearchPreferences.sharedInstance().isStorageEnable
         saveSearchSettingsSegmentedControl.setSelected(true, forSegment: isEnable ? 1 : 0 )
     }
     
-    // MARK: Event
+    // MARK: - Event
     
     @IBAction func saveSearchSegmentControlPressed(sender: NSSegmentedControl) {
         switch sender.selectedSegment {

@@ -76,7 +76,7 @@ class SearchFileBrain {
         self.excludeFileNames = excludeFileNames
     }
     
-    // MARK: Action
+    // MARK: - Action
     
     /** 開始搜尋你所要求路徑的資料夾 */
     func startSearch() {
@@ -90,7 +90,7 @@ class SearchFileBrain {
         cancelSearchFlag = true
     }
     
-    // MARK: File Search
+    // MARK: - File Search
     
     /** 開始對資料夾進行檢索比對 */
     private func enumeratorDirectory() {
@@ -143,7 +143,7 @@ class SearchFileBrain {
         }
     }
     
-    // MARK: File Parser
+    // MARK: - File Parser
     
     /** 比對有哪些檔案重複 */
     private func duplicateFilesInStorage(fileURL: NSURL) -> [SearchResult] {

@@ -16,7 +16,7 @@ import Foundation
  */
 class SearchPreferences {
     
-    // MARK: UserDefault IDs
+    // MARK: - UserDefault IDs
     
     /** isStorageEnable's UserDefault ID */
     private static let isStorageEnableUDID = "isStorageEnableUDID"
@@ -72,7 +72,7 @@ class SearchPreferences {
         }
     }
     
-    // MARK: Public Methods
+    // MARK: - Public Methods
     
     /**
      透過這個方法拿到 SearchPreferences's singleton instance
@@ -90,7 +90,7 @@ class SearchPreferences {
         return _sharedInstance
     }
     
-    // MARK: Private Methods
+    // MARK: - Private Methods
     
     private init () {
         let userDefault = NSUserDefaults.standardUserDefaults()
@@ -129,22 +129,3 @@ class SearchPreferences {
     
 }
 
-/*
-
-/**
- 如果 isStorageEnable 為 true，則將資料儲存到本地端的 UserDefault。
- - parameter DirectoryPath:     想要搜尋的路徑
- - parameter ExcludeFolders:    想要排除在搜尋之外的資料夾
- - parameter ExcludeFileNames:  想要排除在搜尋之外的檔案名稱
- */
-func save(DirectoryPath path: String?, ExcludeFolders folders: [String]?, ExcludeFileNames fileNames: [String]?) {
-    
-    directoryPath = path
-    excludeFolders = folders
-    excludeFileNames = fileNames
-    
-    if isStorageEnable {
-        saveCurrentData()
-    }
-}
- */

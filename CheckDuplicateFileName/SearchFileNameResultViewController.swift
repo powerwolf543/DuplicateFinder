@@ -29,7 +29,7 @@ class SearchFileNameResultViewController: NSViewController {
     /** 負責更新畫面的 Timer */
     private var reloadTimer: NSTimer?
     
-    // MARK: ViewController Life Cycle
+    // MARK: - ViewController Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,7 +61,7 @@ class SearchFileNameResultViewController: NSViewController {
         reloadTimer?.invalidate()
     }
     
-    // MARK: UI
+    // MARK: - UI
     
     private func prepareUI() {
         searchStatusIndicator.startAnimation(nil)
@@ -77,7 +77,7 @@ class SearchFileNameResultViewController: NSViewController {
         searchResultTableView.menu = theMenu
     }
     
-    // MARK: Event
+    // MARK: - Event
     
     @objc private func showInFinder(sender: AnyObject) {
         let selectedRow = searchResultTableView.clickedRow
@@ -103,7 +103,7 @@ class SearchFileNameResultViewController: NSViewController {
         searchResultTableView.reloadData()
     }
     
-    // MARK: Data
+    // MARK: - Data
     
     private func checkURLExist(searchResult: SearchResult) -> Bool {
         let filter = tempSearchResult.filter{
@@ -114,7 +114,7 @@ class SearchFileNameResultViewController: NSViewController {
     
 }
 
-// MARK: NSTableViewDataSource NSTableViewDelegate
+// MARK: - NSTableViewDataSource NSTableViewDelegate
 extension SearchFileNameResultViewController: NSTableViewDataSource,NSTableViewDelegate {
     
     internal func numberOfRowsInTableView(tableView: NSTableView) -> Int {
@@ -142,7 +142,7 @@ extension SearchFileNameResultViewController: NSTableViewDataSource,NSTableViewD
     }
 }
 
-// MARK: SearchFileBrainDelegate
+// MARK: - SearchFileBrainDelegate
 extension SearchFileNameResultViewController: SearchFileBrainDelegate {
     
     internal func foundDuplicateFile(brain: SearchFileBrain, duplicateFiles: [SearchResult]) {

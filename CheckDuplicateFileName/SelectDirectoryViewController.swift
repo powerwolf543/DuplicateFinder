@@ -43,7 +43,7 @@ class SelectDirectoryViewController: NSViewController,NSWindowDelegate {
     private var excludeFileNameTableViewSelectedRow: Int?
     private var searchResultWindowController:NSWindowController?
     
-    // MARK: ViewController Life Cycle
+    // MARK: - ViewController Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,7 +54,7 @@ class SelectDirectoryViewController: NSViewController,NSWindowDelegate {
         view.window?.delegate = self
     }
     
-    // MARK: UI
+    // MARK: - UI
     
     private func prepareUI() {
         let gesture = NSClickGestureRecognizer()
@@ -84,7 +84,7 @@ class SelectDirectoryViewController: NSViewController,NSWindowDelegate {
         }
     }
     
-    // MARK: Event
+    // MARK: - Event
     
     /** 0 為新增 1 為刪除 */
     @IBAction func addFolderSegmentPressed(sender: NSSegmentedControl) {
@@ -148,7 +148,7 @@ class SelectDirectoryViewController: NSViewController,NSWindowDelegate {
         NSApp.terminate(self)
     }
     
-    // MARK: File
+    // MARK: - File
     
     private func dataSourceAdd(Data data: String,Sender sender: NSSegmentedControl) {
         if sender == addFolderSegmentControl {
@@ -198,7 +198,7 @@ class SelectDirectoryViewController: NSViewController,NSWindowDelegate {
     
 }
 
-// MARK: NSTableViewDataSource NSTableViewDelegate
+// MARK: - NSTableViewDataSource NSTableViewDelegate
 extension SelectDirectoryViewController: NSTableViewDataSource,NSTableViewDelegate {
     
     internal func numberOfRowsInTableView(tableView: NSTableView) -> Int {
