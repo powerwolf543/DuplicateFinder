@@ -12,9 +12,9 @@ import Foundation
  **SearchResult**
  
  
- 這個 Class 是存放搜尋資料的Model
+ 這個 Struct 是存放搜尋資料的Model
  */
-class SearchResult {
+struct SearchResult {
     
     let fileURL: NSURL
     
