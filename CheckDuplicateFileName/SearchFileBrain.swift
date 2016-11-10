@@ -25,18 +25,18 @@ protocol SearchFileBrainDelegate {
      - parameter brain:             發送這個事件的 Instance
      - parameter duplicateFiles:    重複的檔案
      */
-    func foundDuplicateFile(brain: SearchFileBrain, duplicateFiles: [SearchResult])
+    func foundDuplicateFile(_ brain: SearchFileBrain, duplicateFiles: [SearchResult])
     /**
      搜尋結束就會觸發這個 Protocol func
      - parameter brain:             發送這個事件的 Instance
      */
-    func searchFinish(brain: SearchFileBrain)
+    func searchFinish(_ brain: SearchFileBrain)
     /**
      搜尋錯誤就會觸發這個 Protocol func
      - parameter brain:             發送這個事件的 Instance
      - parameter errorMessage:      錯誤訊息
      */
-    func searchError(brain: SearchFileBrain, errorMessage: String)
+    func searchError(_ brain: SearchFileBrain, errorMessage: String)
 }
 
 /**
@@ -49,8 +49,8 @@ protocol SearchFileBrainDelegate {
  - Conform SearchFileBrainDelegate 來監控當案收尋的狀況
  */
 class SearchFileBrain {
-
-    /** 想要搜尋的路徑 */    
+    
+    /** 想要搜尋的路徑 */
     let directoryPath: String
     /** 只要存放在這個陣列的路徑，搜尋的時候都會排除。 */
     var excludeFolders: [String]?
@@ -58,9 +58,9 @@ class SearchFileBrain {
     var excludeFileNames: [String]?
     var delegate: SearchFileBrainDelegate?
     /** 將搜尋過的結果放在這個陣列中。 */
-    private var searchResultStorage = [SearchResult]()
+    fileprivate var searchResultStorage = [SearchResult]()
     /** 判斷是否要停止搜尋的 Flag，若要停止則設為 True。 */
-    private var cancelSearchFlag = false
+    fileprivate var cancelSearchFlag = false
     
     /**
      負責初始化 SearchFileBrain 這個 Class
@@ -76,11 +76,11 @@ class SearchFileBrain {
         self.excludeFileNames = excludeFileNames
     }
     
-    // MARK: Action
+    // MARK: - Action
     
     /** 開始搜尋你所要求路徑的資料夾 */
     func startSearch() {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+        DispatchQueue.global().async {
             self.enumeratorDirectory()
         }
     }
@@ -90,16 +90,16 @@ class SearchFileBrain {
         cancelSearchFlag = true
     }
     
-    // MARK: File Search
+    // MARK: - File Search
     
     /** 開始對資料夾進行檢索比對 */
-    private func enumeratorDirectory() {
-        let fileManager = NSFileManager()
-        let directoryURL = NSURL(string: directoryPath)
-        let keys = [NSURLIsDirectoryKey]
+    fileprivate func enumeratorDirectory() {
+        let fileManager = FileManager.default
+        let directoryURL = URL(string: directoryPath)
+        let keys = [URLResourceKey.isDirectoryKey]
         
         if let directoryURL = directoryURL {
-            let enumerator = fileManager.enumeratorAtURL(directoryURL, includingPropertiesForKeys: keys, options:NSDirectoryEnumerationOptions.SkipsHiddenFiles,errorHandler: {aURL, aError in true})
+            let enumerator = fileManager.enumerator(at: directoryURL, includingPropertiesForKeys: keys, options:FileManager.DirectoryEnumerationOptions.skipsHiddenFiles,errorHandler: {aURL, aError in true})
             
             if let enumerator = enumerator {
                 for fileURL in enumerator {
@@ -107,9 +107,9 @@ class SearchFileBrain {
                     if cancelSearchFlag { return }
                     
                     var isDir : ObjCBool = false
-                    if fileManager.fileExistsAtPath(fileURL.path!, isDirectory: &isDir) {
-                        if !isDir {
-                            let aFileURL = fileURL as! NSURL
+                    if fileManager.fileExists(atPath: (fileURL as AnyObject).path!, isDirectory: &isDir) {
+                        if !isDir.boolValue {
+                            let aFileURL = fileURL as! URL
                             
                             if checkNeedExcludeOf(FolderPath: aFileURL.absoluteString) { continue }
                             if checkNeedExcludeOf(FileName: aFileURL.lastPathComponent) { continue }
@@ -127,7 +127,7 @@ class SearchFileBrain {
                             }else{
                                 duplicateFiles.append(theSearchResult)
                                 
-                                dispatch_async(dispatch_get_main_queue(), {
+                                DispatchQueue.main.async(execute: {
                                     self.delegate?.foundDuplicateFile(self,duplicateFiles: duplicateFiles)
                                 })
                             }
@@ -135,7 +135,7 @@ class SearchFileBrain {
                     }
                 }
                 
-                dispatch_async(dispatch_get_main_queue(), {
+                DispatchQueue.main.async(execute: {
                     self.delegate?.searchFinish(self)
                 })
                 
@@ -143,17 +143,17 @@ class SearchFileBrain {
         }
     }
     
-    // MARK: File Parser
+    // MARK: - File Parser
     
     /** 比對有哪些檔案重複 */
-    private func duplicateFilesInStorage(fileURL: NSURL) -> [SearchResult] {
+    fileprivate func duplicateFilesInStorage(_ fileURL: URL) -> [SearchResult] {
         
         let fileName = fileURL.lastPathComponent
-        return searchResultStorage.filter { $0.fileName == fileName! }
+        return searchResultStorage.filter { $0.fileName == fileName }
     }
     
     /** 檢查路徑是否有在排除名單中 */
-    private func checkNeedExcludeOf(FolderPath path: String) -> Bool {
+    fileprivate func checkNeedExcludeOf(FolderPath path: String) -> Bool {
         
         guard let excludeFolders = excludeFolders else {
             return false
@@ -163,15 +163,15 @@ class SearchFileBrain {
             return false
         }
         
-        let filterResult = excludeFolders.filter { path.containsString($0) }
+        let filterResult = excludeFolders.filter { path.contains($0) }
         
         return filterResult.count != 0
     }
     
     /** 檢查是否有需要排除的檔名 */
-    private func checkNeedExcludeOf(FileName name: String?) -> Bool {
+    fileprivate func checkNeedExcludeOf(FileName name: String?) -> Bool {
         
-        guard let excludeFileNames = excludeFileNames,theName = name else {
+        guard let excludeFileNames = excludeFileNames,let theName = name else {
             return false
         }
         

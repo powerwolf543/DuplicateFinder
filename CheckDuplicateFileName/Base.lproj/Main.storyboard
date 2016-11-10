@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -118,7 +119,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qkg-Oc-27v">
-                                <rect key="frame" x="149" y="400" width="199" height="17"/>
+                                <rect key="frame" x="147" y="400" width="203" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="檢查資料夾中是否有重複檔案名稱" id="OR9-6h-fw3">
                                     <font key="font" size="13" name=".PingFangTC-Regular"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -202,7 +203,6 @@
                                             </tableColumns>
                                         </tableView>
                                     </subviews>
-                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </clipView>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="pUb-ou-3LQ"/>
@@ -247,7 +247,7 @@
                                 </connections>
                             </segmentedControl>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Glk-hL-4dd">
-                                <rect key="frame" x="28" y="321" width="160" height="17"/>
+                                <rect key="frame" x="28" y="321" width="164" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="將下列項目從搜尋中排除：" id="r10-vg-FcY">
                                     <font key="font" size="13" name=".PingFangTC-Regular"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -255,7 +255,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="G14-yB-dal">
-                                <rect key="frame" x="29" y="152" width="160" height="17"/>
+                                <rect key="frame" x="29" y="152" width="164" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="將下列項目從搜尋中排除：" id="ZqQ-5N-kUI">
                                     <font key="font" size="13" name=".PingFangTC-Regular"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -323,7 +323,6 @@
                                             </tableColumns>
                                         </tableView>
                                     </subviews>
-                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </clipView>
                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="XAA-wQ-IUw">
                                     <rect key="frame" x="1" y="83" width="446" height="16"/>
@@ -352,7 +351,6 @@
                             <constraint firstItem="R8W-Pv-HVB" firstAttribute="trailing" secondItem="3gY-kT-Tt4" secondAttribute="trailing" id="Pic-tf-6bN"/>
                             <constraint firstItem="3gY-kT-Tt4" firstAttribute="leading" secondItem="eaf-9B-V8a" secondAttribute="trailing" constant="10" id="RDH-o4-RqX"/>
                             <constraint firstItem="R8W-Pv-HVB" firstAttribute="top" secondItem="Glk-hL-4dd" secondAttribute="bottom" constant="10" id="RyQ-CI-Wbn"/>
-                            <constraint firstItem="784-HS-mz6" firstAttribute="trailing" secondItem="fcu-eM-fIh" secondAttribute="trailing" id="SC7-eN-vln"/>
                             <constraint firstItem="eRL-wr-LRo" firstAttribute="leading" secondItem="eaf-9B-V8a" secondAttribute="leading" id="SL4-DY-hct"/>
                             <constraint firstItem="eRL-wr-LRo" firstAttribute="top" secondItem="G14-yB-dal" secondAttribute="bottom" constant="10" id="VMD-0v-t4w"/>
                             <constraint firstAttribute="bottom" secondItem="784-HS-mz6" secondAttribute="bottom" constant="20" id="Wzp-cN-ROk"/>
@@ -361,6 +359,7 @@
                             <constraint firstItem="iXW-OL-0TZ" firstAttribute="leading" secondItem="lIb-3a-OlV" secondAttribute="leading" id="d1x-uy-YlK"/>
                             <constraint firstItem="784-HS-mz6" firstAttribute="top" secondItem="eRL-wr-LRo" secondAttribute="bottom" constant="5" id="dfD-uM-AID"/>
                             <constraint firstItem="784-HS-mz6" firstAttribute="leading" secondItem="8fT-UO-MJx" secondAttribute="trailing" constant="20" id="drf-Wz-foG"/>
+                            <constraint firstItem="784-HS-mz6" firstAttribute="trailing" secondItem="3gY-kT-Tt4" secondAttribute="trailing" constant="-1" id="laX-bk-1S7"/>
                             <constraint firstItem="eaf-9B-V8a" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="30" id="pOo-ru-MmQ"/>
                             <constraint firstItem="R8W-Pv-HVB" firstAttribute="leading" secondItem="eaf-9B-V8a" secondAttribute="leading" id="ruY-Sy-Lhr"/>
                             <constraint firstItem="qkg-Oc-27v" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="sFt-jx-qWe"/>
@@ -432,7 +431,7 @@
                                 </connections>
                             </segmentedControl>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gVm-Ol-q6D">
-                                <rect key="frame" x="41" y="73" width="108" height="17"/>
+                                <rect key="frame" x="40" y="73" width="111" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="是否儲存搜尋設定" id="KTq-eY-ms8">
                                     <font key="font" size="13" name=".PingFangTC-Regular"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -440,7 +439,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HFi-U0-IUp">
-                                <rect key="frame" x="135" y="38" width="21" height="18"/>
+                                <rect key="frame" x="135" y="38" width="22" height="18"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="是" id="ngE-0d-NXK">
                                     <font key="font" size="17" name=".PingFangTC-Regular"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -448,7 +447,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eik-Xh-toB">
-                                <rect key="frame" x="35" y="38" width="21" height="18"/>
+                                <rect key="frame" x="34" y="38" width="22" height="18"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="否" id="lL0-br-of7">
                                     <font key="font" size="17" name=".PingFangTC-Regular"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -595,7 +594,6 @@
                                             </tableColumns>
                                         </tableView>
                                     </subviews>
-                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </clipView>
                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="Deh-dQ-au3">
                                     <rect key="frame" x="1" y="119" width="223" height="15"/>
