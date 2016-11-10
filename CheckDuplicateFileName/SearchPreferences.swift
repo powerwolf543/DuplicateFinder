@@ -19,17 +19,17 @@ class SearchPreferences {
     // MARK: - UserDefault IDs
     
     /** isStorageEnable's UserDefault ID */
-    fileprivate static let isStorageEnableUDID = "isStorageEnableUDID"
+    private static let isStorageEnableUDID = "isStorageEnableUDID"
     /** directoryPath's UserDefault ID */
-    fileprivate static let directoryPathUDID = "directoryPathUDID"
+    private static let directoryPathUDID = "directoryPathUDID"
     /** excludeFolders's UserDefault ID */
-    fileprivate static let excludeFoldersUDID = "excludeFoldersUDID"
+    private static let excludeFoldersUDID = "excludeFoldersUDID"
     /** excludeFileNames's UserDefault ID */
-    fileprivate static let excludeFileNamesUDID = "iexcludeFileNamesUDID"
+    private static let excludeFileNamesUDID = "iexcludeFileNamesUDID"
     
     // MARK:
     
-    fileprivate static var _sharedSearchPreferences: SearchPreferences?
+    private static var _sharedSearchPreferences: SearchPreferences?
     
     /** 是否要儲存設定 */
     var isStorageEnable: Bool {
@@ -92,7 +92,7 @@ class SearchPreferences {
     
     // MARK: - Private Methods
     
-    fileprivate init () {
+    private init () {
         let userDefault = UserDefaults.standard
         isStorageEnable = userDefault.bool(forKey: SearchPreferences.isStorageEnableUDID)
         loadLocalPreferencesData()
@@ -100,7 +100,7 @@ class SearchPreferences {
     
     
     /** 將當前 SearchPreferences 資料儲存到本地端的 UserDefault。 */
-    fileprivate func saveCurrentData() {
+    private func saveCurrentData() {
         let userDefault = UserDefaults.standard
         userDefault.set(isStorageEnable, forKey: SearchPreferences.isStorageEnableUDID)
         userDefault.set(directoryPath, forKey: SearchPreferences.directoryPathUDID)
@@ -110,7 +110,7 @@ class SearchPreferences {
     }
     
     /** 將本地的 UserDefault 有關 SearchPreferences 的資料清空 */
-    fileprivate func cleanAllData() {
+    private func cleanAllData() {
         let userDefault = UserDefaults.standard
         userDefault.set(false, forKey: SearchPreferences.isStorageEnableUDID)
         userDefault.set(nil, forKey: SearchPreferences.directoryPathUDID)
@@ -120,7 +120,7 @@ class SearchPreferences {
     }
     
     /** 從本地端的 UserDefault 拿取資料 */
-    fileprivate func loadLocalPreferencesData() {
+    private func loadLocalPreferencesData() {
         let userDefault = UserDefaults.standard
         directoryPath = userDefault.string(forKey: SearchPreferences.directoryPathUDID)
         excludeFolders = userDefault.stringArray(forKey: SearchPreferences.excludeFoldersUDID)

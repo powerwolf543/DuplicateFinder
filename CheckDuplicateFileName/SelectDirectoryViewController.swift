@@ -10,12 +10,12 @@ import Cocoa
 
 class SelectDirectoryViewController: NSViewController,NSWindowDelegate {
     
-    @IBOutlet fileprivate weak var filePathTextField: NSTextField!
+    @IBOutlet private weak var filePathTextField: NSTextField!
     @IBOutlet fileprivate weak var excludeFolderTableView: NSTableView!
     @IBOutlet fileprivate weak var addFolderSegmentControl: NSSegmentedControl!
     @IBOutlet fileprivate weak var excludeFileNameTableView: NSTableView!
     @IBOutlet fileprivate weak var addExcludeFileNameSegmentControl: NSSegmentedControl!
-    @IBOutlet fileprivate weak var excludeFileNameTextField: NSTextField!
+    @IBOutlet private weak var excludeFileNameTextField: NSTextField!
     
     /** excludeFolderTableView's dataSource 如果沒有資料的時候，讓 addFolderSegmentControl 的減號設為 disable。 */
     fileprivate var excludeFolderDataSource = [String]() {
@@ -41,7 +41,7 @@ class SelectDirectoryViewController: NSViewController,NSWindowDelegate {
     fileprivate var excludeFolderTableViewSelectedRow: Int?
     /** excludeFileNameTableView 當前選擇的 index */
     fileprivate var excludeFileNameTableViewSelectedRow: Int?
-    fileprivate var searchResultWindowController:NSWindowController?
+    private var searchResultWindowController:NSWindowController?
     
     // MARK: - ViewController Life Cycle
     
@@ -56,7 +56,7 @@ class SelectDirectoryViewController: NSViewController,NSWindowDelegate {
     
     // MARK: - UI
     
-    fileprivate func prepareUI() {
+    private func prepareUI() {
         let gesture = NSClickGestureRecognizer()
         gesture.buttonMask = 0x1 // left mouse
         gesture.numberOfClicksRequired = 1
@@ -118,7 +118,7 @@ class SelectDirectoryViewController: NSViewController,NSWindowDelegate {
         }
     }
     
-    @IBAction fileprivate func submitBtnPressed(_ sender: NSButton) {
+    @IBAction private func submitBtnPressed(_ sender: NSButton) {
         
         if filePathTextField.stringValue != "" {
             print("Selected directorie -> \"\(filePathTextField.stringValue)\"")
@@ -133,7 +133,7 @@ class SelectDirectoryViewController: NSViewController,NSWindowDelegate {
         }
     }
     
-    @objc fileprivate func filePathTextFieldClicked(_ sender: AnyObject) {
+    @objc private func filePathTextFieldClicked(_ sender: AnyObject) {
         
         let folderPath = getFolderPathFromFinder()
         
@@ -150,7 +150,7 @@ class SelectDirectoryViewController: NSViewController,NSWindowDelegate {
     
     // MARK: - File
     
-    fileprivate func dataSourceAdd(Data data: String,Sender sender: NSSegmentedControl) {
+    private func dataSourceAdd(Data data: String,Sender sender: NSSegmentedControl) {
         if sender == addFolderSegmentControl {
             excludeFolderDataSource.append(data)
             excludeFolderTableView.reloadData()
@@ -160,7 +160,7 @@ class SelectDirectoryViewController: NSViewController,NSWindowDelegate {
         }
     }
     
-    fileprivate func dataSourceDeleteAt(Row row: Int?,Sender sender: NSSegmentedControl) {
+    private func dataSourceDeleteAt(Row row: Int?,Sender sender: NSSegmentedControl) {
         
         guard let row = row else { return }
         
@@ -175,7 +175,7 @@ class SelectDirectoryViewController: NSViewController,NSWindowDelegate {
         }
     }
     
-    fileprivate func getFolderPathFromFinder() -> String? {
+    private func getFolderPathFromFinder() -> String? {
         // 開啟檔案瀏覽器
         let openPanel = NSOpenPanel()
         

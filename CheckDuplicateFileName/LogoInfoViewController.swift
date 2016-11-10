@@ -10,7 +10,7 @@ import Cocoa
 
 class LogoInfoViewController: NSViewController {
     
-    @IBOutlet fileprivate weak var saveSearchSettingsSegmentedControl: NSSegmentedControl!
+    @IBOutlet private weak var saveSearchSettingsSegmentedControl: NSSegmentedControl!
     
     // MARK: - ViewController Life Cycle
     
@@ -21,7 +21,7 @@ class LogoInfoViewController: NSViewController {
     
     // MARK: - UI
     
-    fileprivate func prepareUI() {
+    private func prepareUI() {
         let isEnable = SearchPreferences.sharedInstance().isStorageEnable
         saveSearchSettingsSegmentedControl.setSelected(true, forSegment: isEnable ? 1 : 0 )
     }

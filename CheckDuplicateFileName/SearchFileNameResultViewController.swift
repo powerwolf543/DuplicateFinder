@@ -19,13 +19,13 @@ class SearchFileNameResultViewController: NSViewController {
     
     @IBOutlet fileprivate weak var searchStatusLabel: NSTextField!
     @IBOutlet fileprivate weak var searchStatusIndicator: NSProgressIndicator!
-    @IBOutlet fileprivate weak var searchResultTableView: NSTableView!
+    @IBOutlet private weak var searchResultTableView: NSTableView!
 
     /** 存放已經排序的結果 */
     fileprivate var searchResultDataSource = [SearchResult]()
     /** 存放尚未排序的結果 */
     fileprivate var tempSearchResult = [SearchResult]()
-    fileprivate var searchFileBrain: SearchFileBrain?
+    private var searchFileBrain: SearchFileBrain?
     /** 負責更新畫面的 Timer */
     fileprivate var reloadTimer: Timer?
     
@@ -63,7 +63,7 @@ class SearchFileNameResultViewController: NSViewController {
     
     // MARK: - UI
     
-    fileprivate func prepareUI() {
+    private func prepareUI() {
         searchStatusIndicator.startAnimation(nil)
         searchStatusLabel.stringValue = "搜尋中..."
         searchResultTableView.dataSource = self
@@ -79,7 +79,7 @@ class SearchFileNameResultViewController: NSViewController {
     
     // MARK: - Event
     
-    @objc fileprivate func showInFinder(_ sender: AnyObject) {
+    @objc private func showInFinder(_ sender: AnyObject) {
         let selectedRow = searchResultTableView.clickedRow
         let selectedSearchResult = searchResultDataSource[selectedRow]
         

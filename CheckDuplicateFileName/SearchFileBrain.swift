@@ -58,9 +58,9 @@ class SearchFileBrain {
     var excludeFileNames: [String]?
     var delegate: SearchFileBrainDelegate?
     /** 將搜尋過的結果放在這個陣列中。 */
-    fileprivate var searchResultStorage = [SearchResult]()
+    private var searchResultStorage = [SearchResult]()
     /** 判斷是否要停止搜尋的 Flag，若要停止則設為 True。 */
-    fileprivate var cancelSearchFlag = false
+    private var cancelSearchFlag = false
     
     /**
      負責初始化 SearchFileBrain 這個 Class
@@ -93,7 +93,7 @@ class SearchFileBrain {
     // MARK: - File Search
     
     /** 開始對資料夾進行檢索比對 */
-    fileprivate func enumeratorDirectory() {
+    private func enumeratorDirectory() {
         let fileManager = FileManager.default
         let directoryURL = URL(string: directoryPath)
         let keys = [URLResourceKey.isDirectoryKey]
@@ -146,14 +146,14 @@ class SearchFileBrain {
     // MARK: - File Parser
     
     /** 比對有哪些檔案重複 */
-    fileprivate func duplicateFilesInStorage(_ fileURL: URL) -> [SearchResult] {
+    private func duplicateFilesInStorage(_ fileURL: URL) -> [SearchResult] {
         
         let fileName = fileURL.lastPathComponent
         return searchResultStorage.filter { $0.fileName == fileName }
     }
     
     /** 檢查路徑是否有在排除名單中 */
-    fileprivate func checkNeedExcludeOf(FolderPath path: String) -> Bool {
+    private func checkNeedExcludeOf(FolderPath path: String) -> Bool {
         
         guard let excludeFolders = excludeFolders else {
             return false
@@ -169,7 +169,7 @@ class SearchFileBrain {
     }
     
     /** 檢查是否有需要排除的檔名 */
-    fileprivate func checkNeedExcludeOf(FileName name: String?) -> Bool {
+    private func checkNeedExcludeOf(FileName name: String?) -> Bool {
         
         guard let excludeFileNames = excludeFileNames,let theName = name else {
             return false
