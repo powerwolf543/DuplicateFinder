@@ -12,16 +12,16 @@ CheckDuplicateFileName 是一份 Swift 的 MacOS APP ，
 
 
 
-- 1.2.0 增加儲存搜尋選項的功能
+- 1.3.0 將專案改成支援 Xcode 8 Swift 3
 
 Require
 -----------
-- xcode 7.3.1
-- Swift 2.2
+- Xcode 8
+- Swift 3
 
 Version
 -----------
-- 1.2.0
+- 1.3.0
 
 
 License

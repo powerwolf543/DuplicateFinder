@@ -16,21 +16,17 @@ import Foundation
  */
 struct SearchResult {
     
-    let fileURL: NSURL
+    let fileURL: URL
     
     var fileName: String {
-        if let theFileName = fileURL.lastPathComponent {
-            return theFileName
-        }else{
-            return ""
-        }
+        return fileURL.lastPathComponent
     }
     
     var filePath: String {
         return fileURL.absoluteString
     }
     
-    init(fileURL: NSURL) {
+    init(fileURL: URL) {
         self.fileURL = fileURL
     }
 }
