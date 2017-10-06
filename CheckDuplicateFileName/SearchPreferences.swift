@@ -1,9 +1,6 @@
 //
-//  SearchPreferences.swift
-//  CheckDuplicateFileName
-//
 //  Created by NixonShih on 2016/10/20.
-//  Copyright © 2016年 Nixon. All rights reserved.
+//  Copyright © 2016 Nixon. All rights reserved.
 //
 
 import Foundation
@@ -16,6 +13,11 @@ import Foundation
  */
 class SearchPreferences {
     
+    // MARK: - singleton
+    
+    /// SearchPreferences's singleton instance
+    static let shared = SearchPreferences()
+    
     // MARK: - UserDefault IDs
     
     /** isStorageEnable's UserDefault ID */
@@ -27,9 +29,7 @@ class SearchPreferences {
     /** excludeFileNames's UserDefault ID */
     private static let excludeFileNamesUDID = "iexcludeFileNamesUDID"
     
-    // MARK:
-    
-    private static var _sharedSearchPreferences: SearchPreferences?
+    // MARK: - Public properties
     
     /** 是否要儲存設定 */
     var isStorageEnable: Bool {
@@ -41,6 +41,7 @@ class SearchPreferences {
             }
         }
     }
+    
     /** 要搜尋的路徑 */
     var directoryPath: String? {
         didSet {
@@ -70,24 +71,6 @@ class SearchPreferences {
                 userDefault.synchronize()
             }
         }
-    }
-    
-    // MARK: - Public Methods
-    
-    /**
-     透過這個方法拿到 SearchPreferences's singleton instance
-     - returns: SearchPreferences's singleton instance
-     */
-    static func sharedInstance() -> SearchPreferences {
-        
-        if let _sharedInstance = _sharedSearchPreferences {
-            return _sharedInstance
-        }
-        
-        let _sharedInstance = SearchPreferences()
-        _sharedSearchPreferences = _sharedInstance
-        
-        return _sharedInstance
     }
     
     // MARK: - Private Methods

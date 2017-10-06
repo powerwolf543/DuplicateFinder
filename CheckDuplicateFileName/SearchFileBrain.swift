@@ -1,9 +1,6 @@
 //
-//  SearchFileBrain.swift
-//  CheckSameFileName
-//
 //  Created by NixonShih on 2016/10/6.
-//  Copyright © 2016年 Nixon. All rights reserved.
+//  Copyright © 2016 Nixon. All rights reserved.
 //
 
 import Foundation
@@ -95,52 +92,48 @@ class SearchFileBrain {
     /** 開始對資料夾進行檢索比對 */
     private func enumeratorDirectory() {
         let fileManager = FileManager.default
-        let directoryURL = URL(string: directoryPath)
         let keys = [URLResourceKey.isDirectoryKey]
         
-        if let directoryURL = directoryURL {
-            let enumerator = fileManager.enumerator(at: directoryURL, includingPropertiesForKeys: keys, options:FileManager.DirectoryEnumerationOptions.skipsHiddenFiles,errorHandler: {aURL, aError in true})
+        guard let directoryURL = URL(string: directoryPath)
+            , let enumerator = fileManager.enumerator(at: directoryURL, includingPropertiesForKeys: keys, options:FileManager.DirectoryEnumerationOptions.skipsHiddenFiles,errorHandler: { aURL, aError in true })
+            else { return }
+        
+        for fileURL in enumerator {
             
-            if let enumerator = enumerator {
-                for fileURL in enumerator {
+            if cancelSearchFlag { return }
+            
+            var isDir : ObjCBool = false
+            if fileManager.fileExists(atPath: (fileURL as AnyObject).path!, isDirectory: &isDir) {
+                if !isDir.boolValue {
+                    let aFileURL = fileURL as! URL
                     
-                    if cancelSearchFlag { return }
+                    if checkNeedExcludeOf(FolderPath: aFileURL.absoluteString) { continue }
+                    if checkNeedExcludeOf(FileName: aFileURL.lastPathComponent) { continue }
                     
-                    var isDir : ObjCBool = false
-                    if fileManager.fileExists(atPath: (fileURL as AnyObject).path!, isDirectory: &isDir) {
-                        if !isDir.boolValue {
-                            let aFileURL = fileURL as! URL
-                            
-                            if checkNeedExcludeOf(FolderPath: aFileURL.absoluteString) { continue }
-                            if checkNeedExcludeOf(FileName: aFileURL.lastPathComponent) { continue }
-                            
-                            let theSearchResult = SearchResult(fileURL: aFileURL)
-                            
-                            if theSearchResult.fileName == ".DS_Store" {
-                                continue
-                            }
-                            
-                            var duplicateFiles = duplicateFilesInStorage(aFileURL)
-                            
-                            if duplicateFiles.count == 0 {
-                                searchResultStorage.append(theSearchResult)
-                            }else{
-                                duplicateFiles.append(theSearchResult)
-                                
-                                DispatchQueue.main.async(execute: {
-                                    self.delegate?.foundDuplicateFile(self,duplicateFiles: duplicateFiles)
-                                })
-                            }
-                        }
+                    let theSearchResult = SearchResult(fileURL: aFileURL)
+                    
+                    if theSearchResult.fileName == ".DS_Store" {
+                        continue
+                    }
+                    
+                    var duplicateFiles = duplicateFilesInStorage(aFileURL)
+                    
+                    if duplicateFiles.count == 0 {
+                        searchResultStorage.append(theSearchResult)
+                    }else{
+                        duplicateFiles.append(theSearchResult)
+                        
+                        DispatchQueue.main.async(execute: {
+                            self.delegate?.foundDuplicateFile(self,duplicateFiles: duplicateFiles)
+                        })
                     }
                 }
-                
-                DispatchQueue.main.async(execute: {
-                    self.delegate?.searchFinish(self)
-                })
-                
             }
         }
+        
+        DispatchQueue.main.async(execute: {
+            self.delegate?.searchFinish(self)
+        })
     }
     
     // MARK: - File Parser

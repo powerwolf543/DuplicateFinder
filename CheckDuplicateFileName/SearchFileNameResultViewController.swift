@@ -1,9 +1,6 @@
 //
-//  SearchFileNameResultViewController.swift
-//  CheckSameFileName
-//
 //  Created by NixonShih on 2016/10/6.
-//  Copyright © 2016年 Nixon. All rights reserved.
+//  Copyright © 2016 Nixon. All rights reserved.
 //
 
 import Cocoa
@@ -87,12 +84,12 @@ class SearchFileNameResultViewController: NSViewController {
         let isExist = (selectedSearchResult.fileURL as NSURL).checkResourceIsReachableAndReturnError(&error)
         
         if isExist {
-            NSWorkspace.shared().activateFileViewerSelecting([selectedSearchResult.fileURL as URL])
+            NSWorkspace.shared.activateFileViewerSelecting([selectedSearchResult.fileURL as URL])
         }else{
             let myPopup: NSAlert = NSAlert()
             myPopup.messageText = "警告"
             myPopup.informativeText = "該路徑不存在"
-            myPopup.alertStyle = NSAlertStyle.warning
+            myPopup.alertStyle = NSAlert.Style.warning
             myPopup.addButton(withTitle: "OK")
             myPopup.runModal()
         }
@@ -127,11 +124,11 @@ extension SearchFileNameResultViewController: NSTableViewDataSource,NSTableViewD
         
         if let identifier = identifier {
             
-            let cell = tableView.make(withIdentifier: identifier, owner: nil) as! NSTableCellView
+            let cell = tableView.makeView(withIdentifier: identifier, owner: nil) as! NSTableCellView
             
-            if identifier == "FileNameID" {
+            if identifier.rawValue == "FileNameID" {
                 cell.textField?.stringValue = searchResultDataSource[row].fileName
-            }else if identifier == "FilePathID" {
+            }else if identifier.rawValue == "FilePathID" {
                 cell.textField?.stringValue = searchResultDataSource[row].filePath
             }
             

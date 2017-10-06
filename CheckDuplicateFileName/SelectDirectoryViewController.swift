@@ -1,9 +1,6 @@
 //
-//  ViewController.swift
-//  CheckSameFileName
-//
 //  Created by NixonShih on 2016/10/5.
-//  Copyright © 2016年 Nixon. All rights reserved.
+//  Copyright © 2016 Nixon. All rights reserved.
 //
 
 import Cocoa
@@ -23,7 +20,7 @@ class SelectDirectoryViewController: NSViewController,NSWindowDelegate {
             if excludeFolderDataSource.count <= 0 {
                 addFolderSegmentControl.setEnabled(false, forSegment: 1)
             }
-            SearchPreferences.sharedInstance().excludeFolders = excludeFolderDataSource
+            SearchPreferences.shared.excludeFolders = excludeFolderDataSource
         }
     }
     
@@ -33,7 +30,7 @@ class SelectDirectoryViewController: NSViewController,NSWindowDelegate {
             if excludeFileNameDataSource.count <= 0 {
                 addExcludeFileNameSegmentControl.setEnabled(false, forSegment: 1)
             }
-            SearchPreferences.sharedInstance().excludeFileNames = excludeFileNameDataSource
+            SearchPreferences.shared.excludeFileNames = excludeFileNameDataSource
         }
     }
     
@@ -70,7 +67,7 @@ class SelectDirectoryViewController: NSViewController,NSWindowDelegate {
         excludeFileNameTableView.dataSource = self
         excludeFileNameTableView.delegate = self
         
-        let searchPreferences = SearchPreferences.sharedInstance()
+        let searchPreferences = SearchPreferences.shared
         if searchPreferences.isStorageEnable {
             if let directoryPath = searchPreferences.directoryPath {
                 filePathTextField.stringValue = directoryPath
@@ -123,8 +120,8 @@ class SelectDirectoryViewController: NSViewController,NSWindowDelegate {
         if filePathTextField.stringValue != "" {
             print("Selected directorie -> \"\(filePathTextField.stringValue)\"")
             
-            let mainStoryboard = NSStoryboard(name: "Main", bundle: nil)
-            searchResultWindowController = mainStoryboard.instantiateController(withIdentifier: "SearchFileNameResultWindowSID") as? NSWindowController
+            let mainStoryboard = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil)
+            searchResultWindowController = mainStoryboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "SearchFileNameResultWindowSID")) as? NSWindowController
             let searchFileNameResultVC = searchResultWindowController?.contentViewController as! SearchFileNameResultViewController
             searchFileNameResultVC.directoryPath = filePathTextField.stringValue
             searchFileNameResultVC.excludeFolders = excludeFolderDataSource
@@ -138,7 +135,7 @@ class SelectDirectoryViewController: NSViewController,NSWindowDelegate {
         let folderPath = getFolderPathFromFinder()
         
         if let folderPath = folderPath {
-            SearchPreferences.sharedInstance().directoryPath = folderPath
+            SearchPreferences.shared.directoryPath = folderPath
             filePathTextField.stringValue = folderPath
         }
     }
@@ -186,7 +183,7 @@ class SelectDirectoryViewController: NSViewController,NSWindowDelegate {
         openPanel.canChooseFiles = false
         
         let clickedResult = openPanel.runModal()
-        if clickedResult == NSModalResponseOK {
+        if clickedResult == NSApplication.ModalResponse.OK {
             let url = openPanel.urls.first
             if let aURL = url {
                 return aURL.absoluteString
@@ -218,13 +215,13 @@ extension SelectDirectoryViewController: NSTableViewDataSource,NSTableViewDelega
         
         if let identifier = identifier {
             
-            let cell = tableView.make(withIdentifier: identifier, owner: nil) as! NSTableCellView
+            let cell = tableView.makeView(withIdentifier: identifier, owner: nil) as! NSTableCellView
             
-            if identifier == "FilePathCell_SID" {
+            if identifier.rawValue == "FilePathCell_SID" {
                 cell.textField?.stringValue = excludeFolderDataSource[row]
             }
             
-            if identifier == "FileNameCell_SID" {
+            if identifier.rawValue == "FileNameCell_SID" {
                 cell.textField?.stringValue = excludeFileNameDataSource[row]
             }
             

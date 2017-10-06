@@ -1,9 +1,6 @@
 //
-//  LogoInfoViewController.swift
-//  CheckDuplicateFileName
-//
 //  Created by NixonShih on 2016/10/20.
-//  Copyright © 2016年 Nixon. All rights reserved.
+//  Copyright © 2016 Nixon. All rights reserved.
 //
 
 import Cocoa
@@ -22,7 +19,7 @@ class LogoInfoViewController: NSViewController {
     // MARK: - UI
     
     private func prepareUI() {
-        let isEnable = SearchPreferences.sharedInstance().isStorageEnable
+        let isEnable = SearchPreferences.shared.isStorageEnable
         saveSearchSettingsSegmentedControl.setSelected(true, forSegment: isEnable ? 1 : 0 )
     }
     
@@ -31,11 +28,9 @@ class LogoInfoViewController: NSViewController {
     @IBAction func saveSearchSegmentControlPressed(_ sender: NSSegmentedControl) {
         switch sender.selectedSegment {
         case 0:
-            SearchPreferences.sharedInstance().isStorageEnable = false
-            break
+            SearchPreferences.shared.isStorageEnable = false
         case 1:
-            SearchPreferences.sharedInstance().isStorageEnable = true
-            break
+            SearchPreferences.shared.isStorageEnable = true
         default:
             break
         }
