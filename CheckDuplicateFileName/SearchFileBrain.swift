@@ -1,9 +1,6 @@
 //
-//  SearchFileBrain.swift
-//  CheckSameFileName
-//
 //  Created by NixonShih on 2016/10/6.
-//  Copyright © 2016年 Nixon. All rights reserved.
+//  Copyright © 2016 Nixon. All rights reserved.
 //
 
 import Foundation
@@ -58,9 +55,9 @@ class SearchFileBrain {
     var excludeFileNames: [String]?
     var delegate: SearchFileBrainDelegate?
     /** 將搜尋過的結果放在這個陣列中。 */
-    fileprivate var searchResultStorage = [SearchResult]()
+    private var searchResultStorage = [SearchResult]()
     /** 判斷是否要停止搜尋的 Flag，若要停止則設為 True。 */
-    fileprivate var cancelSearchFlag = false
+    private var cancelSearchFlag = false
     
     /**
      負責初始化 SearchFileBrain 這個 Class
@@ -93,67 +90,63 @@ class SearchFileBrain {
     // MARK: - File Search
     
     /** 開始對資料夾進行檢索比對 */
-    fileprivate func enumeratorDirectory() {
+    private func enumeratorDirectory() {
         let fileManager = FileManager.default
-        let directoryURL = URL(string: directoryPath)
         let keys = [URLResourceKey.isDirectoryKey]
         
-        if let directoryURL = directoryURL {
-            let enumerator = fileManager.enumerator(at: directoryURL, includingPropertiesForKeys: keys, options:FileManager.DirectoryEnumerationOptions.skipsHiddenFiles,errorHandler: {aURL, aError in true})
+        guard let directoryURL = URL(string: directoryPath)
+            , let enumerator = fileManager.enumerator(at: directoryURL, includingPropertiesForKeys: keys, options:FileManager.DirectoryEnumerationOptions.skipsHiddenFiles,errorHandler: { aURL, aError in true })
+            else { return }
+        
+        for fileURL in enumerator {
             
-            if let enumerator = enumerator {
-                for fileURL in enumerator {
+            if cancelSearchFlag { return }
+            
+            var isDir : ObjCBool = false
+            if fileManager.fileExists(atPath: (fileURL as AnyObject).path!, isDirectory: &isDir) {
+                if !isDir.boolValue {
+                    let aFileURL = fileURL as! URL
                     
-                    if cancelSearchFlag { return }
+                    if checkNeedExcludeOf(FolderPath: aFileURL.absoluteString) { continue }
+                    if checkNeedExcludeOf(FileName: aFileURL.lastPathComponent) { continue }
                     
-                    var isDir : ObjCBool = false
-                    if fileManager.fileExists(atPath: (fileURL as AnyObject).path!, isDirectory: &isDir) {
-                        if !isDir.boolValue {
-                            let aFileURL = fileURL as! URL
-                            
-                            if checkNeedExcludeOf(FolderPath: aFileURL.absoluteString) { continue }
-                            if checkNeedExcludeOf(FileName: aFileURL.lastPathComponent) { continue }
-                            
-                            let theSearchResult = SearchResult(fileURL: aFileURL)
-                            
-                            if theSearchResult.fileName == ".DS_Store" {
-                                continue
-                            }
-                            
-                            var duplicateFiles = duplicateFilesInStorage(aFileURL)
-                            
-                            if duplicateFiles.count == 0 {
-                                searchResultStorage.append(theSearchResult)
-                            }else{
-                                duplicateFiles.append(theSearchResult)
-                                
-                                DispatchQueue.main.async(execute: {
-                                    self.delegate?.foundDuplicateFile(self,duplicateFiles: duplicateFiles)
-                                })
-                            }
-                        }
+                    let theSearchResult = SearchResult(fileURL: aFileURL)
+                    
+                    if theSearchResult.fileName == ".DS_Store" {
+                        continue
+                    }
+                    
+                    var duplicateFiles = duplicateFilesInStorage(aFileURL)
+                    
+                    if duplicateFiles.count == 0 {
+                        searchResultStorage.append(theSearchResult)
+                    }else{
+                        duplicateFiles.append(theSearchResult)
+                        
+                        DispatchQueue.main.async(execute: {
+                            self.delegate?.foundDuplicateFile(self,duplicateFiles: duplicateFiles)
+                        })
                     }
                 }
-                
-                DispatchQueue.main.async(execute: {
-                    self.delegate?.searchFinish(self)
-                })
-                
             }
         }
+        
+        DispatchQueue.main.async(execute: {
+            self.delegate?.searchFinish(self)
+        })
     }
     
     // MARK: - File Parser
     
     /** 比對有哪些檔案重複 */
-    fileprivate func duplicateFilesInStorage(_ fileURL: URL) -> [SearchResult] {
+    private func duplicateFilesInStorage(_ fileURL: URL) -> [SearchResult] {
         
         let fileName = fileURL.lastPathComponent
         return searchResultStorage.filter { $0.fileName == fileName }
     }
     
     /** 檢查路徑是否有在排除名單中 */
-    fileprivate func checkNeedExcludeOf(FolderPath path: String) -> Bool {
+    private func checkNeedExcludeOf(FolderPath path: String) -> Bool {
         
         guard let excludeFolders = excludeFolders else {
             return false
@@ -169,7 +162,7 @@ class SearchFileBrain {
     }
     
     /** 檢查是否有需要排除的檔名 */
-    fileprivate func checkNeedExcludeOf(FileName name: String?) -> Bool {
+    private func checkNeedExcludeOf(FileName name: String?) -> Bool {
         
         guard let excludeFileNames = excludeFileNames,let theName = name else {
             return false

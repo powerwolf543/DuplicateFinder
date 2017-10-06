@@ -1,9 +1,6 @@
 //
-//  SearchResult.swift
-//  CheckSameFileName
-//
 //  Created by NixonShih on 2016/10/6.
-//  Copyright © 2016年 Nixon. All rights reserved.
+//  Copyright © 2016 Nixon. All rights reserved.
 //
 
 import Foundation
