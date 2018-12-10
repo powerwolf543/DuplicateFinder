@@ -9,8 +9,9 @@ It will help you to check for duplicate file in folder.
 
 ## Requirements
 
-- Xcode 9+
-- Swift 4+
+- Xcode 10+
+- Swift 4.2+
+- MacOS 10.10+
 
 ## Version
 

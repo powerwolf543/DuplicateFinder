@@ -120,8 +120,8 @@ class SelectDirectoryViewController: NSViewController,NSWindowDelegate {
         if filePathTextField.stringValue != "" {
             print("Selected directorie -> \"\(filePathTextField.stringValue)\"")
             
-            let mainStoryboard = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil)
-            searchResultWindowController = mainStoryboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "SearchFileNameResultWindowSID")) as? NSWindowController
+            let mainStoryboard = NSStoryboard(name: NSStoryboard.Name("Main"), bundle: nil)
+            searchResultWindowController = mainStoryboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("SearchFileNameResultWindowSID")) as? NSWindowController
             let searchFileNameResultVC = searchResultWindowController?.contentViewController as! SearchFileNameResultViewController
             searchFileNameResultVC.directoryPath = filePathTextField.stringValue
             searchFileNameResultVC.excludeFolders = excludeFolderDataSource
