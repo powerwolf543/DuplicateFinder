@@ -1,9 +1,11 @@
+[![swift](https://img.shields.io/badge/language-swift-red.svg)](https://developer.apple.com/swift/)
+
 # CheckDuplicateFileName
 
 ![2016-10-20 5 31 10](https://cloud.githubusercontent.com/assets/16394562/19554488/6ca84680-96eb-11e6-899b-1bd5dd29f39a.png)
 
-CheckDuplicateFileName 是一份 Swift 的 MacOS APP ，
-主要功能為檢查選擇資料夾中是否有檔案重複的狀況。
+CheckDuplicateFileName is a MacOS Application that is written by Swift.
+It will help you to check for duplicate file in folder.
 
 ## Requirements
 
