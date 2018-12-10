@@ -14,17 +14,17 @@ class SearchFileNameResultViewController: NSViewController {
     /** 想要排除在搜尋之外的檔案名稱 */
     var excludeFileNames: [String]?
     
-    @IBOutlet fileprivate weak var searchStatusLabel: NSTextField!
-    @IBOutlet fileprivate weak var searchStatusIndicator: NSProgressIndicator!
+    @IBOutlet private weak var searchStatusLabel: NSTextField!
+    @IBOutlet private weak var searchStatusIndicator: NSProgressIndicator!
     @IBOutlet private weak var searchResultTableView: NSTableView!
 
     /** 存放已經排序的結果 */
-    fileprivate var searchResultDataSource = [SearchResult]()
+    private var searchResultDataSource = [SearchResult]()
     /** 存放尚未排序的結果 */
-    fileprivate var tempSearchResult = [SearchResult]()
+    private var tempSearchResult = [SearchResult]()
     private var searchFileBrain: SearchFileBrain?
     /** 負責更新畫面的 Timer */
-    fileprivate var reloadTimer: Timer?
+    private var reloadTimer: Timer?
     
     // MARK: - ViewController Life Cycle
     
@@ -95,14 +95,14 @@ class SearchFileNameResultViewController: NSViewController {
         }
     }
     
-    @objc fileprivate func sortAndReload() {
+    @objc private func sortAndReload() {
         searchResultDataSource = tempSearchResult.sorted { $0.fileName < $1.fileName }
         searchResultTableView.reloadData()
     }
     
     // MARK: - Data
     
-    fileprivate func checkURLExist(_ searchResult: SearchResult) -> Bool {
+    private func checkURLExist(_ searchResult: SearchResult) -> Bool {
         let filter = tempSearchResult.filter{
             $0.fileURL.absoluteString == searchResult.fileURL.absoluteString
         }

@@ -32,7 +32,7 @@ class LogoInfoViewController: NSViewController {
         case 1:
             SearchPreferences.shared.isStorageEnable = true
         default:
-            break
+            fatalError("Unknown selection.")
         }
     }
     
