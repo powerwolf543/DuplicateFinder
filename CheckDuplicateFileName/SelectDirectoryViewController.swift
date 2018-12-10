@@ -1,6 +1,6 @@
 //
 //  Created by NixonShih on 2016/10/5.
-//  Copyright © 2016 Nixon. All rights reserved.
+//  Copyright © 2019 Nixon. All rights reserved.
 //
 
 import Cocoa
