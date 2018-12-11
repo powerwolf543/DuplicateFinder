@@ -17,6 +17,7 @@
 		25243B131DA785D400DE4029 /* SelectDirectoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25243B0C1DA785D400DE4029 /* SelectDirectoryViewController.swift */; };
 		25243B161DA785DD00DE4029 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25243B141DA785DD00DE4029 /* Main.storyboard */; };
 		25E3BF3121BEC2100046EB60 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 25E3BF3021BEC2100046EB60 /* README.md */; };
+		EDB0683521BF678000BEAC54 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = EDB0683421BF678000BEAC54 /* CHANGELOG.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		25243B151DA785DD00DE4029 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = CheckDuplicateFileName/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
 		25BF97111DA4944700EABEB6 /* CheckDuplicateFileName.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CheckDuplicateFileName.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		25E3BF3021BEC2100046EB60 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		EDB0683421BF678000BEAC54 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +53,7 @@
 				25BF97131DA4944700EABEB6 /* CheckSameFileName */,
 				25BF97121DA4944700EABEB6 /* Products */,
 				25E3BF3021BEC2100046EB60 /* README.md */,
+				EDB0683421BF678000BEAC54 /* CHANGELOG.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -76,7 +79,7 @@
 				25243B081DA785D400DE4029 /* Info.plist */,
 				25243B141DA785DD00DE4029 /* Main.storyboard */,
 			);
-			path = CheckSameFileName;
+			name = CheckSameFileName;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,6 +144,7 @@
 				25E3BF3121BEC2100046EB60 /* README.md in Resources */,
 				25243B161DA785DD00DE4029 /* Main.storyboard in Resources */,
 				25243B0E1DA785D400DE4029 /* Assets.xcassets in Resources */,
+				EDB0683521BF678000BEAC54 /* CHANGELOG.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
