@@ -1,16 +1,13 @@
 //
 //  Created by NixonShih on 2016/10/6.
-//  Copyright © 2016 Nixon. All rights reserved.
+//  Copyright © 2019 Nixon. All rights reserved.
 //
 
 import Foundation
 
-/**
- **SearchResult**
- 
- 
- 這個 Struct 是存放搜尋資料的Model
- */
+/// SearchResult
+///
+/// Include a result of file search
 struct SearchResult {
     
     let fileURL: URL

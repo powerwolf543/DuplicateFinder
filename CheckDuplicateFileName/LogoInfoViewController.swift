@@ -1,6 +1,6 @@
 //
 //  Created by NixonShih on 2016/10/20.
-//  Copyright © 2016 Nixon. All rights reserved.
+//  Copyright © 2019 Nixon. All rights reserved.
 //
 
 import Cocoa
@@ -32,7 +32,7 @@ class LogoInfoViewController: NSViewController {
         case 1:
             SearchPreferences.shared.isStorageEnable = true
         default:
-            break
+            fatalError("Unknown selection.")
         }
     }
     

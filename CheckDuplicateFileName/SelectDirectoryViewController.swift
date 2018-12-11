@@ -1,6 +1,6 @@
 //
 //  Created by NixonShih on 2016/10/5.
-//  Copyright © 2016 Nixon. All rights reserved.
+//  Copyright © 2019 Nixon. All rights reserved.
 //
 
 import Cocoa
@@ -8,14 +8,14 @@ import Cocoa
 class SelectDirectoryViewController: NSViewController,NSWindowDelegate {
     
     @IBOutlet private weak var filePathTextField: NSTextField!
-    @IBOutlet fileprivate weak var excludeFolderTableView: NSTableView!
-    @IBOutlet fileprivate weak var addFolderSegmentControl: NSSegmentedControl!
-    @IBOutlet fileprivate weak var excludeFileNameTableView: NSTableView!
-    @IBOutlet fileprivate weak var addExcludeFileNameSegmentControl: NSSegmentedControl!
+    @IBOutlet private weak var excludeFolderTableView: NSTableView!
+    @IBOutlet private weak var addFolderSegmentControl: NSSegmentedControl!
+    @IBOutlet private weak var excludeFileNameTableView: NSTableView!
+    @IBOutlet private weak var addExcludeFileNameSegmentControl: NSSegmentedControl!
     @IBOutlet private weak var excludeFileNameTextField: NSTextField!
     
     /** excludeFolderTableView's dataSource 如果沒有資料的時候，讓 addFolderSegmentControl 的減號設為 disable。 */
-    fileprivate var excludeFolderDataSource = [String]() {
+    private var excludeFolderDataSource = [String]() {
         didSet {
             if excludeFolderDataSource.count <= 0 {
                 addFolderSegmentControl.setEnabled(false, forSegment: 1)
@@ -25,7 +25,7 @@ class SelectDirectoryViewController: NSViewController,NSWindowDelegate {
     }
     
     /** excludeFileNameTableView's dataSource 如果沒有資料的時候，讓 addExcludeFileNameSegmentControl 的減號設為 disable。 */
-    fileprivate var excludeFileNameDataSource = [String]() {
+    private var excludeFileNameDataSource = [String]() {
         didSet {
             if excludeFileNameDataSource.count <= 0 {
                 addExcludeFileNameSegmentControl.setEnabled(false, forSegment: 1)
@@ -35,9 +35,9 @@ class SelectDirectoryViewController: NSViewController,NSWindowDelegate {
     }
     
     /** excludeFolderTableView 當前選擇的 index */
-    fileprivate var excludeFolderTableViewSelectedRow: Int?
+    private var excludeFolderTableViewSelectedRow: Int?
     /** excludeFileNameTableView 當前選擇的 index */
-    fileprivate var excludeFileNameTableViewSelectedRow: Int?
+    private var excludeFileNameTableViewSelectedRow: Int?
     private var searchResultWindowController:NSWindowController?
     
     // MARK: - ViewController Life Cycle
@@ -120,8 +120,8 @@ class SelectDirectoryViewController: NSViewController,NSWindowDelegate {
         if filePathTextField.stringValue != "" {
             print("Selected directorie -> \"\(filePathTextField.stringValue)\"")
             
-            let mainStoryboard = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil)
-            searchResultWindowController = mainStoryboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "SearchFileNameResultWindowSID")) as? NSWindowController
+            let mainStoryboard = NSStoryboard(name: NSStoryboard.Name("Main"), bundle: nil)
+            searchResultWindowController = mainStoryboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("SearchFileNameResultWindowSID")) as? NSWindowController
             let searchFileNameResultVC = searchResultWindowController?.contentViewController as! SearchFileNameResultViewController
             searchFileNameResultVC.directoryPath = filePathTextField.stringValue
             searchFileNameResultVC.excludeFolders = excludeFolderDataSource

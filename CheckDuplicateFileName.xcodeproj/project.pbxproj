@@ -16,6 +16,8 @@
 		25243B121DA785D400DE4029 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25243B0B1DA785D400DE4029 /* SearchResult.swift */; };
 		25243B131DA785D400DE4029 /* SelectDirectoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25243B0C1DA785D400DE4029 /* SelectDirectoryViewController.swift */; };
 		25243B161DA785DD00DE4029 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25243B141DA785DD00DE4029 /* Main.storyboard */; };
+		25E3BF3121BEC2100046EB60 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 25E3BF3021BEC2100046EB60 /* README.md */; };
+		EDB0683521BF678000BEAC54 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = EDB0683421BF678000BEAC54 /* CHANGELOG.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		25243B0C1DA785D400DE4029 /* SelectDirectoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectDirectoryViewController.swift; path = CheckDuplicateFileName/SelectDirectoryViewController.swift; sourceTree = SOURCE_ROOT; };
 		25243B151DA785DD00DE4029 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = CheckDuplicateFileName/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
 		25BF97111DA4944700EABEB6 /* CheckDuplicateFileName.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CheckDuplicateFileName.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		25E3BF3021BEC2100046EB60 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		EDB0683421BF678000BEAC54 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +52,8 @@
 			children = (
 				25BF97131DA4944700EABEB6 /* CheckSameFileName */,
 				25BF97121DA4944700EABEB6 /* Products */,
+				25E3BF3021BEC2100046EB60 /* README.md */,
+				EDB0683421BF678000BEAC54 /* CHANGELOG.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -73,7 +79,7 @@
 				25243B081DA785D400DE4029 /* Info.plist */,
 				25243B141DA785DD00DE4029 /* Main.storyboard */,
 			);
-			path = CheckSameFileName;
+			name = CheckSameFileName;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -103,7 +109,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = Nixon;
 				TargetAttributes = {
 					25BF97101DA4944700EABEB6 = {
@@ -135,8 +141,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25E3BF3121BEC2100046EB60 /* README.md in Resources */,
 				25243B161DA785DD00DE4029 /* Main.storyboard in Resources */,
 				25243B0E1DA785D400DE4029 /* Assets.xcassets in Resources */,
+				EDB0683521BF678000BEAC54 /* CHANGELOG.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,12 +192,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -238,12 +248,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -285,7 +297,7 @@
 				PRODUCT_NAME = CheckDuplicateFileName;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -301,7 +313,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = net.NixonDesign.CheckDuplicateFileName;
 				PRODUCT_NAME = CheckDuplicateFileName;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};

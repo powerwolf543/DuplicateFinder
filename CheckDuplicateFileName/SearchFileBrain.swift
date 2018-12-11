@@ -1,6 +1,6 @@
 //
 //  Created by NixonShih on 2016/10/6.
-//  Copyright © 2016 Nixon. All rights reserved.
+//  Copyright © 2019 Nixon. All rights reserved.
 //
 
 import Foundation
@@ -47,7 +47,7 @@ protocol SearchFileBrainDelegate {
  */
 class SearchFileBrain {
     
-    /** 想要搜尋的路徑 */
+    /// a path that you want to search 
     let directoryPath: String
     /** 只要存放在這個陣列的路徑，搜尋的時候都會排除。 */
     var excludeFolders: [String]?
@@ -60,11 +60,11 @@ class SearchFileBrain {
     private var cancelSearchFlag = false
     
     /**
-     負責初始化 SearchFileBrain 這個 Class
+     Initializer
      
-     - parameter directoryPath: 想要搜尋的路徑
-     - parameter excludeFolders: 想要排除在搜尋之外的資料夾
-     - parameter excludeFileNames: 想要排除在搜尋之外的檔案名稱
+     - parameter directoryPath: a path that you want to search
+     - parameter excludeFolders: folder names that you want to exclude
+     - parameter excludeFileNames: file names that you want to exclude
      - returns: SearchFileBrain's Instance
      */
     init(directoryPath: String, excludeFolders: [String]?, excludeFileNames: [String]?) {
@@ -91,6 +91,7 @@ class SearchFileBrain {
     
     /** 開始對資料夾進行檢索比對 */
     private func enumeratorDirectory() {
+        
         let fileManager = FileManager.default
         let keys = [URLResourceKey.isDirectoryKey]
         
@@ -103,31 +104,27 @@ class SearchFileBrain {
             if cancelSearchFlag { return }
             
             var isDir : ObjCBool = false
-            if fileManager.fileExists(atPath: (fileURL as AnyObject).path!, isDirectory: &isDir) {
-                if !isDir.boolValue {
-                    let aFileURL = fileURL as! URL
-                    
-                    if checkNeedExcludeOf(FolderPath: aFileURL.absoluteString) { continue }
-                    if checkNeedExcludeOf(FileName: aFileURL.lastPathComponent) { continue }
-                    
-                    let theSearchResult = SearchResult(fileURL: aFileURL)
-                    
-                    if theSearchResult.fileName == ".DS_Store" {
-                        continue
-                    }
-                    
-                    var duplicateFiles = duplicateFilesInStorage(aFileURL)
-                    
-                    if duplicateFiles.count == 0 {
-                        searchResultStorage.append(theSearchResult)
-                    }else{
-                        duplicateFiles.append(theSearchResult)
-                        
-                        DispatchQueue.main.async(execute: {
-                            self.delegate?.foundDuplicateFile(self,duplicateFiles: duplicateFiles)
-                        })
-                    }
-                }
+            guard
+                fileManager.fileExists(atPath: (fileURL as AnyObject).path!, isDirectory: &isDir),
+                !isDir.boolValue,
+                let aFileURL = fileURL as? URL,
+                checkNeedExcludeOf(FolderPath: aFileURL.absoluteString),
+                checkNeedExcludeOf(FileName: aFileURL.lastPathComponent)
+                else { continue }
+            
+            let theSearchResult = SearchResult(fileURL: aFileURL)
+            if theSearchResult.fileName == ".DS_Store" { continue }
+            
+            var duplicateFiles = duplicateFilesInStorage(aFileURL)
+            
+            if duplicateFiles.count == 0 {
+                searchResultStorage.append(theSearchResult)
+            }else{
+                duplicateFiles.append(theSearchResult)
+                
+                DispatchQueue.main.async(execute: {
+                    self.delegate?.foundDuplicateFile(self,duplicateFiles: duplicateFiles)
+                })
             }
         }
         
