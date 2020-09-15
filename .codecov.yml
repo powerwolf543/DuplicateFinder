@@ -1,0 +1,4 @@
+ignore:
+  - "Networking/Tests/**/*"
+  - "Networking/Sources/NetworkingTestHelpers/**/*"
+  - "ImageLoader/Tests/**/*"

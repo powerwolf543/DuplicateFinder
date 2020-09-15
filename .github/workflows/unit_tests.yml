@@ -1,0 +1,27 @@
+name: UnitTests
+
+on: [push]
+
+jobs:
+  swiftpm_tests:
+    name: ${{ matrix.scheme }} tests on Xcode ${{ matrix.xcode }}
+    runs-on: macos-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        scheme: ["Search"]
+        xcode: ["11.7"]
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Select Xcode ${{ matrix.xcode }}
+      run: sudo xcode-select --switch /Applications/Xcode_${{ matrix.xcode }}.app
+
+    - name: ${{ matrix.scheme }} tests
+      run: xcodebuild test -scheme ${{ matrix.scheme }} -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 11,OS=13.6' -enableCodeCoverage YES
+    
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v1
+      with:
+        fail_ci_if_error: true
