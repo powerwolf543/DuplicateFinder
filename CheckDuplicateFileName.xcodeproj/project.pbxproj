@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,6 +16,7 @@
 		25243B121DA785D400DE4029 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25243B0B1DA785D400DE4029 /* SearchResult.swift */; };
 		25243B131DA785D400DE4029 /* SelectDirectoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25243B0C1DA785D400DE4029 /* SelectDirectoryViewController.swift */; };
 		25243B161DA785DD00DE4029 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25243B141DA785DD00DE4029 /* Main.storyboard */; };
+		252C098B25110C7D00D87D5F /* Search in Frameworks */ = {isa = PBXBuildFile; productRef = 252C098A25110C7D00D87D5F /* Search */; };
 		25E3BF3121BEC2100046EB60 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 25E3BF3021BEC2100046EB60 /* README.md */; };
 		EDB0683521BF678000BEAC54 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = EDB0683421BF678000BEAC54 /* CHANGELOG.md */; };
 /* End PBXBuildFile section */
@@ -42,12 +43,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				252C098B25110C7D00D87D5F /* Search in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		252C098925110C7D00D87D5F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		25BF97081DA4944700EABEB6 = {
 			isa = PBXGroup;
 			children = (
@@ -56,6 +65,7 @@
 				25BF97121DA4944700EABEB6 /* Products */,
 				25E3BF3021BEC2100046EB60 /* README.md */,
 				EDB0683421BF678000BEAC54 /* CHANGELOG.md */,
+				252C098925110C7D00D87D5F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -100,6 +110,9 @@
 			dependencies = (
 			);
 			name = CheckDuplicateFileName;
+			packageProductDependencies = (
+				252C098A25110C7D00D87D5F /* Search */,
+			);
 			productName = CheckSameFileName;
 			productReference = 25BF97111DA4944700EABEB6 /* CheckDuplicateFileName.app */;
 			productType = "com.apple.product-type.application";
@@ -283,7 +296,8 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 			};
 			name = Release;
@@ -296,7 +310,10 @@
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/CheckDuplicateFileName/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = net.NixonDesign.CheckDuplicateFileName;
 				PRODUCT_NAME = CheckDuplicateFileName;
@@ -314,7 +331,10 @@
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/CheckDuplicateFileName/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = net.NixonDesign.CheckDuplicateFileName;
 				PRODUCT_NAME = CheckDuplicateFileName;
@@ -345,6 +365,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		252C098A25110C7D00D87D5F /* Search */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Search;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 25BF97091DA4944700EABEB6 /* Project object */;
 }
