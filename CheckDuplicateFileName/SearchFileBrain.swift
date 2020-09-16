@@ -108,8 +108,8 @@ class SearchFileBrain {
                 fileManager.fileExists(atPath: (fileURL as AnyObject).path!, isDirectory: &isDir),
                 !isDir.boolValue,
                 let aFileURL = fileURL as? URL,
-                checkNeedExcludeOf(FolderPath: aFileURL.absoluteString),
-                checkNeedExcludeOf(FileName: aFileURL.lastPathComponent)
+                !checkNeedExcludeOf(FolderPath: aFileURL.absoluteString),
+                !checkNeedExcludeOf(FileName: aFileURL.lastPathComponent)
                 else { continue }
             
             let theSearchResult = SearchResult(fileURL: aFileURL)
