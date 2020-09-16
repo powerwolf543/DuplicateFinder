@@ -512,17 +512,17 @@
             <objects>
                 <viewController id="rZF-QJ-B0D" customClass="SearchFileNameResultViewController" customModule="CheckDuplicateFileName" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="6Fw-Cu-BO1">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="102"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="226"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F8p-To-uAl">
-                                <rect key="frame" x="0.0" y="0.0" width="480" height="26"/>
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="150"/>
                                 <clipView key="contentView" id="Z9Q-dm-Toi">
-                                    <rect key="frame" x="1" y="0.0" width="478" height="25"/>
+                                    <rect key="frame" x="1" y="0.0" width="478" height="149"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="UGx-eJ-bHP" viewBased="YES" id="V9K-Tj-KoN">
-                                            <rect key="frame" x="0.0" y="0.0" width="478" height="19"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="478" height="126"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -604,6 +604,9 @@
                                         </tableView>
                                     </subviews>
                                 </clipView>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="4nv-Jg-S4z"/>
+                                </constraints>
                                 <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="Deh-dQ-au3">
                                     <rect key="frame" x="1" y="119" width="223" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
@@ -618,7 +621,7 @@
                                 </tableHeaderView>
                             </scrollView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LjT-vI-58e">
-                                <rect key="frame" x="222" y="56" width="37" height="16"/>
+                                <rect key="frame" x="222" y="180" width="37" height="16"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="oqt-N3-xVg">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -626,7 +629,7 @@
                                 </textFieldCell>
                             </textField>
                             <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="JWQ-YD-GMB">
-                                <rect key="frame" x="287" y="56" width="16" height="16"/>
+                                <rect key="frame" x="287" y="180" width="16" height="16"/>
                             </progressIndicator>
                         </subviews>
                         <constraints>
@@ -648,7 +651,7 @@
                 </viewController>
                 <customObject id="dH0-1Y-wQU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="807" y="680"/>
+            <point key="canvasLocation" x="807" y="736"/>
         </scene>
     </scenes>
     <resources>
