@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "Search"
-               BuildableName = "Search"
-               BlueprintName = "Search"
+               BlueprintIdentifier = "FileExplorer"
+               BuildableName = "FileExplorer"
+               BlueprintName = "FileExplorer"
                ReferencedContainer = "container:">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,9 +32,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "SearchTests"
-               BuildableName = "SearchTests"
-               BlueprintName = "SearchTests"
+               BlueprintIdentifier = "FileExplorerTests"
+               BuildableName = "FileExplorerTests"
+               BlueprintName = "FileExplorerTests"
                ReferencedContainer = "container:">
             </BuildableReference>
          </TestableReference>
@@ -60,9 +60,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "Search"
-            BuildableName = "Search"
-            BlueprintName = "Search"
+            BlueprintIdentifier = "FileExplorer"
+            BuildableName = "FileExplorer"
+            BlueprintName = "FileExplorer"
             ReferencedContainer = "container:">
          </BuildableReference>
       </MacroExpansion>

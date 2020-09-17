@@ -5,12 +5,12 @@
 [![SwiftPM Compatible](https://img.shields.io/badge/SwiftPM-compatible-4BC51D.svg?style=flat)](https://github.com/apple/swift-package-manager)
 
 
-# CheckDuplicateFileName
+# FindDuplicateFileName
 
 ![2016-10-20 5 31 10](https://cloud.githubusercontent.com/assets/16394562/19554488/6ca84680-96eb-11e6-899b-1bd5dd29f39a.png)
 
-CheckDuplicateFileName is a MacOS Application that is written by Swift.
-It's a useful tool that will help you to check for duplicate file in folder.
+FindDuplicateFileName is a MacOS Application that is written by Swift.
+It's a useful tool that would help you to find the duplicate files in the specific folder.
 
 - [Requirements](#Requirements)
 - [Author](#Author)
@@ -18,9 +18,9 @@ It's a useful tool that will help you to check for duplicate file in folder.
 
 ## Requirements
 
-- Xcode 10+
-- Swift 4.2+
-- MacOS 10.10+
+- Xcode 12
+- Swift 5.2
+- MacOS 10.15+
 
 ## Author
 
@@ -28,4 +28,4 @@ Nixon Shih, powerwolf543@gmail.com
 
 ## License
 
-CheckDuplicateFileName is available under the MIT license. See the LICENSE file for more info.
+FindDuplicateFileName is available under the MIT license. See the LICENSE file for more info.

@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:/Users/nixonshih/Desktop/CheckSameFileName/CheckDuplicateFileName.xcodeproj">
+      location = "self:FindDuplicateFileName.xcodeproj">
    </FileRef>
 </Workspace>

@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "25BF97101DA4944700EABEB6"
-               BuildableName = "CheckDuplicateFileName.app"
-               BlueprintName = "CheckDuplicateFileName"
-               ReferencedContainer = "container:CheckDuplicateFileName.xcodeproj">
+               BlueprintIdentifier = "25872BFC2513A56800E42E11"
+               BuildableName = "FindDuplicateFileName.app"
+               BlueprintName = "FindDuplicateFileName"
+               ReferencedContainer = "container:FindDuplicateFileName.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -27,15 +27,6 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "25BF97101DA4944700EABEB6"
-            BuildableName = "CheckDuplicateFileName.app"
-            BlueprintName = "CheckDuplicateFileName"
-            ReferencedContainer = "container:CheckDuplicateFileName.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <Testables>
       </Testables>
    </TestAction>
@@ -53,10 +44,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "25BF97101DA4944700EABEB6"
-            BuildableName = "CheckDuplicateFileName.app"
-            BlueprintName = "CheckDuplicateFileName"
-            ReferencedContainer = "container:CheckDuplicateFileName.xcodeproj">
+            BlueprintIdentifier = "25872BFC2513A56800E42E11"
+            BuildableName = "FindDuplicateFileName.app"
+            BlueprintName = "FindDuplicateFileName"
+            ReferencedContainer = "container:FindDuplicateFileName.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -70,10 +61,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "25BF97101DA4944700EABEB6"
-            BuildableName = "CheckDuplicateFileName.app"
-            BlueprintName = "CheckDuplicateFileName"
-            ReferencedContainer = "container:CheckDuplicateFileName.xcodeproj">
+            BlueprintIdentifier = "25872BFC2513A56800E42E11"
+            BuildableName = "FindDuplicateFileName.app"
+            BlueprintName = "FindDuplicateFileName"
+            ReferencedContainer = "container:FindDuplicateFileName.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
