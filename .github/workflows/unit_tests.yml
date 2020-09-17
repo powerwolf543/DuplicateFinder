@@ -1,15 +1,18 @@
 name: UnitTests
 
-on: [push]
+on: 
+  push: 
+    branches:
+      - '**'
 
 jobs:
   swiftpm_tests:
-    name: ${{ matrix.scheme }} tests on Xcode ${{ matrix.xcode }}
+    name: ${{ matrix.scheme }} tests
     runs-on: macos-latest
     strategy:
       fail-fast: false
       matrix:
-        scheme: ["Search"]
+        scheme: ["FileExplorer"]
         xcode: ["11.7"]
 
     steps:
