@@ -5,6 +5,7 @@
 
 import Foundation
 
+/// An Iterator that enumerates the contents of a directory.
 internal struct DiskPathIterator: PathIterator {
     private let directoryEnumerator: FileManager.DirectoryEnumerator
     
@@ -20,6 +21,8 @@ internal struct DiskPathIterator: PathIterator {
         self.directoryEnumerator = directoryEnumerator
     }
     
+    /// The next element in the underlying sequence, if a next element
+    /// exists; otherwise, `nil`.
     internal mutating func next() -> URL? {
         directoryEnumerator.nextObject() as? URL
     }
