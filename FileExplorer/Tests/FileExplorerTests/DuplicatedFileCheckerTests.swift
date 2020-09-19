@@ -1,14 +1,14 @@
 //
-//  DuplicateFileCheckerTests.swift
+//  DuplicatedFileCheckerTests.swift
 //  Created by Nixon Shih on 2020/9/19.
 //
 
 @testable import FileExplorer
 import XCTest
 
-final class DuplicateFileCheckerTests: XCTestCase {
+final class DuplicatedFileCheckerTests: XCTestCase {
     func testFindDuplicatedFiles() {
-        let checker = DuplicateFileChecker(excludedFiles: [], excludedPaths: [])
+        let checker = DuplicatedFileChecker(excludedFiles: [], excludedPaths: [])
 
         // Check file.swift
         XCTAssertFalse(try checker.checkDuplicate(of: URL(string: "file:///home/pathA/file.swift")!))
@@ -30,7 +30,7 @@ final class DuplicateFileCheckerTests: XCTestCase {
     func testURLIsSystemFile() throws {
         let urlA = URL(string: "file:///home/pathA/.DS_Store")!
         let urlB = URL(string: "file:///home/pathB/.DS_Store")!
-        let checker = DuplicateFileChecker(excludedFiles: [], excludedPaths: [])
+        let checker = DuplicatedFileChecker(excludedFiles: [], excludedPaths: [])
         
         XCTAssertFalse(try checker.checkDuplicate(of: urlA))
         XCTAssertEqual(checker.checkedFileNames, [".DS_Store"])
@@ -44,7 +44,7 @@ final class DuplicateFileCheckerTests: XCTestCase {
     func testURLIsExcludedPath() throws {
         let urlA = URL(string: "file:///home/pathA/file.swift")!
         let urlB = URL(string: "file:///home/pathB/file.swift")!
-        let checker = DuplicateFileChecker(excludedFiles: [], excludedPaths: [URL(string: "file:///home/pathB/")!])
+        let checker = DuplicatedFileChecker(excludedFiles: [], excludedPaths: [URL(string: "file:///home/pathB/")!])
         
         XCTAssertFalse(try checker.checkDuplicate(of: urlA))
         XCTAssertEqual(checker.checkedFileNames, ["file.swift"])
@@ -58,7 +58,7 @@ final class DuplicateFileCheckerTests: XCTestCase {
     func testURLIsExcludedFile() throws {
         let urlA = URL(string: "file:///home/path/fileA.swift")!
         let urlB = URL(string: "file:///home/path/fileB.swift")!
-        let checker = DuplicateFileChecker(excludedFiles: ["fileB.swift"], excludedPaths: [])
+        let checker = DuplicatedFileChecker(excludedFiles: ["fileB.swift"], excludedPaths: [])
         
         XCTAssertFalse(try checker.checkDuplicate(of: urlA))
         XCTAssertEqual(checker.checkedFileNames, ["fileA.swift"])
@@ -71,14 +71,14 @@ final class DuplicateFileCheckerTests: XCTestCase {
     
     func testNotFileURL() {
         let url = URL(string: "https://www.test.com")!
-        let checker = DuplicateFileChecker(excludedFiles: [], excludedPaths: [])
+        let checker = DuplicatedFileChecker(excludedFiles: [], excludedPaths: [])
         
         do {
             _ = try checker.checkDuplicate(of: url)
             XCTFail("Should catch error")
         } catch {
             switch error {
-            case DuplicateFileChecker.Error.invalidFileURL:
+            case DuplicatedFileChecker.Error.invalidFileURL:
                 break
             default:
                 XCTFail("Incorrect error")
@@ -88,7 +88,7 @@ final class DuplicateFileCheckerTests: XCTestCase {
     
     func testURLIsDirectory() throws {
         let url = URL(string: "file:///home/path/")!
-        let checker = DuplicateFileChecker(excludedFiles: [], excludedPaths: [])
+        let checker = DuplicatedFileChecker(excludedFiles: [], excludedPaths: [])
         
         let result = try checker.checkDuplicate(of: url)
         
@@ -102,7 +102,7 @@ final class DuplicateFileCheckerTests: XCTestCase {
             URL(string: "file:///home/path/B/")!,
         ]
         
-        let checker = DuplicateFileChecker(excludedFiles: excludedFiles, excludedPaths: excludedPaths)
+        let checker = DuplicatedFileChecker(excludedFiles: excludedFiles, excludedPaths: excludedPaths)
         
         for systemFile in SystemFile.allCases {
             excludedFiles.insert(systemFile.rawValue)

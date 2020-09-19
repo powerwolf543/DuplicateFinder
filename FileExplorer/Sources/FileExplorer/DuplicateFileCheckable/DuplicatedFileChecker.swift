@@ -1,12 +1,12 @@
 //
-//  DuplicateFileChecker.swift
+//  DuplicatedFileChecker.swift
 //  Created by Nixon Shih on 2020/9/19.
 //
 
 import Foundation
 
 /// A file name checker that checks the file name is duplicated within whole search.
-internal final class DuplicateFileChecker: DuplicateFileCheckable {
+internal final class DuplicatedFileChecker: DuplicatedFileCheckable {
     /// The file names that will be excluded, it also includes the `SystemFile` names.
     internal private(set) var excludedFiles: Set<String>
     /// The paths that will be excluded
@@ -14,7 +14,7 @@ internal final class DuplicateFileChecker: DuplicateFileCheckable {
     // The file names that has been checked
     internal private(set) var checkedFileNames: Set<String>
     
-    /// DuplicateFileChecker initializer
+    /// DuplicatedFileChecker initializer
     /// - Parameters:
     ///   - excludedFiles: The file names that will be excluded
     ///   - excludedPaths: The paths that will be excluded
@@ -26,7 +26,7 @@ internal final class DuplicateFileChecker: DuplicateFileCheckable {
     
     /// To check the file name is duplicated within whole search.
     /// - Parameter fileURL: A URL that you want to check.
-    /// - Throws: DuplicateFileChecker.Error.invalidFileURL
+    /// - Throws: DuplicatedFileChecker.Error.invalidFileURL
     /// - Returns: Return true if the checker finds the duplicated file name.
     internal func checkDuplicate(of fileURL: URL) throws -> Bool {
         guard fileURL.isFileURL else { throw Error.invalidFileURL }
@@ -40,7 +40,7 @@ internal final class DuplicateFileChecker: DuplicateFileCheckable {
     }
 }
 
-extension DuplicateFileChecker {
+extension DuplicatedFileChecker {
     enum Error: LocalizedError {
         case invalidFileURL
     }
