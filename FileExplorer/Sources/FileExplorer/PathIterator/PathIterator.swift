@@ -5,6 +5,6 @@
 
 import Foundation
 
-internal protocol PathIterator {
+public protocol PathIterator {
     mutating func next() -> URL?
 }

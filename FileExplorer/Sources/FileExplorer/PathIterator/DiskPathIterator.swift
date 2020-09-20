@@ -6,25 +6,43 @@
 import Foundation
 
 /// An Iterator that enumerates the contents of a directory.
-internal struct DiskPathIterator: PathIterator {
+public struct DiskPathIterator: PathIterator {
     private let directoryEnumerator: FileManager.DirectoryEnumerator
     
-    internal init?(directoryURL: URL, isSkipsHiddenFiles: Bool, fileManager: FileManager = .default) {
-        let options: FileManager.DirectoryEnumerationOptions = isSkipsHiddenFiles ? .skipsHiddenFiles : []
-        
-        guard let directoryEnumerator = fileManager.enumerator(
-            at: directoryURL,
-            includingPropertiesForKeys: [URLResourceKey.isDirectoryKey],
-            options: options
-            ) else { return nil }
-        
+    public init?(configuration: Configuration, fileManager: FileManager = .default) {
+        guard let directoryEnumerator = fileManager.createDirectoryEnumerator(with: configuration) else { return nil }
         self.directoryEnumerator = directoryEnumerator
     }
     
     /// The next element in the underlying sequence, if a next element
     /// exists; otherwise, `nil`.
-    internal mutating func next() -> URL? {
+    public mutating func next() -> URL? {
         directoryEnumerator.nextObject() as? URL
     }
-    
+}
+
+extension DiskPathIterator {
+    public struct Configuration {
+        public let directoryURL: URL
+        public let isSkipsHiddenFiles: Bool
+        
+        public init(directoryURL: URL, isSkipsHiddenFiles: Bool) {
+            self.directoryURL = directoryURL
+            self.isSkipsHiddenFiles = isSkipsHiddenFiles
+        }
+    }
+}
+
+extension FileManager {
+    fileprivate func createDirectoryEnumerator(with config: DiskPathIterator.Configuration) -> FileManager.DirectoryEnumerator? {
+        let options: FileManager.DirectoryEnumerationOptions = config.isSkipsHiddenFiles ? .skipsHiddenFiles : []
+        
+        guard let directoryEnumerator = enumerator(
+            at: config.directoryURL,
+            includingPropertiesForKeys: [URLResourceKey.isDirectoryKey],
+            options: options
+            ) else { return nil }
+        
+        return directoryEnumerator
+    }
 }
