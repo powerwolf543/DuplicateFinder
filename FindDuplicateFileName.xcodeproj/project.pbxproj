@@ -3,19 +3,18 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		25263C4B2513AA9000FC9F80 /* SearchFileNameResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25263C442513AA8F00FC9F80 /* SearchFileNameResultViewController.swift */; };
 		25263C4C2513AA9000FC9F80 /* SelectDirectoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25263C452513AA8F00FC9F80 /* SelectDirectoryViewController.swift */; };
 		25263C4D2513AA9000FC9F80 /* SearchPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25263C462513AA8F00FC9F80 /* SearchPreferences.swift */; };
-		25263C4E2513AA9000FC9F80 /* SearchFileBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25263C472513AA8F00FC9F80 /* SearchFileBrain.swift */; };
 		25263C4F2513AA9000FC9F80 /* LogoInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25263C482513AA8F00FC9F80 /* LogoInfoViewController.swift */; };
-		25263C502513AA9000FC9F80 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25263C492513AA8F00FC9F80 /* SearchResult.swift */; };
 		25263C512513AA9000FC9F80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25263C4A2513AA9000FC9F80 /* AppDelegate.swift */; };
 		25872C052513A56900E42E11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25872C042513A56900E42E11 /* Assets.xcassets */; };
 		25872C082513A56900E42E11 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25872C062513A56900E42E11 /* Main.storyboard */; };
+		259713E7251A402B0074093F /* FileExplorer in Frameworks */ = {isa = PBXBuildFile; productRef = 259713E6251A402B0074093F /* FileExplorer */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,9 +22,7 @@
 		25263C442513AA8F00FC9F80 /* SearchFileNameResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchFileNameResultViewController.swift; sourceTree = "<group>"; };
 		25263C452513AA8F00FC9F80 /* SelectDirectoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectDirectoryViewController.swift; sourceTree = "<group>"; };
 		25263C462513AA8F00FC9F80 /* SearchPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchPreferences.swift; sourceTree = "<group>"; };
-		25263C472513AA8F00FC9F80 /* SearchFileBrain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchFileBrain.swift; sourceTree = "<group>"; };
 		25263C482513AA8F00FC9F80 /* LogoInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoInfoViewController.swift; sourceTree = "<group>"; };
-		25263C492513AA8F00FC9F80 /* SearchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		25263C4A2513AA9000FC9F80 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		25872BFD2513A56800E42E11 /* FindDuplicateFileName.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindDuplicateFileName.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		25872C042513A56900E42E11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -39,6 +36,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				259713E7251A402B0074093F /* FileExplorer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,6 +49,7 @@
 				25872BFF2513A56800E42E11 /* FindDuplicateFileName */,
 				25263C432513AA3300FC9F80 /* FileExplorer */,
 				25872BFE2513A56800E42E11 /* Products */,
+				259713E5251A402B0074093F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,10 +66,8 @@
 			children = (
 				25263C4A2513AA9000FC9F80 /* AppDelegate.swift */,
 				25263C482513AA8F00FC9F80 /* LogoInfoViewController.swift */,
-				25263C472513AA8F00FC9F80 /* SearchFileBrain.swift */,
 				25263C442513AA8F00FC9F80 /* SearchFileNameResultViewController.swift */,
 				25263C462513AA8F00FC9F80 /* SearchPreferences.swift */,
-				25263C492513AA8F00FC9F80 /* SearchResult.swift */,
 				25263C452513AA8F00FC9F80 /* SelectDirectoryViewController.swift */,
 				25872C042513A56900E42E11 /* Assets.xcassets */,
 				25872C062513A56900E42E11 /* Main.storyboard */,
@@ -78,6 +75,13 @@
 				25872C0A2513A56900E42E11 /* FindDuplicateFileName.entitlements */,
 			);
 			path = FindDuplicateFileName;
+			sourceTree = "<group>";
+		};
+		259713E5251A402B0074093F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -96,6 +100,9 @@
 			dependencies = (
 			);
 			name = FindDuplicateFileName;
+			packageProductDependencies = (
+				259713E6251A402B0074093F /* FileExplorer */,
+			);
 			productName = FindDuplicateFileName;
 			productReference = 25872BFD2513A56800E42E11 /* FindDuplicateFileName.app */;
 			productType = "com.apple.product-type.application";
@@ -151,8 +158,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				25263C512513AA9000FC9F80 /* AppDelegate.swift in Sources */,
-				25263C4E2513AA9000FC9F80 /* SearchFileBrain.swift in Sources */,
-				25263C502513AA9000FC9F80 /* SearchResult.swift in Sources */,
 				25263C4B2513AA9000FC9F80 /* SearchFileNameResultViewController.swift in Sources */,
 				25263C4F2513AA9000FC9F80 /* LogoInfoViewController.swift in Sources */,
 				25263C4D2513AA9000FC9F80 /* SearchPreferences.swift in Sources */,
@@ -349,6 +354,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		259713E6251A402B0074093F /* FileExplorer */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FileExplorer;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 25872BF52513A56800E42E11 /* Project object */;
 }

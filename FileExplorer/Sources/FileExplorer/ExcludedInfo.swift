@@ -11,4 +11,9 @@ public struct ExcludedInfo {
     public var fileNames: Set<String> = []
     /// A `URL` set that includes all the paths of directories which need to be excluded
     public var directories: Set<URL> = []
+    
+    public init(fileNames: Set<String> = [], directories: Set<URL> = []) {
+        self.fileNames = fileNames
+        self.directories = directories
+    }
 }

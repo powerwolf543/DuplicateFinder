@@ -41,7 +41,7 @@ public final class FileExplorer {
     /// Creates a `FileExplorer` with some settings.
     /// - Parameters:
     ///   - excludedInfo: The informations that includes all file paths and directory paths which need to exclude.
-    internal init(excludedInfo: ExcludedInfo = ExcludedInfo()) {
+    public init(excludedInfo: ExcludedInfo = ExcludedInfo()) {
         _state = .idle
         self.pathValidator = PathValidator(excludedInfo: excludedInfo)
         accessQueue = DispatchQueue(label: "net.nixondesign.FindDuplicateFileName.FileExplorer.access")
@@ -66,8 +66,8 @@ public final class FileExplorer {
     public func findDuplicatedFile(with diskPathIterator: PathIterator, completionHandler: @escaping (_ result: Result<[URL], FileExplorerError>) -> Void) {
         guard state == .idle else { return }
         
-        state = .searching(.group)
         DispatchQueue.global().async {
+            self.state = .searching(.group)
             let groupedList = self.groupListByName(with: diskPathIterator)
             
             self.state = .searching(.checkDuplicated)
