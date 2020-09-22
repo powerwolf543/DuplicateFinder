@@ -11,20 +11,26 @@ final class FileExplorerTests: XCTestCase {
         let input: [URL] = testData
         
         let pathIterator = MockPathIterator(urls: input)
-        let explorer = FileExplorer(diskPathIterator: pathIterator)
+        let explorer = FileExplorer()
         
         let searchExpectation = expectation(description: "The search should be done.")
         
-        explorer.findDuplicatedFile { paths in
-            let outputs = paths.reduce(into: Set<URL>()) { $0.insert($1) }
-            let expectedResult: Set<URL> = [
-                URL(string: "file:///home/a.swift")!,
-                URL(string: "file:///home/path/a.swift")!,
-                URL(string: "file:///home/b.swift")!,
-                URL(string: "file:///home/path/b.swift")!,
-                URL(string: "file:///home/path/path/b.swift")!,
-            ]
-            XCTAssertEqual(outputs, expectedResult)
+        explorer.findDuplicatedFile(with: pathIterator) { result in
+            switch result {
+            case .success(let paths):
+                let outputs = paths.reduce(into: Set<URL>()) { $0.insert($1) }
+                let expectedResult: Set<URL> = [
+                    URL(string: "file:///home/a.swift")!,
+                    URL(string: "file:///home/path/a.swift")!,
+                    URL(string: "file:///home/b.swift")!,
+                    URL(string: "file:///home/path/b.swift")!,
+                    URL(string: "file:///home/path/path/b.swift")!,
+                ]
+                XCTAssertEqual(outputs, expectedResult)
+                
+            case .failure:
+                XCTFail("This case should be success.")
+            }
             searchExpectation.fulfill()
         }
         
@@ -36,18 +42,24 @@ final class FileExplorerTests: XCTestCase {
         
         let pathIterator = MockPathIterator(urls: input)
         let excludedInfo = ExcludedInfo(fileNames: ["a.swift"])
-        let explorer = FileExplorer(diskPathIterator: pathIterator, excludedInfo: excludedInfo)
+        let explorer = FileExplorer(excludedInfo: excludedInfo)
         
         let searchExpectation = expectation(description: "The search should be done.")
         
-        explorer.findDuplicatedFile { paths in
-            let outputs = paths.reduce(into: Set<URL>()) { $0.insert($1) }
-            let expectedResult: Set<URL> = [
-                URL(string: "file:///home/b.swift")!,
-                URL(string: "file:///home/path/b.swift")!,
-                URL(string: "file:///home/path/path/b.swift")!,
-            ]
-            XCTAssertEqual(outputs, expectedResult)
+        explorer.findDuplicatedFile(with: pathIterator) { result in
+            switch result {
+            case .success(let paths):
+                let outputs = paths.reduce(into: Set<URL>()) { $0.insert($1) }
+                let expectedResult: Set<URL> = [
+                    URL(string: "file:///home/b.swift")!,
+                    URL(string: "file:///home/path/b.swift")!,
+                    URL(string: "file:///home/path/path/b.swift")!,
+                ]
+                XCTAssertEqual(outputs, expectedResult)
+                
+            case .failure:
+                XCTFail("This case should be success.")
+            }
             searchExpectation.fulfill()
         }
         
@@ -59,17 +71,23 @@ final class FileExplorerTests: XCTestCase {
         
         let pathIterator = MockPathIterator(urls: input)
         let excludedInfo = ExcludedInfo(directories: [URL(string: "file:///home/path/")!])
-        let explorer = FileExplorer(diskPathIterator: pathIterator, excludedInfo: excludedInfo)
+        let explorer = FileExplorer(excludedInfo: excludedInfo)
         
         let searchExpectation = expectation(description: "The search should be done.")
         
-        explorer.findDuplicatedFile { paths in
-            let outputs = paths.reduce(into: Set<URL>()) { $0.insert($1) }
-            let expectedResult: Set<URL> = [
-                URL(string: "file:///home/a.swift")!,
-                URL(string: "file:///home/b.swift")!,
-            ]
-            XCTAssertEqual(outputs, expectedResult)
+        explorer.findDuplicatedFile(with: pathIterator) { result in
+            switch result {
+            case .success(let paths):
+                let outputs = paths.reduce(into: Set<URL>()) { $0.insert($1) }
+                      let expectedResult: Set<URL> = [
+                          URL(string: "file:///home/a.swift")!,
+                          URL(string: "file:///home/b.swift")!,
+                      ]
+                      XCTAssertEqual(outputs, expectedResult)
+                
+            case .failure:
+                XCTFail("This case should be success.")
+            }
             searchExpectation.fulfill()
         }
         
@@ -89,10 +107,10 @@ final class FileExplorerTests: XCTestCase {
             ]
         ]
         
+        let explorer = FileExplorer()
         let pathIterator = MockPathIterator(urls: groupedList.flatMap({ $0.value }))
-        let explorer = FileExplorer(diskPathIterator: pathIterator)
         
-        let result = explorer.groupListByName()
+        let result = explorer.groupListByName(with: pathIterator)
         
         XCTAssertEqual(result, groupedList)
     }

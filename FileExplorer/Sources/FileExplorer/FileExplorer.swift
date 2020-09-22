@@ -34,28 +34,41 @@ public final class FileExplorer {
     
     public var onStateChange: ((State) -> Void)?
     
-    internal private(set) var diskPathIterator: PathIterator
-
     private let pathValidator: PathValidator
     private var _state: State
     private let accessQueue: DispatchQueue
     
-    internal init(diskPathIterator: PathIterator, excludedInfo: ExcludedInfo = ExcludedInfo()) {
+    /// Creates a `FileExplorer` with some settings.
+    /// - Parameters:
+    ///   - excludedInfo: The informations that includes all file paths and directory paths which need to exclude.
+    internal init(excludedInfo: ExcludedInfo = ExcludedInfo()) {
         _state = .idle
-        self.diskPathIterator = diskPathIterator
         self.pathValidator = PathValidator(excludedInfo: excludedInfo)
         accessQueue = DispatchQueue(label: "net.nixondesign.FindDuplicateFileName.FileExplorer.access")
     }
     
     /// Finds all duplicated file names in the specific directory
+    /// - Parameter directoryURL: A directory url that you want to search.
+    /// - Parameter isSkipsHiddenFiles: Pass `true` to skip the hidden files.
+    /// - Parameter completionHandler: The callback that will be called on the search completion. 
+    public func findDuplicatedFile(at directoryURL: URL, isSkipsHiddenFiles: Bool = true, completionHandler: @escaping (_ result: Result<[URL], FileExplorerError>) -> Void) {
+        guard let pathIterator = DiskPathIterator(directoryURL: directoryURL, isSkipsHiddenFiles: isSkipsHiddenFiles) else {
+            completionHandler(.failure(FileExplorerError.searchFail))
+            return
+        }
+        
+        findDuplicatedFile(with: pathIterator, completionHandler: completionHandler)
+    }
+    
+    /// Finds all duplicated file names in the specific directory
+    /// - Parameter diskPathIterator: A path iterator that aids with enumerating the whole directory.
     /// - Parameter completionHandler: The callback that will be called on the search completion.
-    /// - Parameter duplicatedFiles: A `URL` array that includes all the duplicated files which represents the search result
-    public func findDuplicatedFile(completionHandler: @escaping (_ duplicatedFiles: [URL]) -> Void) {
+    public func findDuplicatedFile(with diskPathIterator: PathIterator, completionHandler: @escaping (_ result: Result<[URL], FileExplorerError>) -> Void) {
         guard state == .idle else { return }
         
         state = .searching(.group)
         DispatchQueue.global().async {
-            let groupedList = self.groupListByName()
+            let groupedList = self.groupListByName(with: diskPathIterator)
             
             self.state = .searching(.checkDuplicated)
             let duplicatedFiles = groupedList.filter { $0.value.count > 1 }
@@ -67,7 +80,7 @@ public final class FileExplorer {
             let result = flatDuplicatedFiles.filter { !self.pathValidator.verifyPathNeedExcluded($0) }
             
             self.state = .finish
-            completionHandler(result)
+            completionHandler(.success(result))
         }
     }
     
@@ -76,7 +89,7 @@ public final class FileExplorer {
         state = .finish
     }
     
-    internal func groupListByName() -> [String: Set<URL>] {
+    internal func groupListByName(with diskPathIterator: PathIterator) -> [String: Set<URL>] {
         var result: [String: Set<URL>] = [:]
         
         while let path = diskPathIterator.next() {

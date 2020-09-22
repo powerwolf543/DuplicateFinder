@@ -6,5 +6,5 @@
 import Foundation
 
 public protocol PathIterator {
-    mutating func next() -> URL?
+    func next() -> URL?
 }

@@ -6,14 +6,14 @@
 @testable import FileExplorer
 import Foundation
 
-struct MockPathIterator: PathIterator {
+final class MockPathIterator: PathIterator {
     var urlIterator: IndexingIterator<[URL]>?
     
     init(urls: [URL]) {
         urlIterator = urls.makeIterator()
     }
     
-    mutating func next() -> URL? {
+    func next() -> URL? {
         urlIterator?.next()
     }
 }
