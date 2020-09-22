@@ -1,7 +1,7 @@
 [![swift](https://img.shields.io/badge/language-swift-red.svg)](https://developer.apple.com/swift/) 
 [![OSX](https://img.shields.io/badge/platform-MacOS-brown.svg)](https://developer.apple.com/swift/)
 [![](https://github.com/powerwolf543/FindDuplicateFileName/workflows/UnitTests/badge.svg)](https://github.com/powerwolf543/FindDuplicateFileName/actions?query=workflow%3AUnitTests) 
-[![codecov](https://codecov.io/gh/powerwolf543/FindDuplicateFileName/branch/master/graph/badge.svg)](https://codecov.io/gh/powerwolf543/FindDuplicateFileName)
+[![codecov](https://codecov.io/gh/powerwolf543/FindDuplicateFileName/branch/master/graph/badge.svg)](https://codecov.io/gh/powerwolf543/FindDuplicateFileName/)
 [![SwiftPM Compatible](https://img.shields.io/badge/SwiftPM-compatible-4BC51D.svg?style=flat)](https://github.com/apple/swift-package-manager)
 
 
@@ -18,7 +18,7 @@ It's a useful tool that would help you to find all duplicate files in the specif
 
 ## Requirements
 
-- Xcode 12
+- Xcode 11.7
 - Swift 5.2
 - MacOS 10.15+
 

@@ -9,7 +9,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Added
-- Localization
+- New module of FileExplorer
+### Updated
+- Support Swift 5.2
+### Removed
+- SearchFileBrain
 
 ## [1.5.0] - 2018-12-11
 ### Updated
