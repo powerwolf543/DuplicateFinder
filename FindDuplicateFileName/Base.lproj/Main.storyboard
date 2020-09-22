@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097.2"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -87,7 +86,7 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="CheckDuplicateFileName" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="FindDuplicateFileName" customModuleProvider="target"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="92" y="-160"/>
@@ -116,7 +115,7 @@
         <!--Select Directory View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="SelectDirectoryViewController" customModule="CheckDuplicateFileName" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XfG-lQ-9wD" customClass="SelectDirectoryViewController" customModule="FindDuplicateFileName" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="510" height="437"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -411,7 +410,7 @@
         <!--Logo Info View Controller-->
         <scene sceneID="XE4-9r-jX4">
             <objects>
-                <viewController id="Me5-Ig-8Zm" customClass="LogoInfoViewController" customModule="CheckDuplicateFileName" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Me5-Ig-8Zm" customClass="LogoInfoViewController" customModule="FindDuplicateFileName" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="RBd-p6-DWW">
                         <rect key="frame" x="0.0" y="0.0" width="190" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -510,19 +509,19 @@
         <!--Search File Name Result View Controller-->
         <scene sceneID="89e-Ut-xAm">
             <objects>
-                <viewController id="rZF-QJ-B0D" customClass="SearchFileNameResultViewController" customModule="CheckDuplicateFileName" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="rZF-QJ-B0D" customClass="SearchFileNameResultViewController" customModule="FindDuplicateFileName" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="6Fw-Cu-BO1">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="102"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="276"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F8p-To-uAl">
-                                <rect key="frame" x="0.0" y="0.0" width="480" height="26"/>
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="200"/>
                                 <clipView key="contentView" id="Z9Q-dm-Toi">
-                                    <rect key="frame" x="1" y="0.0" width="478" height="25"/>
+                                    <rect key="frame" x="1" y="0.0" width="478" height="199"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="UGx-eJ-bHP" viewBased="YES" id="V9K-Tj-KoN">
-                                            <rect key="frame" x="0.0" y="0.0" width="478" height="19"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="478" height="176"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -604,6 +603,9 @@
                                         </tableView>
                                     </subviews>
                                 </clipView>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="200" id="4nv-Jg-S4z"/>
+                                </constraints>
                                 <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="Deh-dQ-au3">
                                     <rect key="frame" x="1" y="119" width="223" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
@@ -618,7 +620,7 @@
                                 </tableHeaderView>
                             </scrollView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LjT-vI-58e">
-                                <rect key="frame" x="222" y="56" width="37" height="16"/>
+                                <rect key="frame" x="222" y="230" width="37" height="16"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="oqt-N3-xVg">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -626,7 +628,7 @@
                                 </textFieldCell>
                             </textField>
                             <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="JWQ-YD-GMB">
-                                <rect key="frame" x="287" y="56" width="16" height="16"/>
+                                <rect key="frame" x="287" y="230" width="16" height="16"/>
                             </progressIndicator>
                         </subviews>
                         <constraints>
@@ -648,7 +650,7 @@
                 </viewController>
                 <customObject id="dH0-1Y-wQU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="807" y="680"/>
+            <point key="canvasLocation" x="807" y="736"/>
         </scene>
     </scenes>
     <resources>

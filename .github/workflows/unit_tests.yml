@@ -1,0 +1,30 @@
+name: UnitTests
+
+on: 
+  push: 
+    branches:
+      - '**'
+
+jobs:
+  swiftpm_tests:
+    name: ${{ matrix.scheme }} tests
+    runs-on: macos-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        scheme: ["FileExplorer"]
+        xcode: ["11.7"]
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Select Xcode ${{ matrix.xcode }}
+      run: sudo xcode-select --switch /Applications/Xcode_${{ matrix.xcode }}.app
+
+    - name: ${{ matrix.scheme }} tests
+      run: xcodebuild test -scheme ${{ matrix.scheme }} -destination 'platform=OS X,arch=x86_64' -enableCodeCoverage YES
+    
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v1
+      with:
+        fail_ci_if_error: true
