@@ -7,6 +7,6 @@ import Foundation
 
 /// A protocol that defines the interface to store and retrieve value.
 public protocol StoredContainer {
-    func store(_ value: Data, for key: String)
+    mutating func store(_ value: Data, for key: String)
     func retrieve(for key: String) -> Data?
 }

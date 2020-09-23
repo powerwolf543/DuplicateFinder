@@ -11,19 +11,20 @@ public final class Storage<Value> where Value: Codable {
     public var wrappedValue: Value {
         get {
             guard let data = projectedValue.retrieve(for: key),
-                let value = try? JSONDecoder().decode(Value.self, from: data)
+                let valueContainer = try? JSONDecoder().decode(WrappedValueContainer<Value>.self, from: data)
                 else { return defaultValue }
-            return value
+            return valueContainer.value
         }
         set {
-            guard let data = try? JSONEncoder().encode(newValue) else { return }
+            let valueContainer = WrappedValueContainer(value: newValue)
+            guard let data = try? JSONEncoder().encode(valueContainer) else { return }
             projectedValue.store(data, for: key)
         }
     }
     
     public let key: String
     public let defaultValue: Value
-    public let projectedValue: StoredContainer
+    public private(set) var projectedValue: StoredContainer
     
     /// Creates `Storage` to store the value.
     /// - Parameters:
@@ -37,3 +38,6 @@ public final class Storage<Value> where Value: Codable {
     }
 }
 
+internal struct WrappedValueContainer<T>: Codable where T: Codable {
+    internal let value: T
+}
