@@ -2,4 +2,4 @@ ignore:
   - "FileExplorer/Sources/FileExplorer/PathIterator/DiskPathIterator.swift"
   - "FileExplorer/Tests/**/*"
   - "Utils/Tests/**/*"
-  - "Utils/Sources/Utils/Storage/UserDefaults+StoredContainer.swift"
+  - "Utils/Sources/Utils/Storage/UserDefaults*.swift"
