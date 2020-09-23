@@ -29,7 +29,7 @@
 		25872C072513A56900E42E11 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		25872C092513A56900E42E11 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25872C0A2513A56900E42E11 /* FindDuplicateFileName.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FindDuplicateFileName.entitlements; sourceTree = "<group>"; };
-		259713E8251A48AF0074093F /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
+		25A2E517251B912200DF39E5 /* Utils */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Utils; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +49,7 @@
 			children = (
 				25872BFF2513A56800E42E11 /* FindDuplicateFileName */,
 				25263C432513AA3300FC9F80 /* FileExplorer */,
+				25A2E517251B912200DF39E5 /* Utils */,
 				25872BFE2513A56800E42E11 /* Products */,
 				259713E5251A402B0074093F /* Frameworks */,
 			);
@@ -174,7 +175,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				25872C072513A56900E42E11 /* Base */,
-				259713E8251A48AF0074093F /* zh-Hant */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
