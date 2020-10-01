@@ -13,8 +13,11 @@
 		25263C4F2513AA9000FC9F80 /* LogoInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25263C482513AA8F00FC9F80 /* LogoInfoViewController.swift */; };
 		25263C512513AA9000FC9F80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25263C4A2513AA9000FC9F80 /* AppDelegate.swift */; };
 		25872C052513A56900E42E11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25872C042513A56900E42E11 /* Assets.xcassets */; };
-		25872C082513A56900E42E11 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25872C062513A56900E42E11 /* Main.storyboard */; };
+		2588F086251CF59200B7D491 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2588F084251CF59200B7D491 /* Main.storyboard */; };
 		259713E7251A402B0074093F /* FileExplorer in Frameworks */ = {isa = PBXBuildFile; productRef = 259713E6251A402B0074093F /* FileExplorer */; };
+		25E48C1D251BC1560047EFBC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 25E48C1F251BC1560047EFBC /* Localizable.strings */; };
+		25E48C23251BC1AF0047EFBC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 25E48C25251BC1AF0047EFBC /* InfoPlist.strings */; };
+		25F1678C251BC4CD0066DEAB /* Utils in Frameworks */ = {isa = PBXBuildFile; productRef = 25F1678B251BC4CD0066DEAB /* Utils */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,10 +29,15 @@
 		25263C4A2513AA9000FC9F80 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		25872BFD2513A56800E42E11 /* FindDuplicateFileName.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindDuplicateFileName.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		25872C042513A56900E42E11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		25872C072513A56900E42E11 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		25872C092513A56900E42E11 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25872C0A2513A56900E42E11 /* FindDuplicateFileName.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FindDuplicateFileName.entitlements; sourceTree = "<group>"; };
+		2588F085251CF59200B7D491 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		25A2E517251B912200DF39E5 /* Utils */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Utils; sourceTree = "<group>"; };
+		25D16C3825250286009AB7DC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		25E48C1E251BC1560047EFBC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		25E48C20251BC1590047EFBC /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		25E48C24251BC1AF0047EFBC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		25E48C26251BC1B00047EFBC /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25F1678C251BC4CD0066DEAB /* Utils in Frameworks */,
 				259713E7251A402B0074093F /* FileExplorer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -71,8 +80,10 @@
 				25263C442513AA8F00FC9F80 /* SearchFileNameResultViewController.swift */,
 				25263C462513AA8F00FC9F80 /* SearchPreferences.swift */,
 				25263C452513AA8F00FC9F80 /* SelectDirectoryViewController.swift */,
+				2588F084251CF59200B7D491 /* Main.storyboard */,
+				25E48C25251BC1AF0047EFBC /* InfoPlist.strings */,
+				25E48C1F251BC1560047EFBC /* Localizable.strings */,
 				25872C042513A56900E42E11 /* Assets.xcassets */,
-				25872C062513A56900E42E11 /* Main.storyboard */,
 				25872C092513A56900E42E11 /* Info.plist */,
 				25872C0A2513A56900E42E11 /* FindDuplicateFileName.entitlements */,
 			);
@@ -104,6 +115,7 @@
 			name = FindDuplicateFileName;
 			packageProductDependencies = (
 				259713E6251A402B0074093F /* FileExplorer */,
+				25F1678B251BC4CD0066DEAB /* Utils */,
 			);
 			productName = FindDuplicateFileName;
 			productReference = 25872BFD2513A56800E42E11 /* FindDuplicateFileName.app */;
@@ -149,7 +161,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				25872C052513A56900E42E11 /* Assets.xcassets in Resources */,
-				25872C082513A56900E42E11 /* Main.storyboard in Resources */,
+				25E48C23251BC1AF0047EFBC /* InfoPlist.strings in Resources */,
+				25E48C1D251BC1560047EFBC /* Localizable.strings in Resources */,
+				2588F086251CF59200B7D491 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,12 +185,31 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		25872C062513A56900E42E11 /* Main.storyboard */ = {
+		2588F084251CF59200B7D491 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				25872C072513A56900E42E11 /* Base */,
+				2588F085251CF59200B7D491 /* Base */,
+				25D16C3825250286009AB7DC /* en */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		25E48C1F251BC1560047EFBC /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				25E48C1E251BC1560047EFBC /* en */,
+				25E48C20251BC1590047EFBC /* zh-Hant */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		25E48C25251BC1AF0047EFBC /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				25E48C24251BC1AF0047EFBC /* en */,
+				25E48C26251BC1B00047EFBC /* zh-Hant */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -364,6 +397,10 @@
 		259713E6251A402B0074093F /* FileExplorer */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = FileExplorer;
+		};
+		25F1678B251BC4CD0066DEAB /* Utils */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Utils;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
