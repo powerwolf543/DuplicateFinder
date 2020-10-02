@@ -4,10 +4,15 @@
 //
 
 import Cocoa
+import Utils
 
-class LogoInfoViewController: NSViewController {
+internal class LogoInfoViewController: NSViewController {
     
-    @IBOutlet private weak var saveSearchSettingsSegmentedControl: NSSegmentedControl!
+    @IBOutlet private weak var savePreferenceCheckBox: NSButton! {
+        didSet {
+            savePreferenceCheckBox.title = "save_preference_check_box_title".localized
+        }
+    }
     
     // MARK: - ViewController Life Cycle
     
@@ -20,20 +25,16 @@ class LogoInfoViewController: NSViewController {
     
     private func prepareUI() {
         let isEnable = SearchPreferences.shared.isStorageEnable
-        saveSearchSettingsSegmentedControl.setSelected(true, forSegment: isEnable ? 1 : 0 )
+        savePreferenceCheckBox.state = isEnable ? .on : .off
     }
     
     // MARK: - Event
     
-    @IBAction func saveSearchSegmentControlPressed(_ sender: NSSegmentedControl) {
-        switch sender.selectedSegment {
-        case 0:
-            SearchPreferences.shared.isStorageEnable = false
-        case 1:
-            SearchPreferences.shared.isStorageEnable = true
-        default:
-            fatalError("Unknown selection.")
+    @IBAction func didClickPreferenceButton(_ sender: NSButton) {
+        switch sender.state {
+        case .on: SearchPreferences.shared.isStorageEnable = true
+        case .off: SearchPreferences.shared.isStorageEnable = false
+        default: assertionFailure("Unknown case")
         }
     }
-    
 }
