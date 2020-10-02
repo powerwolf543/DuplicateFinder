@@ -44,7 +44,7 @@ public final class FileExplorer {
     public init(excludedInfo: ExcludedInfo = ExcludedInfo()) {
         _state = .idle
         self.pathValidator = PathValidator(excludedInfo: excludedInfo)
-        accessQueue = DispatchQueue(label: "net.nixondesign.FindDuplicateFileName.FileExplorer.access")
+        accessQueue = DispatchQueue(label: "net.nixondesign.DuplicateFinder.FileExplorer.access")
     }
     
     /// Finds all duplicated file names in the specific directory

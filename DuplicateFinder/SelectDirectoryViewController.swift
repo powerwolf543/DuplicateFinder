@@ -6,94 +6,98 @@
 import Cocoa
 import Utils
 
-class SelectDirectoryViewController: NSViewController,NSWindowDelegate {
-    
-    @IBOutlet private weak var titleLabel: NSTextField! {
+internal class SelectDirectoryViewController: NSViewController,NSWindowDelegate {
+    @IBOutlet
+    private weak var titleLabel: NSTextField! {
         didSet { titleLabel.stringValue = "setup_page_title".localized }
     }
     
-    @IBOutlet private weak var filePathTextField: NSTextField! {
+    @IBOutlet
+    private weak var filePathTextField: NSTextField! {
         didSet { filePathTextField.placeholderString = "setup_page_choose_folder_text_field_placehodler".localized }
     }
     
-    @IBOutlet private weak var checkButton: NSButton! {
+    @IBOutlet
+    private weak var checkButton: NSButton! {
         didSet { checkButton.title = "setup_page_check_button_title".localized }
     }
     
-    @IBOutlet weak var excludedFolderTitleLabel: NSTextField! {
+    @IBOutlet
+    private weak var excludedFolderTitleLabel: NSTextField! {
         didSet { excludedFolderTitleLabel.stringValue = "setup_page_excluded_folder_field_title".localized }
     }
     
-    @IBOutlet weak var excludedNamesTitleLabel: NSTextField! {
+    @IBOutlet
+    private weak var excludedNamesTitleLabel: NSTextField! {
         didSet { excludedNamesTitleLabel.stringValue = "setup_page_excluded_names_field_title".localized }
     }
     
-    @IBOutlet private weak var excludeFolderTableView: NSTableView! {
+    @IBOutlet
+    private weak var excludeFolderTableView: NSTableView! {
         didSet {
             excludeFolderTableView.tableColumns.first?.title = "setup_page_excluded_folder_table_column_title".localized
         }
     }
     
-    @IBOutlet private weak var excludeFileNameTableView: NSTableView! {
+    @IBOutlet
+    private weak var excludeFileNameTableView: NSTableView! {
         didSet {
             excludeFileNameTableView.tableColumns.first?.title = "setup_page_excluded_names_table_column_title".localized
         }
     }
     
-    @IBOutlet private weak var excludeFileNameTextField: NSTextField! {
+    @IBOutlet
+    private weak var excludeFileNameTextField: NSTextField! {
         didSet {
             excludeFileNameTextField.placeholderString = "setup_page_excluded_names_text_field_placehodler".localized
         }
     }
     
-    @IBOutlet private weak var addFolderSegmentControl: NSSegmentedControl!
-    @IBOutlet private weak var addExcludeFileNameSegmentControl: NSSegmentedControl!
-    
-    /** excludeFolderTableView's dataSource 如果沒有資料的時候，讓 addFolderSegmentControl 的減號設為 disable。 */
-    private var excludeFolderDataSource = [String]() {
+    @IBOutlet private weak var excludedPathsSegmentControl: NSSegmentedControl!
+    @IBOutlet private weak var excludedFileNamesSegmentControl: NSSegmentedControl!
+        
+    private var excludePaths = [URL]() {
         didSet {
-            if excludeFolderDataSource.count <= 0 {
-                addFolderSegmentControl.setEnabled(false, forSegment: 1)
-            }
-            SearchPreferences.shared.excludeFolders = excludeFolderDataSource
+            excludedPathsSegmentControl.setEnabled(excludePaths.count > 0, forSegment: 1)
+            SearchPreference.shared.excludedPaths = excludePaths
         }
     }
     
-    /** excludeFileNameTableView's dataSource 如果沒有資料的時候，讓 addExcludeFileNameSegmentControl 的減號設為 disable。 */
-    private var excludeFileNameDataSource = [String]() {
+    private var excludedFileNames = [String]() {
         didSet {
-            if excludeFileNameDataSource.count <= 0 {
-                addExcludeFileNameSegmentControl.setEnabled(false, forSegment: 1)
-            }
-            SearchPreferences.shared.excludeFileNames = excludeFileNameDataSource
+            excludedFileNamesSegmentControl.setEnabled(excludedFileNames.count > 0, forSegment: 1)
+            SearchPreference.shared.excludedFileNames = excludedFileNames
         }
     }
     
-    /** excludeFolderTableView 當前選擇的 index */
     private var excludeFolderTableViewSelectedRow: Int?
-    /** excludeFileNameTableView 當前選擇的 index */
     private var excludeFileNameTableViewSelectedRow: Int?
-    private var searchResultWindowController:NSWindowController?
+    private var searchResultWindowController: NSWindowController?
     
-    // MARK: - ViewController Life Cycle
+    // MARK: - Override
     
-    override func viewDidLoad() {
+    internal override func viewDidLoad() {
         super.viewDidLoad()
         prepareUI()
     }
     
-    override func viewWillAppear() {
+    internal override func viewWillAppear() {
+        super.viewWillAppear()
         view.window?.delegate = self
     }
     
-    // MARK: - UI
+    // MARK: -
     
+    internal func windowWillClose(_ notification: Notification) {
+        NSApp.terminate(self)
+    }
+        
     private func prepareUI() {
         let gesture = NSClickGestureRecognizer()
         gesture.buttonMask = 0x1 // left mouse
         gesture.numberOfClicksRequired = 1
         gesture.target = self
-        gesture.action = #selector(SelectDirectoryViewController.filePathTextFieldClicked(_:))
+        gesture.action = #selector(SelectDirectoryViewController.didClickFilePathTextField(_:))
         filePathTextField.addGestureRecognizer(gesture)
         
         excludeFolderTableView.dataSource = self
@@ -102,132 +106,83 @@ class SelectDirectoryViewController: NSViewController,NSWindowDelegate {
         excludeFileNameTableView.dataSource = self
         excludeFileNameTableView.delegate = self
         
-        let searchPreferences = SearchPreferences.shared
-        if searchPreferences.isStorageEnable {
-            if let directoryPath = searchPreferences.directoryPath {
-                filePathTextField.stringValue = directoryPath
-            }
-            if let excludeFolders = searchPreferences.excludeFolders {
-                excludeFolderDataSource = excludeFolders
-            }
-            if let excludeFileNames = searchPreferences.excludeFileNames {
-                excludeFileNameDataSource = excludeFileNames
-            }
-        }
+        let searchPreferenceManager = SearchPreference.shared
+        filePathTextField.stringValue = searchPreferenceManager.targetPath?.absoluteString ?? ""
+        excludePaths = searchPreferenceManager.excludedPaths
+        excludedFileNames = searchPreferenceManager.excludedFileNames
     }
     
     // MARK: - Event
     
-    /** 0 為新增 1 為刪除 */
-    @IBAction func addFolderSegmentPressed(_ sender: NSSegmentedControl) {
-        
-        switch sender.selectedSegment {
-        case 0:
-            if sender == addFolderSegmentControl {
-                let folderPath = getFolderPathFromFinder()
-                if let folderPath = folderPath {
-                    dataSourceAdd(Data: folderPath, Sender: sender)
-                }
-            }else if sender == addExcludeFileNameSegmentControl {
-                if excludeFileNameTextField.stringValue != "" {
-                    dataSourceAdd(Data: excludeFileNameTextField.stringValue, Sender: sender)
-                    excludeFileNameTextField.stringValue = ""
-                }
-            }
-            break
-        case 1:
-            var row: Int?
-            if sender == addFolderSegmentControl {
-                row = excludeFolderTableViewSelectedRow
-            }else if sender == addExcludeFileNameSegmentControl {
-                row = excludeFileNameTableViewSelectedRow
-            }
-            dataSourceDeleteAt(Row: row,Sender: sender)
-            break
-        default:
-            print("No this Option")
-            break
-        }
-    }
-    
-    @IBAction private func submitBtnPressed(_ sender: NSButton) {
-        
-        if filePathTextField.stringValue != "" {
-            print("Selected directorie -> \"\(filePathTextField.stringValue)\"")
-            
-            let mainStoryboard = NSStoryboard(name: NSStoryboard.Name("Main"), bundle: nil)
-            searchResultWindowController = mainStoryboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("SearchFileNameResultWindowSID")) as? NSWindowController
-            let searchFileNameResultVC = searchResultWindowController?.contentViewController as! SearchFileNameResultViewController
-            searchFileNameResultVC.directoryPath = filePathTextField.stringValue
-            searchFileNameResultVC.excludeFolders = excludeFolderDataSource
-            searchFileNameResultVC.excludeFileNames = excludeFileNameDataSource
-            searchResultWindowController?.showWindow(self)
-        }
-    }
-    
-    @objc private func filePathTextFieldClicked(_ sender: AnyObject) {
-        
-        let folderPath = getFolderPathFromFinder()
-        
-        if let folderPath = folderPath {
-            SearchPreferences.shared.directoryPath = folderPath
-            filePathTextField.stringValue = folderPath
-        }
-    }
-    
-    func windowWillClose(_ notification: Notification) {
-        //        searchResultWindowController?.close()
-        NSApp.terminate(self)
-    }
-    
-    // MARK: - File
-    
-    private func dataSourceAdd(Data data: String,Sender sender: NSSegmentedControl) {
-        if sender == addFolderSegmentControl {
-            excludeFolderDataSource.append(data)
+    /// sender.selectedSegment: 0 is appended, 1 is deleted
+    @IBAction
+    private func didChangeValueOfExcludeSegment(_ sender: NSSegmentedControl) {
+        switch (sender.selectedSegment, sender) {
+        case (0, excludedPathsSegmentControl):
+            guard let path = getFolderPathFromFinder() else { break }
+            excludePaths.append(path)
             excludeFolderTableView.reloadData()
-        }else if sender == addExcludeFileNameSegmentControl {
-            excludeFileNameDataSource.append(data)
+            
+        case (0, excludedFileNamesSegmentControl):
+            guard !excludeFileNameTextField.stringValue.isEmpty else { break }
+            excludedFileNames.append(excludeFileNameTextField.stringValue)
             excludeFileNameTableView.reloadData()
-        }
-    }
-    
-    private func dataSourceDeleteAt(Row row: Int?,Sender sender: NSSegmentedControl) {
-        
-        guard let row = row else { return }
-        
-        if sender == addFolderSegmentControl {
-            excludeFolderDataSource.remove(at: row)
+            excludeFileNameTextField.stringValue = ""
+            
+        case (1, excludedPathsSegmentControl):
+            guard let row = excludeFolderTableViewSelectedRow else { return }
+            excludePaths.remove(at: row)
             excludeFolderTableView.reloadData()
             excludeFolderTableViewSelectedRow = nil
-        }else if sender == addExcludeFileNameSegmentControl {
-            excludeFileNameDataSource.remove(at: row)
+            
+        case (1, excludedFileNamesSegmentControl):
+            guard let row = excludeFileNameTableViewSelectedRow else { return }
+            excludedFileNames.remove(at: row)
             excludeFileNameTableView.reloadData()
             excludeFileNameTableViewSelectedRow = nil
+            
+        default:
+            fatalError("Unknown option")
         }
     }
     
-    private func getFolderPathFromFinder() -> String? {
-        // 開啟檔案瀏覽器
-        let openPanel = NSOpenPanel()
+    @IBAction
+    private func didClickCheckButton(_ sender: NSButton) {
+        guard !filePathTextField.stringValue.isEmpty else {
+            NSAlert(error: DuplicateFinderError.targetFolderNotFound).runModal()
+            return
+        }
         
-        // 不允許多選檔案開啓
-        // 不允許選擇目錄開啓
+        print("Selected directorie -> \"\(SearchInfo.persisted.targetPath?.absoluteString ?? "")\"")
+        
+        searchResultWindowController = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("SearchFileNameResultWindowSID")) as? NSWindowController
+        let vc = searchResultWindowController?.contentViewController as! SearchFileNameResultViewController
+        vc.searchInfo = SearchInfo.persisted
+        searchResultWindowController?.showWindow(self)
+    }
+    
+    @objc
+    private func didClickFilePathTextField(_ sender: AnyObject) {
+        guard let targetPath = getFolderPathFromFinder() else { return }
+        
+        SearchPreference.shared.targetPath = targetPath
+        filePathTextField.stringValue = targetPath.absoluteString
+    }
+    
+    private func getFolderPathFromFinder() -> URL? {
+        // Open file browser
+        let openPanel = NSOpenPanel()
         openPanel.allowsMultipleSelection = false
         openPanel.canChooseDirectories = true
         openPanel.canChooseFiles = false
         
         let clickedResult = openPanel.runModal()
-        if clickedResult == NSApplication.ModalResponse.OK {
+        
+        guard clickedResult == NSApplication.ModalResponse.OK,
             let url = openPanel.urls.first
-            if let aURL = url {
-                return aURL.absoluteString
-            }
-            return nil
-        }
-        return nil
+            else { return nil }
+        return url
     }
-    
 }
 
 // MARK: - NSTableViewDataSource NSTableViewDelegate
@@ -235,9 +190,9 @@ extension SelectDirectoryViewController: NSTableViewDataSource, NSTableViewDeleg
     internal func numberOfRows(in tableView: NSTableView) -> Int {
         switch tableView {
         case excludeFolderTableView:
-            return excludeFolderDataSource.count
+            return excludePaths.count
         case excludeFileNameTableView:
-            return excludeFileNameDataSource.count
+            return excludedFileNames.count
         default:
             fatalError("Unrecogniz tableView.")
         }
@@ -248,40 +203,38 @@ extension SelectDirectoryViewController: NSTableViewDataSource, NSTableViewDeleg
         
         let cell = tableView.makeView(withIdentifier: identifier, owner: nil) as! NSTableCellView
         
-        if identifier.rawValue == "FilePathCell_SID" {
-            cell.textField?.stringValue = excludeFolderDataSource[row]
-        }
-        
-        if identifier.rawValue == "FileNameCell_SID" {
-            cell.textField?.stringValue = excludeFileNameDataSource[row]
+        switch identifier.rawValue {
+        case "FilePathCell_SID":
+            cell.textField?.stringValue = excludePaths[row].absoluteString
+        case "FileNameCell_SID":
+            cell.textField?.stringValue = excludedFileNames[row]
+        default: break
         }
         
         return cell
     }
     
     internal func selectionShouldChange(in tableView: NSTableView) -> Bool {
-        
-        if tableView == excludeFolderTableView {
-            
+        switch tableView {
+        case excludeFolderTableView:
             if tableView.clickedRow == -1 {
-                addFolderSegmentControl.setEnabled(false, forSegment: 1)
+                excludedPathsSegmentControl.setEnabled(false, forSegment: 1)
                 excludeFolderTableViewSelectedRow = nil
             }else{
-                addFolderSegmentControl.setEnabled(true, forSegment: 1)
+                excludedPathsSegmentControl.setEnabled(true, forSegment: 1)
                 excludeFolderTableViewSelectedRow = tableView.clickedRow
             }
-        }else if tableView == excludeFileNameTableView {
-            
+        case excludeFileNameTableView:
             if tableView.clickedRow == -1 {
-                addExcludeFileNameSegmentControl.setEnabled(false, forSegment: 1)
+                excludedFileNamesSegmentControl.setEnabled(false, forSegment: 1)
                 excludeFileNameTableViewSelectedRow = nil
             }else{
-                addExcludeFileNameSegmentControl.setEnabled(true, forSegment: 1)
+                excludedFileNamesSegmentControl.setEnabled(true, forSegment: 1)
                 excludeFileNameTableViewSelectedRow = tableView.clickedRow
             }
+        default:
+            fatalError("Unrecogniz tableView.")
         }
-        
         return true
     }
-    
 }

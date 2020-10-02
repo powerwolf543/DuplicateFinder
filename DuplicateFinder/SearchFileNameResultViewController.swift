@@ -6,14 +6,8 @@
 import Cocoa
 import FileExplorer
 
-class SearchFileNameResultViewController: NSViewController {
-    
-    /** 要搜尋的路徑 */
-    var directoryPath: String?
-    /** 想要排除在搜尋之外的資料夾 */
-    var excludeFolders: [String]?
-    /** 想要排除在搜尋之外的檔案名稱 */
-    var excludeFileNames: [String]?
+internal class SearchFileNameResultViewController: NSViewController {
+    internal var searchInfo: SearchInfo = SearchInfo.empty
     
     @IBOutlet private weak var searchStatusLabel: NSTextField!
     @IBOutlet private weak var searchStatusIndicator: NSProgressIndicator!
@@ -32,17 +26,17 @@ class SearchFileNameResultViewController: NSViewController {
     override func viewWillAppear() {
         super.viewWillAppear()
         
-        if let directoryPath = directoryPath, let targetURL = URL(string: directoryPath) {
-            let excludedFileNames = excludeFileNames?.reduce(into: Set<String>()) { $0.insert($1) } ?? []
-            let excludedDirectories = excludeFolders?.compactMap { URL(string: $0) }.reduce(into: Set<URL>()) { $0.insert($1) } ?? []
+        if let targetPath = searchInfo.targetPath {
+            let excludedFileNamesSet = searchInfo.excludedFileNames.reduce(into: Set<String>()) { $0.insert($1) }
+            let excludedDirectories = searchInfo.excludedPaths.reduce(into: Set<URL>()) { $0.insert($1) }
             let fileExplorer = FileExplorer(
                 excludedInfo: ExcludedInfo(
-                    fileNames: excludedFileNames,
+                    fileNames: excludedFileNamesSet,
                     directories: excludedDirectories
                 )
             )
             
-            fileExplorer.findDuplicatedFile(at: targetURL) { [weak self] result in
+            fileExplorer.findDuplicatedFile(at: targetPath) { [weak self] result in
                 guard let self = self else { return }
                 DispatchQueue.main.sync {
                     switch result {

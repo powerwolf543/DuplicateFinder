@@ -4,6 +4,8 @@
 */
 
 "save_preference_check_box_title" = "Save Search Preference";
+
+// Setup Page
 "setup_page_choose_folder_text_field_placehodler" = "Choose a target folder";
 "setup_page_title" = "Finds all duplicate files which have the same names";
 "setup_page_check_button_title" = "Check";
@@ -12,3 +14,9 @@
 "setup_page_excluded_folder_table_column_title" = "Path";
 "setup_page_excluded_names_table_column_title" = "File Name";
 "setup_page_excluded_names_text_field_placehodler" = "Enter the file name and extension. ex. fileName.cmd";
+
+// Error Description
+"targetFolderNotFound_error_description" = "Didn't select search path yet";
+
+// Recovery Suggestion
+"targetFolderNotFound_recovery_suggestion" = "Please choose a target folder";

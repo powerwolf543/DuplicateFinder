@@ -7,33 +7,30 @@ import Cocoa
 import Utils
 
 internal class LogoInfoViewController: NSViewController {
-    
-    @IBOutlet private weak var savePreferenceCheckBox: NSButton! {
-        didSet {
-            savePreferenceCheckBox.title = "save_preference_check_box_title".localized
-        }
+    @IBOutlet
+    private weak var savePreferenceCheckBox: NSButton! {
+        didSet { savePreferenceCheckBox.title = "save_preference_check_box_title".localized }
     }
     
-    // MARK: - ViewController Life Cycle
+    // MARK: - Override
     
-    override func viewDidLoad() {
+    internal override func viewDidLoad() {
         super.viewDidLoad()
         prepareUI()
     }
     
-    // MARK: - UI
+    // MARK: -
     
     private func prepareUI() {
-        let isEnable = SearchPreferences.shared.isStorageEnable
-        savePreferenceCheckBox.state = isEnable ? .on : .off
+        let isPersistedEnabled = SearchPreference.isPersistedEnabled
+        savePreferenceCheckBox.state = isPersistedEnabled ? .on : .off
     }
     
-    // MARK: - Event
-    
-    @IBAction func didClickPreferenceButton(_ sender: NSButton) {
+    @IBAction
+    private func didClickPreferenceButton(_ sender: NSButton) {
         switch sender.state {
-        case .on: SearchPreferences.shared.isStorageEnable = true
-        case .off: SearchPreferences.shared.isStorageEnable = false
+        case .on: SearchPreference.isPersistedEnabled = true
+        case .off: SearchPreference.isPersistedEnabled = false
         default: assertionFailure("Unknown case")
         }
     }

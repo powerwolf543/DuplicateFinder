@@ -4,6 +4,8 @@
 */
 
 "save_preference_check_box_title" = "儲存搜尋設定";
+
+// Setup Page
 "setup_page_choose_folder_text_field_placehodler" = "選擇資料夾";
 "setup_page_title" = "檢查資料夾中是否有重複檔案名稱";
 "setup_page_check_button_title" = "開始檢查";
@@ -12,3 +14,9 @@
 "setup_page_excluded_folder_table_column_title" = "路徑";
 "setup_page_excluded_names_table_column_title" = "檔案名稱";
 "setup_page_excluded_names_text_field_placehodler" = "請輸入檔案名稱(包含副檔名) ex. fileName.cmd";
+
+// Error Description
+"targetFolderNotFound_error_description" = "尚未選擇路徑";
+
+// Recovery Suggestion
+"targetFolderNotFound_recovery_suggestion" = "請先選擇路徑在進行搜尋";
