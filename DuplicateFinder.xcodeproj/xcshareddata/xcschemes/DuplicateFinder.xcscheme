@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "25872BFC2513A56800E42E11"
-               BuildableName = "FindDuplicateFileName.app"
-               BlueprintName = "FindDuplicateFileName"
-               ReferencedContainer = "container:FindDuplicateFileName.xcodeproj">
+               BlueprintIdentifier = "2519329925271E600084D3B7"
+               BuildableName = "DuplicateFinder.app"
+               BlueprintName = "DuplicateFinder"
+               ReferencedContainer = "container:DuplicateFinder.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -34,21 +34,21 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      language = "zh-Hant"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
-      enableGPUValidationMode = "1"
       allowLocationSimulation = "YES">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "25872BFC2513A56800E42E11"
-            BuildableName = "FindDuplicateFileName.app"
-            BlueprintName = "FindDuplicateFileName"
-            ReferencedContainer = "container:FindDuplicateFileName.xcodeproj">
+            BlueprintIdentifier = "2519329925271E600084D3B7"
+            BuildableName = "DuplicateFinder.app"
+            BlueprintName = "DuplicateFinder"
+            ReferencedContainer = "container:DuplicateFinder.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -62,10 +62,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "25872BFC2513A56800E42E11"
-            BuildableName = "FindDuplicateFileName.app"
-            BlueprintName = "FindDuplicateFileName"
-            ReferencedContainer = "container:FindDuplicateFileName.xcodeproj">
+            BlueprintIdentifier = "2519329925271E600084D3B7"
+            BuildableName = "DuplicateFinder.app"
+            BlueprintName = "DuplicateFinder"
+            ReferencedContainer = "container:DuplicateFinder.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

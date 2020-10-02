@@ -1,12 +1,18 @@
 //
-//  Created by NixonShih on 2016/10/5.
-//  Copyright © 2019 Nixon. All rights reserved.
+//  AppDelegate.swift
+//  DuplicateFinder
+//
+//  Created by Nixon Shih on 2020/10/2.
+//  Copyright © 2020 Nixon Shih. All rights reserved.
 //
 
 import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
+
+
+
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
     }
@@ -14,4 +20,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }
+
+
 }
+
