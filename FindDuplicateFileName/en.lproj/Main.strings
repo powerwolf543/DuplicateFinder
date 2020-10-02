@@ -16,6 +16,9 @@
 /* Class = "NSMenu"; title = "main_menu_main_services"; ObjectID = "hz9-B4-Xy5"; */
 "hz9-B4-Xy5.title" = "Services";
 
+/* Class = "NSWindow"; title = "main_panel_title"; ObjectID = "IQv-IB-iLA"; */
+"IQv-IB-iLA.title" = "Duplicate Finder";
+
 /* Class = "NSMenuItem"; title = "main_menu_main_show_all"; ObjectID = "Kd2-mp-pUS"; */
 "Kd2-mp-pUS.title" = "Show All";
 

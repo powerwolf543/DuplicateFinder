@@ -1,120 +1,48 @@
+/* Class = "NSMenuItem"; title = "main_menu_main"; ObjectID = "1Xt-HY-uBw"; */
+"1Xt-HY-uBw.title" = "Duplicate Finder";
 
-/* Class = "NSTextFieldCell"; title = "Table View Cell"; ObjectID = "1UJ-gH-Lji"; */
-"1UJ-gH-Lji.title" = "Table View Cell";
+/* Class = "NSMenuItem"; title = "main_menu_main_quit"; ObjectID = "4sb-4s-VLi"; */
+"4sb-4s-VLi.title" = "結束 Duplicate Finder";
 
-/* Class = "NSMenuItem"; title = "CheckDuplicateFileName"; ObjectID = "1Xt-HY-uBw"; */
-"1Xt-HY-uBw.title" = "CheckDuplicateFileName";
+/* Class = "NSMenuItem"; title = "main_menu_main_about"; ObjectID = "5kV-Vb-QxS"; */
+"5kV-Vb-QxS.title" = "關於 Duplicate Finder";
 
-/* Class = "NSTextFieldCell"; title = "Table View Cell"; ObjectID = "2bL-NR-acm"; */
-"2bL-NR-acm.title" = "Table View Cell";
+/* Class = "NSMenuItem"; title = "main_menu_window"; ObjectID = "aUF-d1-5bR"; */
+"aUF-d1-5bR.title" = "視窗";
 
-/* Class = "NSTextFieldCell"; title = "Table View Cell"; ObjectID = "2dt-WH-WIk"; */
-"2dt-WH-WIk.title" = "Table View Cell";
+/* Class = "NSMenuItem"; title = "main_menu_main_preference"; ObjectID = "BOF-NM-1cW"; */
+"BOF-NM-1cW.title" = "偏好設定";
 
-/* Class = "NSMenuItem"; title = "Quit CheckDuplicateFileName"; ObjectID = "4sb-4s-VLi"; */
-"4sb-4s-VLi.title" = "Quit CheckDuplicateFileName";
+/* Class = "NSMenu"; title = "main_menu_main_services"; ObjectID = "hz9-B4-Xy5"; */
+"hz9-B4-Xy5.title" = "服務";
 
-/* Class = "NSMenuItem"; title = "About CheckDuplicateFileName"; ObjectID = "5kV-Vb-QxS"; */
-"5kV-Vb-QxS.title" = "About CheckDuplicateFileName";
+/* Class = "NSWindow"; title = "main_panel_title"; ObjectID = "IQv-IB-iLA"; */
+"IQv-IB-iLA.title" = "Duplicate Finder";
 
-/* Class = "NSMenu"; title = "Main Menu"; ObjectID = "AYu-sK-qS6"; */
-"AYu-sK-qS6.title" = "Main Menu";
+/* Class = "NSMenuItem"; title = "main_menu_main_show_all"; ObjectID = "Kd2-mp-pUS"; */
+"Kd2-mp-pUS.title" = "顯示全部";
 
-/* Class = "NSMenuItem"; title = "Preferences…"; ObjectID = "BOF-NM-1cW"; */
-"BOF-NM-1cW.title" = "Preferences…";
+/* Class = "NSMenuItem"; title = "main_menu_window_bring_all_to_front"; ObjectID = "LE2-aR-0XJ"; */
+"LE2-aR-0XJ.title" = "將此程式所有視窗移至最前";
 
-/* Class = "NSTextFieldCell"; placeholderString = "選擇資料夾"; ObjectID = "Bu1-Sn-fLv"; */
-"Bu1-Sn-fLv.placeholderString" = "選擇資料夾";
+/* Class = "NSMenuItem"; title = "main_menu_main_services"; ObjectID = "NMo-om-nkz"; */
+"NMo-om-nkz.title" = "服務";
 
-/* Class = "NSWindow"; title = "CheckDuplicateFileName"; ObjectID = "IQv-IB-iLA"; */
-"IQv-IB-iLA.title" = "CheckDuplicateFileName";
+/* Class = "NSMenuItem"; title = "main_menu_main_hide"; ObjectID = "Olw-nP-bQN"; */
+"Olw-nP-bQN.title" = "隱藏 Duplicate Finder";
 
-/* Class = "NSTextFieldCell"; placeholderString = "請輸入檔案名稱(包含副檔名) ex. fileName.cmd"; ObjectID = "K4n-fr-pn0"; */
-"K4n-fr-pn0.placeholderString" = "請輸入檔案名稱(包含副檔名) ex. fileName.cmd";
+/* Class = "NSMenuItem"; title = "main_menu_window_minimize"; ObjectID = "OY7-WF-poV"; */
+"OY7-WF-poV.title" = "縮到最小";
 
-/* Class = "NSTextFieldCell"; title = "是否儲存搜尋設定"; ObjectID = "KTq-eY-ms8"; */
-"KTq-eY-ms8.title" = "是否儲存搜尋設定";
+/* Class = "NSMenuItem"; title = "main_menu_window_zoom"; ObjectID = "R4o-n2-Eq4"; */
+"R4o-n2-Eq4.title" = "縮放";
 
-/* Class = "NSMenuItem"; title = "Show All"; ObjectID = "Kd2-mp-pUS"; */
-"Kd2-mp-pUS.title" = "Show All";
+/* Class = "NSMenu"; title = "main_menu_window"; ObjectID = "Td7-aD-5lo"; */
+"Td7-aD-5lo.title" = "視窗";
 
-/* Class = "NSMenuItem"; title = "Bring All to Front"; ObjectID = "LE2-aR-0XJ"; */
-"LE2-aR-0XJ.title" = "Bring All to Front";
+/* Class = "NSMenu"; title = "main_menu_main"; ObjectID = "uQy-DD-JDr"; */
+"uQy-DD-JDr.title" = "Duplicate Finder";
 
-/* Class = "NSTableColumn"; headerCell.title = "檔名"; ObjectID = "Lgw-zW-En4"; */
-"Lgw-zW-En4.headerCell.title" = "檔名";
+/* Class = "NSMenuItem"; title = "main_menu_main_hide_others"; ObjectID = "Vdr-fp-XzO"; */
+"Vdr-fp-XzO.title" = "隱藏其他";
 
-/* Class = "NSMenuItem"; title = "Services"; ObjectID = "NMo-om-nkz"; */
-"NMo-om-nkz.title" = "Services";
-
-/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "O4x-1l-RI4"; */
-"O4x-1l-RI4.title" = "Text Cell";
-
-/* Class = "NSTextFieldCell"; title = "檢查資料夾中是否有重複檔案名稱"; ObjectID = "OR9-6h-fw3"; */
-"OR9-6h-fw3.title" = "檢查資料夾中是否有重複檔案名稱";
-
-/* Class = "NSMenuItem"; title = "Minimize"; ObjectID = "OY7-WF-poV"; */
-"OY7-WF-poV.title" = "Minimize";
-
-/* Class = "NSMenuItem"; title = "Hide CheckDuplicateFileName"; ObjectID = "Olw-nP-bQN"; */
-"Olw-nP-bQN.title" = "Hide CheckDuplicateFileName";
-
-/* Class = "NSMenuItem"; title = "Zoom"; ObjectID = "R4o-n2-Eq4"; */
-"R4o-n2-Eq4.title" = "Zoom";
-
-/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "SOL-zx-rMs"; */
-"SOL-zx-rMs.title" = "Text Cell";
-
-/* Class = "NSButtonCell"; title = "開始檢查"; ObjectID = "Sk1-ya-Qls"; */
-"Sk1-ya-Qls.title" = "開始檢查";
-
-/* Class = "NSMenu"; title = "Window"; ObjectID = "Td7-aD-5lo"; */
-"Td7-aD-5lo.title" = "Window";
-
-/* Class = "NSTableColumn"; headerCell.title = "檔案名稱"; ObjectID = "Tm0-Gq-DlW"; */
-"Tm0-Gq-DlW.headerCell.title" = "檔案名稱";
-
-/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "Ufv-Yv-dKf"; */
-"Ufv-Yv-dKf.title" = "Text Cell";
-
-/* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "Vdr-fp-XzO"; */
-"Vdr-fp-XzO.title" = "Hide Others";
-
-/* Class = "NSWindow"; title = "搜尋結果"; ObjectID = "Y6I-ij-MdO"; */
-"Y6I-ij-MdO.title" = "搜尋結果";
-
-/* Class = "NSTextFieldCell"; title = "將下列項目從搜尋中排除："; ObjectID = "ZqQ-5N-kUI"; */
-"ZqQ-5N-kUI.title" = "將下列項目從搜尋中排除：";
-
-/* Class = "NSMenuItem"; title = "Window"; ObjectID = "aUF-d1-5bR"; */
-"aUF-d1-5bR.title" = "Window";
-
-/* Class = "NSTextFieldCell"; title = "Table View Cell"; ObjectID = "bHb-8b-HEV"; */
-"bHb-8b-HEV.title" = "Table View Cell";
-
-/* Class = "NSMenu"; title = "Services"; ObjectID = "hz9-B4-Xy5"; */
-"hz9-B4-Xy5.title" = "Services";
-
-/* Class = "NSTextFieldCell"; title = "否"; ObjectID = "lL0-br-of7"; */
-"lL0-br-of7.title" = "否";
-
-/* Class = "NSTextFieldCell"; title = "是"; ObjectID = "ngE-0d-NXK"; */
-"ngE-0d-NXK.title" = "是";
-
-/* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "oqt-N3-xVg"; */
-"oqt-N3-xVg.title" = "Label";
-
-/* Class = "NSTextFieldCell"; title = "將下列項目從搜尋中排除："; ObjectID = "r10-vg-FcY"; */
-"r10-vg-FcY.title" = "將下列項目從搜尋中排除：";
-
-/* Class = "NSTableColumn"; headerCell.title = "路徑"; ObjectID = "slc-qx-odW"; */
-"slc-qx-odW.headerCell.title" = "路徑";
-
-/* Class = "NSMenu"; title = "CheckDuplicateFileName"; ObjectID = "uQy-DD-JDr"; */
-"uQy-DD-JDr.title" = "CheckDuplicateFileName";
-
-/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "wug-OF-QFi"; */
-"wug-OF-QFi.title" = "Text Cell";
-
-/* Class = "NSTableColumn"; headerCell.title = "檔案路徑"; ObjectID = "yRy-AY-17w"; */
-"yRy-AY-17w.headerCell.title" = "檔案路徑";

@@ -21,13 +21,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		25193290252711810084D3B7 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
 		25263C432513AA3300FC9F80 /* FileExplorer */ = {isa = PBXFileReference; lastKnownFileType = folder; path = FileExplorer; sourceTree = "<group>"; };
 		25263C442513AA8F00FC9F80 /* SearchFileNameResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchFileNameResultViewController.swift; sourceTree = "<group>"; };
 		25263C452513AA8F00FC9F80 /* SelectDirectoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectDirectoryViewController.swift; sourceTree = "<group>"; };
 		25263C462513AA8F00FC9F80 /* SearchPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchPreferences.swift; sourceTree = "<group>"; };
 		25263C482513AA8F00FC9F80 /* LogoInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoInfoViewController.swift; sourceTree = "<group>"; };
 		25263C4A2513AA9000FC9F80 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		25872BFD2513A56800E42E11 /* FindDuplicateFileName.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindDuplicateFileName.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		25872BFD2513A56800E42E11 /* Duplicate Finder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Duplicate Finder.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		25872C042513A56900E42E11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		25872C092513A56900E42E11 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25872C0A2513A56900E42E11 /* FindDuplicateFileName.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FindDuplicateFileName.entitlements; sourceTree = "<group>"; };
@@ -67,7 +68,7 @@
 		25872BFE2513A56800E42E11 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				25872BFD2513A56800E42E11 /* FindDuplicateFileName.app */,
+				25872BFD2513A56800E42E11 /* Duplicate Finder.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -118,7 +119,7 @@
 				25F1678B251BC4CD0066DEAB /* Utils */,
 			);
 			productName = FindDuplicateFileName;
-			productReference = 25872BFD2513A56800E42E11 /* FindDuplicateFileName.app */;
+			productReference = 25872BFD2513A56800E42E11 /* Duplicate Finder.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -190,6 +191,7 @@
 			children = (
 				2588F085251CF59200B7D491 /* Base */,
 				25D16C3825250286009AB7DC /* en */,
+				25193290252711810084D3B7 /* zh-Hant */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -337,6 +339,7 @@
 				CODE_SIGN_ENTITLEMENTS = FindDuplicateFileName/FindDuplicateFileName.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RF986632CV;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = FindDuplicateFileName/Info.plist;
@@ -344,8 +347,9 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = net.nixondesign.FindDuplicateFileName;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Duplicate Finder";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -357,6 +361,7 @@
 				CODE_SIGN_ENTITLEMENTS = FindDuplicateFileName/FindDuplicateFileName.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RF986632CV;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = FindDuplicateFileName/Info.plist;
@@ -364,8 +369,9 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = net.nixondesign.FindDuplicateFileName;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Duplicate Finder";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
