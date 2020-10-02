@@ -129,10 +129,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3gY-kT-Tt4">
-                                <rect key="frame" x="384" y="353" width="102" height="32"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="msE-Gi-9JL"/>
-                                </constraints>
+                                <rect key="frame" x="392" y="353" width="94" height="32"/>
                                 <buttonCell key="cell" type="push" title="開始檢查" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Sk1-ya-Qls">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -141,11 +138,8 @@
                                     <action selector="submitBtnPressed:" target="XfG-lQ-9wD" id="2GJ-E3-mjX"/>
                                 </connections>
                             </button>
-                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eaf-9B-V8a">
-                                <rect key="frame" x="30" y="359" width="350" height="22"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="350" id="KOn-7A-ot8"/>
-                                </constraints>
+                            <textField horizontalHuggingPriority="245" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eaf-9B-V8a">
+                                <rect key="frame" x="30" y="359" width="358" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="選擇資料夾" bezelStyle="round" id="Bu1-Sn-fLv">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -372,10 +366,14 @@
                     <connections>
                         <outlet property="addExcludeFileNameSegmentControl" destination="784-HS-mz6" id="mCN-90-wRo"/>
                         <outlet property="addFolderSegmentControl" destination="iXW-OL-0TZ" id="Z7i-Wv-A4i"/>
+                        <outlet property="checkButton" destination="3gY-kT-Tt4" id="QNJ-J5-ahv"/>
                         <outlet property="excludeFileNameTableView" destination="fcu-eM-fIh" id="05d-Nb-NMy"/>
                         <outlet property="excludeFileNameTextField" destination="8fT-UO-MJx" id="Me4-6S-Te4"/>
                         <outlet property="excludeFolderTableView" destination="lIb-3a-OlV" id="UMX-Hn-MBL"/>
+                        <outlet property="excludedFolderTitleLabel" destination="Glk-hL-4dd" id="6ZY-pd-1eE"/>
+                        <outlet property="excludedNamesTitleLabel" destination="G14-yB-dal" id="dCq-4i-T2c"/>
                         <outlet property="filePathTextField" destination="eaf-9B-V8a" id="Z0L-lv-ddk"/>
+                        <outlet property="titleLabel" destination="qkg-Oc-27v" id="NZW-SR-gbl"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

@@ -4,3 +4,11 @@
 */
 
 "save_preference_check_box_title" = "儲存搜尋設定";
+"setup_page_choose_folder_text_field_placehodler" = "選擇資料夾";
+"setup_page_title" = "檢查資料夾中是否有重複檔案名稱";
+"setup_page_check_button_title" = "開始檢查";
+"setup_page_excluded_folder_field_title" = "將下列路徑從搜尋中排除：";
+"setup_page_excluded_names_field_title" = "將下列名稱從搜尋中排除：";
+"setup_page_excluded_folder_table_column_title" = "路徑";
+"setup_page_excluded_names_table_column_title" = "檔案名稱";
+"setup_page_excluded_names_text_field_placehodler" = "請輸入檔案名稱(包含副檔名) ex. fileName.cmd";

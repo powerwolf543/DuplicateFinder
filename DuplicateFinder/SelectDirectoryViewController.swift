@@ -4,15 +4,50 @@
 //
 
 import Cocoa
+import Utils
 
 class SelectDirectoryViewController: NSViewController,NSWindowDelegate {
     
-    @IBOutlet private weak var filePathTextField: NSTextField!
-    @IBOutlet private weak var excludeFolderTableView: NSTableView!
+    @IBOutlet private weak var titleLabel: NSTextField! {
+        didSet { titleLabel.stringValue = "setup_page_title".localized }
+    }
+    
+    @IBOutlet private weak var filePathTextField: NSTextField! {
+        didSet { filePathTextField.placeholderString = "setup_page_choose_folder_text_field_placehodler".localized }
+    }
+    
+    @IBOutlet private weak var checkButton: NSButton! {
+        didSet { checkButton.title = "setup_page_check_button_title".localized }
+    }
+    
+    @IBOutlet weak var excludedFolderTitleLabel: NSTextField! {
+        didSet { excludedFolderTitleLabel.stringValue = "setup_page_excluded_folder_field_title".localized }
+    }
+    
+    @IBOutlet weak var excludedNamesTitleLabel: NSTextField! {
+        didSet { excludedNamesTitleLabel.stringValue = "setup_page_excluded_names_field_title".localized }
+    }
+    
+    @IBOutlet private weak var excludeFolderTableView: NSTableView! {
+        didSet {
+            excludeFolderTableView.tableColumns.first?.title = "setup_page_excluded_folder_table_column_title".localized
+        }
+    }
+    
+    @IBOutlet private weak var excludeFileNameTableView: NSTableView! {
+        didSet {
+            excludeFileNameTableView.tableColumns.first?.title = "setup_page_excluded_names_table_column_title".localized
+        }
+    }
+    
+    @IBOutlet private weak var excludeFileNameTextField: NSTextField! {
+        didSet {
+            excludeFileNameTextField.placeholderString = "setup_page_excluded_names_text_field_placehodler".localized
+        }
+    }
+    
     @IBOutlet private weak var addFolderSegmentControl: NSSegmentedControl!
-    @IBOutlet private weak var excludeFileNameTableView: NSTableView!
     @IBOutlet private weak var addExcludeFileNameSegmentControl: NSSegmentedControl!
-    @IBOutlet private weak var excludeFileNameTextField: NSTextField!
     
     /** excludeFolderTableView's dataSource 如果沒有資料的時候，讓 addFolderSegmentControl 的減號設為 disable。 */
     private var excludeFolderDataSource = [String]() {
@@ -196,39 +231,32 @@ class SelectDirectoryViewController: NSViewController,NSWindowDelegate {
 }
 
 // MARK: - NSTableViewDataSource NSTableViewDelegate
-extension SelectDirectoryViewController: NSTableViewDataSource,NSTableViewDelegate {
-    
+extension SelectDirectoryViewController: NSTableViewDataSource, NSTableViewDelegate {
     internal func numberOfRows(in tableView: NSTableView) -> Int {
-        
-        if tableView == excludeFolderTableView {
+        switch tableView {
+        case excludeFolderTableView:
             return excludeFolderDataSource.count
-        }else if tableView == excludeFileNameTableView {
+        case excludeFileNameTableView:
             return excludeFileNameDataSource.count
-        }else{
-            return 0
+        default:
+            fatalError("Unrecogniz tableView.")
         }
     }
     
     internal func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        guard let identifier = tableColumn?.identifier else { return nil }
         
-        let identifier = tableColumn?.identifier
+        let cell = tableView.makeView(withIdentifier: identifier, owner: nil) as! NSTableCellView
         
-        if let identifier = identifier {
-            
-            let cell = tableView.makeView(withIdentifier: identifier, owner: nil) as! NSTableCellView
-            
-            if identifier.rawValue == "FilePathCell_SID" {
-                cell.textField?.stringValue = excludeFolderDataSource[row]
-            }
-            
-            if identifier.rawValue == "FileNameCell_SID" {
-                cell.textField?.stringValue = excludeFileNameDataSource[row]
-            }
-            
-            return cell
+        if identifier.rawValue == "FilePathCell_SID" {
+            cell.textField?.stringValue = excludeFolderDataSource[row]
         }
         
-        return nil
+        if identifier.rawValue == "FileNameCell_SID" {
+            cell.textField?.stringValue = excludeFileNameDataSource[row]
+        }
+        
+        return cell
     }
     
     internal func selectionShouldChange(in tableView: NSTableView) -> Bool {
