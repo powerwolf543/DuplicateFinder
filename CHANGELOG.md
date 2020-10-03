@@ -10,10 +10,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 ### Added
 - New module of FileExplorer
+- New module of Utils
+- Localization for English and Chinese
+- A property wrapper of storage
+- Supoort `Dark mode`
 ### Updated
 - Support Swift 5.2
+- Project name
 ### Removed
 - SearchFileBrain
+- Sandbox
 
 ## [1.5.0] - 2018-12-11
 ### Updated

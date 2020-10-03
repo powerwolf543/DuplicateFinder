@@ -12,7 +12,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        scheme: ["FileExplorer"]
+        scheme: ["FileExplorer", "Utils"]
         xcode: ["11.7"]
 
     steps:

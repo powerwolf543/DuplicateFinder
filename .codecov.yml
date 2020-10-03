@@ -1,3 +1,0 @@
-ignore:
-  - "FileExplorer/Sources/FileExplorer/PathIterator/DiskPathIterator.swift"
-  - "FileExplorer/Tests/**/*"

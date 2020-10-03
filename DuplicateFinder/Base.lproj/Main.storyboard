@@ -11,43 +11,43 @@
                 <application id="hnw-xV-0zn" sceneMemberID="viewController">
                     <menu key="mainMenu" title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
                         <items>
-                            <menuItem title="CheckDuplicateFileName" id="1Xt-HY-uBw">
+                            <menuItem title="main_menu_main" id="1Xt-HY-uBw">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="CheckDuplicateFileName" systemMenu="apple" id="uQy-DD-JDr">
+                                <menu key="submenu" title="main_menu_main" systemMenu="apple" id="uQy-DD-JDr">
                                     <items>
-                                        <menuItem title="About CheckDuplicateFileName" id="5kV-Vb-QxS">
+                                        <menuItem title="main_menu_main_about" id="5kV-Vb-QxS">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="orderFrontStandardAboutPanel:" target="Ady-hI-5gd" id="Exp-CZ-Vem"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
-                                        <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW"/>
+                                        <menuItem title="main_menu_main_preference" keyEquivalent="," id="BOF-NM-1cW"/>
                                         <menuItem isSeparatorItem="YES" id="wFC-TO-SCJ"/>
-                                        <menuItem title="Services" id="NMo-om-nkz">
+                                        <menuItem title="main_menu_main_services" id="NMo-om-nkz">
                                             <modifierMask key="keyEquivalentModifierMask"/>
-                                            <menu key="submenu" title="Services" systemMenu="services" id="hz9-B4-Xy5"/>
+                                            <menu key="submenu" title="main_menu_main_services" systemMenu="services" id="hz9-B4-Xy5"/>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="4je-JR-u6R"/>
-                                        <menuItem title="Hide CheckDuplicateFileName" keyEquivalent="h" id="Olw-nP-bQN">
+                                        <menuItem title="main_menu_main_hide" keyEquivalent="h" id="Olw-nP-bQN">
                                             <connections>
                                                 <action selector="hide:" target="Ady-hI-5gd" id="PnN-Uc-m68"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Hide Others" keyEquivalent="h" id="Vdr-fp-XzO">
+                                        <menuItem title="main_menu_main_hide_others" keyEquivalent="h" id="Vdr-fp-XzO">
                                             <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
                                             <connections>
                                                 <action selector="hideOtherApplications:" target="Ady-hI-5gd" id="VT4-aY-XCT"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Show All" id="Kd2-mp-pUS">
+                                        <menuItem title="main_menu_main_show_all" id="Kd2-mp-pUS">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="unhideAllApplications:" target="Ady-hI-5gd" id="Dhg-Le-xox"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="kCx-OE-vgT"/>
-                                        <menuItem title="Quit CheckDuplicateFileName" keyEquivalent="q" id="4sb-4s-VLi">
+                                        <menuItem title="main_menu_main_quit" keyEquivalent="q" id="4sb-4s-VLi">
                                             <connections>
                                                 <action selector="terminate:" target="Ady-hI-5gd" id="Te7-pn-YzF"/>
                                             </connections>
@@ -55,23 +55,23 @@
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="Window" id="aUF-d1-5bR">
+                            <menuItem title="main_menu_window" id="aUF-d1-5bR">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Window" systemMenu="window" id="Td7-aD-5lo">
+                                <menu key="submenu" title="main_menu_window" systemMenu="window" id="Td7-aD-5lo">
                                     <items>
-                                        <menuItem title="Minimize" keyEquivalent="m" id="OY7-WF-poV">
+                                        <menuItem title="main_menu_window_minimize" keyEquivalent="m" id="OY7-WF-poV">
                                             <connections>
                                                 <action selector="performMiniaturize:" target="Ady-hI-5gd" id="VwT-WD-YPe"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Zoom" id="R4o-n2-Eq4">
+                                        <menuItem title="main_menu_window_zoom" id="R4o-n2-Eq4">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="performZoom:" target="Ady-hI-5gd" id="DIl-cC-cCs"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="eu3-7i-yIM"/>
-                                        <menuItem title="Bring All to Front" id="LE2-aR-0XJ">
+                                        <menuItem title="main_menu_window_bring_all_to_front" id="LE2-aR-0XJ">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="arrangeInFront:" target="Ady-hI-5gd" id="DRN-fu-gQh"/>
@@ -86,7 +86,7 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="FindDuplicateFileName" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="DuplicateFinder" customModuleProvider="target"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="92" y="-160"/>
@@ -95,7 +95,7 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="CheckDuplicateFileName" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                    <window key="window" title="main_panel_title" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="477" height="261"/>
@@ -110,12 +110,12 @@
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="73.5" y="245.5"/>
+            <point key="canvasLocation" x="42" y="272"/>
         </scene>
-        <!--Select Directory View Controller-->
+        <!--Search Settings View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="SelectDirectoryViewController" customModule="FindDuplicateFileName" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XfG-lQ-9wD" customClass="SearchSettingsViewController" customModule="DuplicateFinder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="510" height="437"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -128,25 +128,22 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3gY-kT-Tt4">
-                                <rect key="frame" x="384" y="353" width="102" height="32"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="msE-Gi-9JL"/>
-                                </constraints>
+                            <button horizontalHuggingPriority="255" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3gY-kT-Tt4">
+                                <rect key="frame" x="392" y="353" width="94" height="32"/>
                                 <buttonCell key="cell" type="push" title="開始檢查" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Sk1-ya-Qls">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="submitBtnPressed:" target="XfG-lQ-9wD" id="2GJ-E3-mjX"/>
+                                    <action selector="didClickCheckButton:" target="XfG-lQ-9wD" id="vXX-VL-wJ4"/>
                                 </connections>
                             </button>
-                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eaf-9B-V8a">
-                                <rect key="frame" x="30" y="359" width="350" height="22"/>
+                            <textField horizontalHuggingPriority="245" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eaf-9B-V8a">
+                                <rect key="frame" x="30" y="359" width="358" height="22"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="350" id="KOn-7A-ot8"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="350" id="U88-Ag-kOJ"/>
                                 </constraints>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="選擇資料夾" bezelStyle="round" id="Bu1-Sn-fLv">
+                                <textFieldCell key="cell" lineBreakMode="truncatingHead" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" placeholderString="選擇資料夾" bezelStyle="round" id="Bu1-Sn-fLv">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -224,27 +221,27 @@
                             <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iXW-OL-0TZ">
                                 <rect key="frame" x="31" y="189" width="41" height="19"/>
                                 <segmentedCell key="cell" controlSize="mini" borderStyle="border" alignment="left" style="smallSquare" trackingMode="momentary" id="6ON-BF-g1r">
-                                    <font key="font" metaFont="miniSystem"/>
+                                    <font key="font" metaFont="menu" size="9"/>
                                     <segments>
                                         <segment image="NSAddTemplate"/>
                                         <segment image="NSRemoveTemplate" enabled="NO" tag="1"/>
                                     </segments>
                                 </segmentedCell>
                                 <connections>
-                                    <action selector="addFolderSegmentPressed:" target="XfG-lQ-9wD" id="AbL-c7-qga"/>
+                                    <action selector="didChangeValueOfExcludeSegment:" target="XfG-lQ-9wD" id="FX9-5t-q6X"/>
                                 </connections>
                             </segmentedControl>
                             <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="784-HS-mz6">
                                 <rect key="frame" x="438" y="19" width="41" height="19"/>
                                 <segmentedCell key="cell" controlSize="mini" borderStyle="border" alignment="left" style="smallSquare" trackingMode="momentary" id="Gpl-Do-b3G">
-                                    <font key="font" metaFont="miniSystem"/>
+                                    <font key="font" metaFont="menu" size="9"/>
                                     <segments>
                                         <segment image="NSAddTemplate"/>
                                         <segment image="NSRemoveTemplate" enabled="NO" tag="1"/>
                                     </segments>
                                 </segmentedCell>
                                 <connections>
-                                    <action selector="addFolderSegmentPressed:" target="XfG-lQ-9wD" id="ehr-88-7uq"/>
+                                    <action selector="didChangeValueOfExcludeSegment:" target="XfG-lQ-9wD" id="deR-4L-bjN"/>
                                 </connections>
                             </segmentedControl>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Glk-hL-4dd">
@@ -370,12 +367,16 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="addExcludeFileNameSegmentControl" destination="784-HS-mz6" id="mCN-90-wRo"/>
-                        <outlet property="addFolderSegmentControl" destination="iXW-OL-0TZ" id="Z7i-Wv-A4i"/>
+                        <outlet property="checkButton" destination="3gY-kT-Tt4" id="QNJ-J5-ahv"/>
                         <outlet property="excludeFileNameTableView" destination="fcu-eM-fIh" id="05d-Nb-NMy"/>
                         <outlet property="excludeFileNameTextField" destination="8fT-UO-MJx" id="Me4-6S-Te4"/>
                         <outlet property="excludeFolderTableView" destination="lIb-3a-OlV" id="UMX-Hn-MBL"/>
+                        <outlet property="excludedFileNamesSegmentControl" destination="784-HS-mz6" id="32y-xU-U1b"/>
+                        <outlet property="excludedFolderTitleLabel" destination="Glk-hL-4dd" id="6ZY-pd-1eE"/>
+                        <outlet property="excludedNamesTitleLabel" destination="G14-yB-dal" id="dCq-4i-T2c"/>
+                        <outlet property="excludedPathsSegmentControl" destination="iXW-OL-0TZ" id="B0W-zb-xgI"/>
                         <outlet property="filePathTextField" destination="eaf-9B-V8a" id="Z0L-lv-ddk"/>
+                        <outlet property="titleLabel" destination="qkg-Oc-27v" id="NZW-SR-gbl"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -407,10 +408,10 @@
             </objects>
             <point key="canvasLocation" x="-43" y="790.5"/>
         </scene>
-        <!--Logo Info View Controller-->
+        <!--Welcome View Controller-->
         <scene sceneID="XE4-9r-jX4">
             <objects>
-                <viewController id="Me5-Ig-8Zm" customClass="LogoInfoViewController" customModule="FindDuplicateFileName" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Me5-Ig-8Zm" customClass="WelcomeViewController" customModule="DuplicateFinder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="RBd-p6-DWW">
                         <rect key="frame" x="0.0" y="0.0" width="190" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -423,62 +424,39 @@
                                 </constraints>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="WolfLogo" id="xIk-Aw-iHO"/>
                             </imageView>
-                            <segmentedControl verticalHuggingPriority="750" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vnn-Nj-uuq">
-                                <rect key="frame" x="62" y="56" width="67" height="23"/>
-                                <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="UsO-Lo-fjF">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aGH-m2-Wr4">
+                                <rect key="frame" x="44" y="28" width="102" height="18"/>
+                                <buttonCell key="cell" type="check" title="儲存搜尋設定" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="lzu-4p-kag">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
-                                    <segments>
-                                        <segment width="30"/>
-                                        <segment width="30" tag="1"/>
-                                    </segments>
-                                </segmentedCell>
+                                </buttonCell>
                                 <connections>
-                                    <action selector="saveSearchSegmentControlPressed:" target="Me5-Ig-8Zm" id="jIO-wB-VE6"/>
+                                    <action selector="didClickPreferenceButton:" target="Me5-Ig-8Zm" id="8i0-Df-PwC"/>
                                 </connections>
-                            </segmentedControl>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gVm-Ol-q6D">
-                                <rect key="frame" x="40" y="94" width="111" height="16"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="是否儲存搜尋設定" id="KTq-eY-ms8">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HFi-U0-IUp">
-                                <rect key="frame" x="137" y="58" width="22" height="20"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="是" id="ngE-0d-NXK">
-                                    <font key="font" metaFont="system" size="17"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eik-Xh-toB">
-                                <rect key="frame" x="32" y="58" width="22" height="20"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="否" id="lL0-br-of7">
-                                    <font key="font" metaFont="system" size="17"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hCq-85-Fgn">
+                                <rect key="frame" x="33" y="121" width="124" height="19"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Duplicate Finder" id="Y5V-OL-WeV">
+                                    <font key="font" metaFont="systemBold" size="15"/>
+                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="eik-Xh-toB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="RBd-p6-DWW" secondAttribute="leading" id="6oB-Jy-Z0R"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="HFi-U0-IUp" secondAttribute="trailing" id="7R9-jU-Sdg"/>
-                            <constraint firstItem="gVm-Ol-q6D" firstAttribute="centerX" secondItem="1PV-yo-DUh" secondAttribute="centerX" id="D1I-uU-DIH"/>
-                            <constraint firstItem="eik-Xh-toB" firstAttribute="centerY" secondItem="Vnn-Nj-uuq" secondAttribute="centerY" id="Dc8-6f-N71"/>
-                            <constraint firstItem="1PV-yo-DUh" firstAttribute="leading" secondItem="RBd-p6-DWW" secondAttribute="leading" constant="30" id="EsC-UN-4lQ"/>
-                            <constraint firstItem="gVm-Ol-q6D" firstAttribute="top" secondItem="1PV-yo-DUh" secondAttribute="bottom" constant="30" id="INc-9u-Fsh"/>
-                            <constraint firstItem="Vnn-Nj-uuq" firstAttribute="top" secondItem="gVm-Ol-q6D" secondAttribute="bottom" constant="15" id="NGb-I8-UdL"/>
-                            <constraint firstAttribute="trailing" secondItem="1PV-yo-DUh" secondAttribute="trailing" constant="30" id="SR0-yW-KgN"/>
-                            <constraint firstItem="HFi-U0-IUp" firstAttribute="leading" secondItem="Vnn-Nj-uuq" secondAttribute="trailing" constant="10" id="Tiu-ew-ByX"/>
+                            <constraint firstItem="hCq-85-Fgn" firstAttribute="centerX" secondItem="1PV-yo-DUh" secondAttribute="centerX" id="3au-Mk-Rq7"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="aGH-m2-Wr4" secondAttribute="trailing" constant="30" id="3rm-Bv-ioq"/>
+                            <constraint firstItem="aGH-m2-Wr4" firstAttribute="centerX" secondItem="1PV-yo-DUh" secondAttribute="centerX" id="8uM-VI-lRM"/>
+                            <constraint firstItem="1PV-yo-DUh" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="RBd-p6-DWW" secondAttribute="leading" constant="30" id="EsC-UN-4lQ"/>
+                            <constraint firstAttribute="bottom" secondItem="aGH-m2-Wr4" secondAttribute="bottom" constant="30" id="FZ8-jf-eO9"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="1PV-yo-DUh" secondAttribute="trailing" constant="30" id="SR0-yW-KgN"/>
+                            <constraint firstItem="hCq-85-Fgn" firstAttribute="top" secondItem="1PV-yo-DUh" secondAttribute="bottom" id="TVF-gF-wj4"/>
+                            <constraint firstItem="aGH-m2-Wr4" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="RBd-p6-DWW" secondAttribute="leading" constant="30" id="Uya-tk-5ZL"/>
                             <constraint firstItem="1PV-yo-DUh" firstAttribute="top" secondItem="RBd-p6-DWW" secondAttribute="top" constant="30" id="WXy-tb-haz"/>
-                            <constraint firstItem="HFi-U0-IUp" firstAttribute="centerY" secondItem="Vnn-Nj-uuq" secondAttribute="centerY" id="cRm-VA-SDH"/>
-                            <constraint firstItem="Vnn-Nj-uuq" firstAttribute="leading" secondItem="eik-Xh-toB" secondAttribute="trailing" constant="10" id="fDZ-8A-rsR"/>
-                            <constraint firstItem="Vnn-Nj-uuq" firstAttribute="centerX" secondItem="1PV-yo-DUh" secondAttribute="centerX" id="jWE-Nf-udP"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="saveSearchSettingsSegmentedControl" destination="Vnn-Nj-uuq" id="BCd-ag-6m2"/>
+                        <outlet property="savePreferenceCheckBox" destination="aGH-m2-Wr4" id="MW1-Zh-fHw"/>
                     </connections>
                 </viewController>
                 <customObject id="2zZ-jI-LnO" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -489,7 +467,7 @@
         <scene sceneID="77x-W1-YK5">
             <objects>
                 <windowController storyboardIdentifier="SearchFileNameResultWindowSID" id="s6H-VD-NpC" sceneMemberID="viewController">
-                    <window key="window" title="搜尋結果" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="Y6I-ij-MdO">
+                    <window key="window" title="search_result_window_title" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="Y6I-ij-MdO">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="294" y="313" width="480" height="270"/>
@@ -506,10 +484,10 @@
             </objects>
             <point key="canvasLocation" x="807" y="241"/>
         </scene>
-        <!--Search File Name Result View Controller-->
+        <!--Search Result View Controller-->
         <scene sceneID="89e-Ut-xAm">
             <objects>
-                <viewController id="rZF-QJ-B0D" customClass="SearchFileNameResultViewController" customModule="FindDuplicateFileName" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="rZF-QJ-B0D" customClass="SearchResultViewController" customModule="DuplicateFinder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="6Fw-Cu-BO1">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="276"/>
                         <autoresizingMask key="autoresizingMask"/>

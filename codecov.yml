@@ -1,0 +1,7 @@
+comment: no # Do not comment PR with the result
+
+ignore:
+  - "FileExplorer/Sources/FileExplorer/PathIterator/DiskPathIterator.swift"
+  - "FileExplorer/Tests/**/*"
+  - "Utils/Tests/**/*"
+  - "Utils/Sources/Utils/Storage/UserDefaults*.swift"
