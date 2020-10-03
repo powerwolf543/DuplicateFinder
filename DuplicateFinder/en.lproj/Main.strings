@@ -1,0 +1,50 @@
+/* Class = "NSMenuItem"; title = "main_menu_main"; ObjectID = "1Xt-HY-uBw"; */
+"1Xt-HY-uBw.title" = "Duplicate Finder";
+
+/* Class = "NSMenuItem"; title = "main_menu_main_quit"; ObjectID = "4sb-4s-VLi"; */
+"4sb-4s-VLi.title" = "Quit Duplicate Finder";
+
+/* Class = "NSMenuItem"; title = "main_menu_main_about"; ObjectID = "5kV-Vb-QxS"; */
+"5kV-Vb-QxS.title" = "About Duplicate Finder";
+
+/* Class = "NSMenuItem"; title = "main_menu_window"; ObjectID = "aUF-d1-5bR"; */
+"aUF-d1-5bR.title" = "Window";
+
+/* Class = "NSMenuItem"; title = "main_menu_main_preference"; ObjectID = "BOF-NM-1cW"; */
+"BOF-NM-1cW.title" = "Preferences...";
+
+/* Class = "NSMenu"; title = "main_menu_main_services"; ObjectID = "hz9-B4-Xy5"; */
+"hz9-B4-Xy5.title" = "Services";
+
+/* Class = "NSWindow"; title = "main_panel_title"; ObjectID = "IQv-IB-iLA"; */
+"IQv-IB-iLA.title" = "Duplicate Finder";
+
+/* Class = "NSMenuItem"; title = "main_menu_main_show_all"; ObjectID = "Kd2-mp-pUS"; */
+"Kd2-mp-pUS.title" = "Show All";
+
+/* Class = "NSMenuItem"; title = "main_menu_window_bring_all_to_front"; ObjectID = "LE2-aR-0XJ"; */
+"LE2-aR-0XJ.title" = "Bring All to Front";
+
+/* Class = "NSMenuItem"; title = "main_menu_main_services"; ObjectID = "NMo-om-nkz"; */
+"NMo-om-nkz.title" = "Services";
+
+/* Class = "NSMenuItem"; title = "main_menu_main_hide"; ObjectID = "Olw-nP-bQN"; */
+"Olw-nP-bQN.title" = "Hide Duplicate Finder";
+
+/* Class = "NSMenuItem"; title = "main_menu_window_minimize"; ObjectID = "OY7-WF-poV"; */
+"OY7-WF-poV.title" = "Minimize";
+
+/* Class = "NSMenuItem"; title = "main_menu_window_zoom"; ObjectID = "R4o-n2-Eq4"; */
+"R4o-n2-Eq4.title" = "Zoom";
+
+/* Class = "NSMenu"; title = "main_menu_window"; ObjectID = "Td7-aD-5lo"; */
+"Td7-aD-5lo.title" = "Window";
+
+/* Class = "NSMenu"; title = "main_menu_main"; ObjectID = "uQy-DD-JDr"; */
+"uQy-DD-JDr.title" = "Duplicate Finder";
+
+/* Class = "NSMenuItem"; title = "main_menu_main_hide_others"; ObjectID = "Vdr-fp-XzO"; */
+"Vdr-fp-XzO.title" = "Hide Others";
+
+/* Class = "NSWindow"; title = "search_result_window_title"; ObjectID = "Y6I-ij-MdO"; */
+"Y6I-ij-MdO.title" = "Search Result";

@@ -1,0 +1,50 @@
+/* Class = "NSMenuItem"; title = "main_menu_main"; ObjectID = "1Xt-HY-uBw"; */
+"1Xt-HY-uBw.title" = "Duplicate Finder";
+
+/* Class = "NSMenuItem"; title = "main_menu_main_quit"; ObjectID = "4sb-4s-VLi"; */
+"4sb-4s-VLi.title" = "結束 Duplicate Finder";
+
+/* Class = "NSMenuItem"; title = "main_menu_main_about"; ObjectID = "5kV-Vb-QxS"; */
+"5kV-Vb-QxS.title" = "關於 Duplicate Finder";
+
+/* Class = "NSMenuItem"; title = "main_menu_window"; ObjectID = "aUF-d1-5bR"; */
+"aUF-d1-5bR.title" = "視窗";
+
+/* Class = "NSMenuItem"; title = "main_menu_main_preference"; ObjectID = "BOF-NM-1cW"; */
+"BOF-NM-1cW.title" = "偏好設定";
+
+/* Class = "NSMenu"; title = "main_menu_main_services"; ObjectID = "hz9-B4-Xy5"; */
+"hz9-B4-Xy5.title" = "服務";
+
+/* Class = "NSWindow"; title = "main_panel_title"; ObjectID = "IQv-IB-iLA"; */
+"IQv-IB-iLA.title" = "Duplicate Finder";
+
+/* Class = "NSMenuItem"; title = "main_menu_main_show_all"; ObjectID = "Kd2-mp-pUS"; */
+"Kd2-mp-pUS.title" = "顯示全部";
+
+/* Class = "NSMenuItem"; title = "main_menu_window_bring_all_to_front"; ObjectID = "LE2-aR-0XJ"; */
+"LE2-aR-0XJ.title" = "將此程式所有視窗移至最前";
+
+/* Class = "NSMenuItem"; title = "main_menu_main_services"; ObjectID = "NMo-om-nkz"; */
+"NMo-om-nkz.title" = "服務";
+
+/* Class = "NSMenuItem"; title = "main_menu_main_hide"; ObjectID = "Olw-nP-bQN"; */
+"Olw-nP-bQN.title" = "隱藏 Duplicate Finder";
+
+/* Class = "NSMenuItem"; title = "main_menu_window_minimize"; ObjectID = "OY7-WF-poV"; */
+"OY7-WF-poV.title" = "縮到最小";
+
+/* Class = "NSMenuItem"; title = "main_menu_window_zoom"; ObjectID = "R4o-n2-Eq4"; */
+"R4o-n2-Eq4.title" = "縮放";
+
+/* Class = "NSMenu"; title = "main_menu_window"; ObjectID = "Td7-aD-5lo"; */
+"Td7-aD-5lo.title" = "視窗";
+
+/* Class = "NSMenu"; title = "main_menu_main"; ObjectID = "uQy-DD-JDr"; */
+"uQy-DD-JDr.title" = "Duplicate Finder";
+
+/* Class = "NSMenuItem"; title = "main_menu_main_hide_others"; ObjectID = "Vdr-fp-XzO"; */
+"Vdr-fp-XzO.title" = "隱藏其他";
+
+/* Class = "NSWindow"; title = "search_result_window_title"; ObjectID = "Y6I-ij-MdO"; */
+"Y6I-ij-MdO.title" = "搜尋結果";
