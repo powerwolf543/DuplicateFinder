@@ -6,7 +6,7 @@
 import Cocoa
 import Utils
 
-internal class LogoInfoViewController: NSViewController {
+internal final class WelcomeViewController: NSViewController {
     @IBOutlet
     private weak var savePreferenceCheckBox: NSButton! {
         didSet { savePreferenceCheckBox.title = "save_preference_check_box_title".localized }

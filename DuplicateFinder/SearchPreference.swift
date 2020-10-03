@@ -8,7 +8,7 @@ import Utils
 
 /// Aids to access the search preferences
 @dynamicMemberLookup
-internal class SearchPreference {
+internal final class SearchPreference {
     internal static let shared: SearchPreference = SearchPreference()
     
     @Storage(key: "SearchPreferencesManager.isPersistedEnabled", defaultValue: false)

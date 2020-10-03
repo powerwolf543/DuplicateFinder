@@ -10,10 +10,10 @@
 		2519329E25271E600084D3B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2519329D25271E600084D3B7 /* AppDelegate.swift */; };
 		251932A225271E610084D3B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 251932A125271E610084D3B7 /* Assets.xcassets */; };
 		251932A525271E610084D3B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 251932A325271E610084D3B7 /* Main.storyboard */; };
-		251932B325272B370084D3B7 /* LogoInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251932AF25272B370084D3B7 /* LogoInfoViewController.swift */; };
+		251932B325272B370084D3B7 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251932AF25272B370084D3B7 /* WelcomeViewController.swift */; };
 		251932B425272B370084D3B7 /* SearchPreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251932B025272B370084D3B7 /* SearchPreference.swift */; };
-		251932B525272B370084D3B7 /* SelectDirectoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251932B125272B370084D3B7 /* SelectDirectoryViewController.swift */; };
-		251932B625272B370084D3B7 /* SearchFileNameResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251932B225272B370084D3B7 /* SearchFileNameResultViewController.swift */; };
+		251932B525272B370084D3B7 /* SearchSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251932B125272B370084D3B7 /* SearchSettingsViewController.swift */; };
+		251932B625272B370084D3B7 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251932B225272B370084D3B7 /* SearchResultViewController.swift */; };
 		251932C125272B910084D3B7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 251932BF25272B910084D3B7 /* Localizable.strings */; };
 		251932C525272BB20084D3B7 /* FileExplorer in Frameworks */ = {isa = PBXBuildFile; productRef = 251932C425272BB20084D3B7 /* FileExplorer */; };
 		251932C725272BB50084D3B7 /* Utils in Frameworks */ = {isa = PBXBuildFile; productRef = 251932C625272BB50084D3B7 /* Utils */; };
@@ -30,10 +30,10 @@
 		251932A725271E610084D3B7 /* DuplicateFinder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DuplicateFinder.entitlements; sourceTree = "<group>"; };
 		251932AD25272B150084D3B7 /* FileExplorer */ = {isa = PBXFileReference; lastKnownFileType = folder; path = FileExplorer; sourceTree = "<group>"; };
 		251932AE25272B150084D3B7 /* Utils */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Utils; sourceTree = "<group>"; };
-		251932AF25272B370084D3B7 /* LogoInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoInfoViewController.swift; sourceTree = "<group>"; };
+		251932AF25272B370084D3B7 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		251932B025272B370084D3B7 /* SearchPreference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchPreference.swift; sourceTree = "<group>"; };
-		251932B125272B370084D3B7 /* SelectDirectoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectDirectoryViewController.swift; sourceTree = "<group>"; };
-		251932B225272B370084D3B7 /* SearchFileNameResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchFileNameResultViewController.swift; sourceTree = "<group>"; };
+		251932B125272B370084D3B7 /* SearchSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchSettingsViewController.swift; sourceTree = "<group>"; };
+		251932B225272B370084D3B7 /* SearchResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		251932B725272B4D0084D3B7 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
 		251932B825272B670084D3B7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		251932C025272B910084D3B7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -78,11 +78,11 @@
 			isa = PBXGroup;
 			children = (
 				2519329D25271E600084D3B7 /* AppDelegate.swift */,
-				251932AF25272B370084D3B7 /* LogoInfoViewController.swift */,
-				251932B225272B370084D3B7 /* SearchFileNameResultViewController.swift */,
+				251932AF25272B370084D3B7 /* WelcomeViewController.swift */,
+				251932B225272B370084D3B7 /* SearchResultViewController.swift */,
 				251932B025272B370084D3B7 /* SearchPreference.swift */,
 				251932CA25279EF20084D3B7 /* SearchInfo.swift */,
-				251932B125272B370084D3B7 /* SelectDirectoryViewController.swift */,
+				251932B125272B370084D3B7 /* SearchSettingsViewController.swift */,
 				251932C825277BAA0084D3B7 /* DuplicateFinderError.swift */,
 				251932BF25272B910084D3B7 /* Localizable.strings */,
 				251932A125271E610084D3B7 /* Assets.xcassets */,
@@ -179,9 +179,9 @@
 				251932CB25279EF20084D3B7 /* SearchInfo.swift in Sources */,
 				251932C925277BAB0084D3B7 /* DuplicateFinderError.swift in Sources */,
 				2519329E25271E600084D3B7 /* AppDelegate.swift in Sources */,
-				251932B625272B370084D3B7 /* SearchFileNameResultViewController.swift in Sources */,
-				251932B325272B370084D3B7 /* LogoInfoViewController.swift in Sources */,
-				251932B525272B370084D3B7 /* SelectDirectoryViewController.swift in Sources */,
+				251932B625272B370084D3B7 /* SearchResultViewController.swift in Sources */,
+				251932B325272B370084D3B7 /* WelcomeViewController.swift in Sources */,
+				251932B525272B370084D3B7 /* SearchSettingsViewController.swift in Sources */,
 				251932B425272B370084D3B7 /* SearchPreference.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

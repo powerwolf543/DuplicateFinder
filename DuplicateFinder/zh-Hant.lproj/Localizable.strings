@@ -15,8 +15,24 @@
 "setup_page_excluded_names_table_column_title" = "檔案名稱";
 "setup_page_excluded_names_text_field_placehodler" = "請輸入檔案名稱(包含副檔名) ex. fileName.cmd";
 
-// Error Description
-"targetFolderNotFound_error_description" = "尚未選擇路徑";
+// Result Page
+"result_page_show_in_finder" = "在 Finder 中顯示";
+"result_page_searching" = "尋找中...";
+"result_page_search_complete" = "搜尋完成";
+"result_page_search_failure" = "搜尋失敗";
+"result_page_table_column_file_name" = "檔名";
+"result_page_table_column_path" = "路徑";
 
-// Recovery Suggestion
+// FileExplorer State
+"file_explorer_state_idle" = "閒置";
+"file_explorer_state_searching_group" = "處理中...";
+"file_explorer_state_searching_check_duplicated" = "檢查中...";
+"file_explorer_state_searching_flat" = "重新排序...";
+"file_explorer_state_searching_exclude" = "快完成了...";
+"file_explorer_state_finish" = "搜尋完成";
+
+// Error
+"targetFolderNotFound_error_description" = "尚未選擇路徑";
 "targetFolderNotFound_recovery_suggestion" = "請先選擇路徑在進行搜尋";
+"pathNotFound_error_description" = "開啟錯誤";
+"pathNotFound_recovery_suggestion" = "這個路徑已不存在";

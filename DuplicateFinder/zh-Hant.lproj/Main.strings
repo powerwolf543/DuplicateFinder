@@ -46,3 +46,5 @@
 /* Class = "NSMenuItem"; title = "main_menu_main_hide_others"; ObjectID = "Vdr-fp-XzO"; */
 "Vdr-fp-XzO.title" = "隱藏其他";
 
+/* Class = "NSWindow"; title = "search_result_window_title"; ObjectID = "Y6I-ij-MdO"; */
+"Y6I-ij-MdO.title" = "搜尋結果";

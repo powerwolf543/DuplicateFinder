@@ -7,7 +7,8 @@ import Foundation
 
 internal enum DuplicateFinderError: String, LocalizedError {
     case targetFolderNotFound
+    case pathNotFound
     
-    var errorDescription: String? { "\(rawValue)_error_description".localized }
-    var recoverySuggestion: String? { "\(rawValue)_recovery_suggestion".localized }
+    internal var errorDescription: String? { "\(rawValue)_error_description".localized }
+    internal var recoverySuggestion: String? { "\(rawValue)_recovery_suggestion".localized }
 }

@@ -5,7 +5,7 @@
 
 "save_preference_check_box_title" = "Save Search Preference";
 
-// Setup Page
+// Settings Page
 "setup_page_choose_folder_text_field_placehodler" = "Choose a target folder";
 "setup_page_title" = "Finds all duplicate files which have the same names";
 "setup_page_check_button_title" = "Check";
@@ -15,8 +15,24 @@
 "setup_page_excluded_names_table_column_title" = "File Name";
 "setup_page_excluded_names_text_field_placehodler" = "Enter the file name and extension. ex. fileName.cmd";
 
-// Error Description
-"targetFolderNotFound_error_description" = "Didn't select search path yet";
+// Result Page
+"result_page_show_in_finder" = "Show in Finder";
+"result_page_searching" = "Searching...";
+"result_page_search_complete" = "Search Complete";
+"result_page_search_failure" = "Search Failure";
+"result_page_table_column_file_name" = "File Name";
+"result_page_table_column_path" = "Path";
 
-// Recovery Suggestion
+// FileExplorer State
+"file_explorer_state_idle" = "Idle";
+"file_explorer_state_searching_group" = "Processing...";
+"file_explorer_state_searching_check_duplicated" = "Checking...";
+"file_explorer_state_searching_flat" = "Reorder...";
+"file_explorer_state_searching_exclude" = "Almost complete...";
+"file_explorer_state_finish" = "Search Complete";
+
+// Error
+"targetFolderNotFound_error_description" = "Didn't select search path yet";
 "targetFolderNotFound_recovery_suggestion" = "Please choose a target folder";
+"pathNotFound_error_description" = "Path not found";
+"pathNotFound_recovery_suggestion" = "This path is unavailable.";
