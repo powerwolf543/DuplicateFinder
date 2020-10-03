@@ -7,14 +7,25 @@
 
 # Duplicate Finder
 
-![2016-10-20 5 31 10](https://cloud.githubusercontent.com/assets/16394562/19554488/6ca84680-96eb-11e6-899b-1bd5dd29f39a.png)
+![duplicate_finder_screen_shot](https://user-images.githubusercontent.com/16394562/94992308-bc3bf000-05bb-11eb-95a9-907ec334c660.png)
 
 **Duplicate Finder** is a MacOS Application that is written by Swift.
 It's a useful tool that would help you to find all duplicate files which have the same names in the specific folder.
 
+- [Usage](#Usage)
 - [Requirements](#Requirements)
 - [Author](#Author)
 - [License](#License)
+
+## Usage
+### Search
+1. Click `"Choose a target folder"` field to choose a target folder
+2. (Optional) Set the paths which you want to exclude
+3. (Optional) Set the file names which you want to exclude
+4. Click `"Check"` button
+
+### Save Preference
+- Tick `"Save Search Preference"`
 
 ## Requirements
 
