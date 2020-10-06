@@ -1,4 +1,9 @@
-comment: no # Do not comment PR with the result
+comment: false
+
+coverage:
+  status:
+    project: off
+    patch: off
 
 ignore:
   - "FileExplorer/Sources/FileExplorer/PathIterator/DiskPathIterator.swift"
