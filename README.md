@@ -2,8 +2,6 @@
 [![OSX](https://img.shields.io/badge/platform-MacOS-brown.svg)](https://developer.apple.com/swift/)
 [![](https://github.com/powerwolf543/DuplicateFinder/workflows/UnitTests/badge.svg)](https://github.com/powerwolf543/DuplicateFinder/actions?query=workflow%3AUnitTests) 
 [![codecov](https://codecov.io/gh/powerwolf543/DuplicateFinder/branch/master/graph/badge.svg)](https://codecov.io/gh/powerwolf543/DuplicateFinder/)
-[![SwiftPM Compatible](https://img.shields.io/badge/SwiftPM-compatible-4BC51D.svg?style=flat)](https://github.com/apple/swift-package-manager)
-
 
 # Duplicate Finder
 
