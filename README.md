@@ -31,8 +31,8 @@ Download the newest application on the [releases](https://github.com/powerwolf54
 
 ## Requirements
 
-- Xcode 11.7
-- Swift 5.2
+- Xcode 12.2
+- Swift 5.3
 - MacOS 10.15+
 
 ## Author
