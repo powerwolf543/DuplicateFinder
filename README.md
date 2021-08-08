@@ -7,8 +7,8 @@
 
 ![duplicate_finder_screen_shot](https://user-images.githubusercontent.com/16394562/94992308-bc3bf000-05bb-11eb-95a9-907ec334c660.png)
 
-**Duplicate Finder** is a MacOS Application that is written by Swift.
-It's a useful tool that would help you to find all duplicate files which have the same names in the specific folder.
+**Duplicate Finder** is a macOS application that is written by Swift.
+It's a useful tool that would help you find all duplicate files with the same names in the specific folder.
 
 - [Installation](#Installation)
 - [Usage](#Usage)
